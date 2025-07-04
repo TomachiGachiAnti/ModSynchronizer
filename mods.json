@@ -6,13 +6,13 @@
       "deprecated": false
     },
     {
-      "filename": "AdditionalEnchantedMiner-1.12.2-12.5.6.jar",
-      "url": "https://mediafilez.forgecdn.net/files/3849/885/AdditionalEnchantedMiner-1.12.2-12.5.6.jar",
-      "deprecated": true
-    },
-    {
       "filename": "AdditionalEnchantedMiner-1.12.2-12.5.7.jar",
       "url": "https://mediafilez.forgecdn.net/files/3851/282/AdditionalEnchantedMiner-1.12.2-12.5.7.jar",
+      "deprecated": false
+    },
+    {
+      "filename": "AsmodeusCore-1.12.2-1.0.3.jar",
+      "url": "https://mediafilez.forgecdn.net/files/6058/953/AsmodeusCore-1.12.2-1.0.3.jar",
       "deprecated": false
     },
     {

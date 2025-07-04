@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>マイクラMOD JSONエディタ</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 20px;
+      background: #f4f4f4;
+    }
+
+    h1, h2 {
+      text-align: center;
+    }
+
+    .mod-entry {
+      background: #fff;
+      padding: 15px;
+      margin-bottom: 10px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+
+    input[type="text"], input[type="url"] {
+      width: 100%;
+      padding: 6px;
+      margin-top: 4px;
+      box-sizing: border-box;
+    }
+
+    .mod-container {
+      margin-bottom: 20px;
+    }
+
+    button {
+      margin-top: 10px;
+      padding: 10px 15px;
+      font-size: 14px;
+      border: none;
+      border-radius: 5px;
+      background-color: #4CAF50;
+      color: white;
+      cursor: pointer;
+      margin-right: 5px;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    .remove-btn {
+      background-color: #e74c3c;
+    }
+
+    .remove-btn:hover {
+      background-color: #c0392b;
+    }
+
+    pre {
+      background: #272822;
+      color: #f8f8f2;
+      padding: 15px;
+      border-radius: 5px;
+      overflow: auto;
+    }
+
+    .file-loader {
+      margin: 20px auto;
+      text-align: center;
+    }
+
+    input[type="file"] {
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>マイクラMOD JSONエディタ</h1>
+
+  <div class="file-loader">
+    <input type="file" accept=".json" onchange="loadJSONFile(event)">
+  </div>
+
+  <div class="mod-container" id="modContainer">
+    <!-- モッド入力エリア -->
+  </div>
+
+  <div style="text-align: center;">
+    <button onclick="addModEntry()">＋ MODを追加</button>
+    <button onclick="generateJSON()">JSONを生成</button>
+  </div>
+
+  <h2>生成されたJSON:</h2>
+  <pre id="jsonOutput">{}</pre>
+
+  <script>
+    function addModEntry(filename = "", url = "", deprecated = false) {
+      const container = document.getElementById('modContainer');
+
+      const entry = document.createElement('div');
+      entry.className = 'mod-entry';
+
+      entry.innerHTML = `
+        <label>ファイル名:
+          <input type="text" class="filename" placeholder="例: examplemod1.jar" value="${filename}">
+        </label>
+        <label>URL:
+          <input type="url" class="url" placeholder="https://yourcdn.com/mods/examplemod1.jar" value="${url}">
+        </label>
+        <label>
+          <input type="checkbox" class="deprecated" ${deprecated ? "checked" : ""}>
+          非推奨 (deprecated)
+        </label>
+        <button class="remove-btn" onclick="removeModEntry(this)">削除</button>
+      `;
+
+      container.appendChild(entry);
+    }
+
+    function removeModEntry(button) {
+      const entry = button.parentElement;
+      entry.remove();
+    }
+
+    function generateJSON() {
+      const entries = document.querySelectorAll('.mod-entry');
+      const mods = [];
+
+      entries.forEach(entry => {
+        const filename = entry.querySelector('.filename').value.trim();
+        const url = entry.querySelector('.url').value.trim();
+        const deprecated = entry.querySelector('.deprecated').checked;
+
+        if (filename && url) {
+          mods.push({ filename, url, deprecated });
+        }
+      });
+
+      const result = { mods };
+      document.getElementById('jsonOutput').textContent = JSON.stringify(result, null, 2);
+    }
+
+    function loadJSONFile(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        try {
+          const data = JSON.parse(e.target.result);
+          if (!Array.isArray(data.mods)) {
+            alert("不正なJSONフォーマットです。`mods` 配列が存在しません。");
+            return;
+          }
+
+          document.getElementById('modContainer').innerHTML = "";
+          data.mods.forEach(mod => {
+            addModEntry(mod.filename, mod.url, mod.deprecated);
+          });
+          generateJSON();
+
+        } catch (error) {
+          alert("JSONの読み込み中にエラーが発生しました。ファイルの形式を確認してください。");
+          console.error(error);
+        }
+      };
+      reader.readAsText(file, 'UTF-8');
+    }
+
+    window.onload = () => {
+      addModEntry(); // 初期1件
+    };
+  </script>
+</body>
+</html>

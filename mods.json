@@ -1,0 +1,109 @@
+{
+  "mods": [
+    {
+      "filename": "AdditionalEnchantedMiner-1.12.2-12.5.7.jar",
+      "url": "https://mediafilez.forgecdn.net/files/3851/282/AdditionalEnchantedMiner-1.12.2-12.5.7.jar",
+      "deprecated": false
+    },
+    {
+      "filename": "buildcraft-all-8.0.0.jar",
+      "url": "https://mediafilez.forgecdn.net/files/6376/391/buildcraft-all-8.0.0.jar",
+      "deprecated": false
+    },
+    {
+      "filename": "CodeChickenLib-1.12.2-3.2.3.358-universal.jar",
+      "url": "https://mediafilez.forgecdn.net/files/2779/848/CodeChickenLib-1.12.2-3.2.3.358-universal.jar",
+      "deprecated": false
+    },
+    {
+      "filename": "cxlibrary-1.12.1-1.6.1.jar",
+      "url": "https://mediafilez.forgecdn.net/files/2463/886/cxlibrary-1.12.1-1.6.1.jar",
+      "deprecated": false
+    },
+    {
+      "filename": "EnderCore-1.12.2-0.5.78.jar",
+      "url": "https://mediafilez.forgecdn.net/files/4671/384/EnderCore-1.12.2-0.5.78.jar",
+      "deprecated": false
+    },
+    {
+      "filename": "EnderIO-1.12.2-5.3.72.jar",
+      "url": "https://mediafilez.forgecdn.net/files/4674/244/EnderIO-1.12.2-5.3.72.jar",
+      "deprecated": false
+    },
+    {
+      "filename": "Forgelin-1.8.4.jar",
+      "url": "https://mediafilez.forgecdn.net/files/2785/465/Forgelin-1.8.4.jar",
+      "deprecated": false
+    },
+    {
+      "filename": "forgemod_VoxelMap-1.9.27_for_1.12.2.jar",
+      "url": "https://mediafilez.forgecdn.net/files/2785/465/Forgelin-1.8.4.jar",
+      "deprecated": false
+    },
+    {
+      "filename": "Galacticraft-1.12.2-4.0.7.jar",
+      "url": "https://mediafilez.forgecdn.net/files/6364/107/Galacticraft-1.12.2-4.0.7.jar",
+      "deprecated": false
+    },
+    {
+      "filename": "industrialcraft-2-2.8.222-ex112.jar",
+      "url": "https://mediafilez.forgecdn.net/files/3838/713/industrialcraft-2-2.8.222-ex112.jar",
+      "deprecated": false
+    },
+    {
+      "filename": "industrialforegoing-1.12.2-1.12.13-237.jar",
+      "url": "https://mediafilez.forgecdn.net/files/2745/321/industrialforegoing-1.12.2-1.12.13-237.jar",
+      "deprecated": false
+    },
+    {
+      "filename": "InventoryTweaks-1.63.jar",
+      "url": "https://mediafilez.forgecdn.net/files/2482/481/InventoryTweaks-1.63.jar",
+      "deprecated": false
+    },
+    {
+      "filename": "jei_1.12.2-4.16.1.1013.jar",
+      "url": "https://mediafilez.forgecdn.net/files/5846/804/jei_1.12.2-4.16.1.1013.jar",
+      "deprecated": false
+    },
+    {
+      "filename": "logisticspipes-0.10.4.49.jar",
+      "url": "https://mediafilez.forgecdn.net/files/4849/512/logisticspipes-0.10.4.49.jar",
+      "deprecated": false
+    },
+    {
+      "filename": "Mekanism-1.12.2-9.8.3.390.jar",
+      "url": "https://mediafilez.forgecdn.net/files/2835/175/Mekanism-1.12.2-9.8.3.390.jar",
+      "deprecated": false
+    },
+    {
+      "filename": "MultiPageChest-1.12-1.9.1.jar",
+      "url": "https://mediafilez.forgecdn.net/files/2441/299/MultiPageChest-1.12-1.9.1.jar",
+      "deprecated": false
+    },
+    {
+      "filename": "mystcraft-1.12.2-0.13.7.06.jar",
+      "url": "https://mediafilez.forgecdn.net/files/2958/490/mystcraft-1.12.2-0.13.7.06.jar",
+      "deprecated": false
+    },
+    {
+      "filename": "Patchouli-1.0-23.6.jar",
+      "url": "https://mediafilez.forgecdn.net/files/3162/874/Patchouli-1.0-23.6.jar",
+      "deprecated": false
+    },
+    {
+      "filename" :"TerraFirmaCraft-MC1.12.2-1.7.23.181.jar",
+      "url": "",
+      "deprecated" : true
+    },
+    {
+      "filename": "tesla-core-lib-1.12.2-1.0.18.jar",
+      "url": "https://mediafilez.forgecdn.net/files/3438/487/tesla-core-lib-1.12.2-1.0.18.jar",
+      "deprecated": false
+    },
+    {
+      "filename": "VisibleRayGenerator-1.12-5.0.1-universal.jar",
+      "url": "https://mediafilez.forgecdn.net/files/2447/874/VisibleRayGenerator-1.12-5.0.1-universal.jar",
+      "deprecated": false
+    }
+  ]
+}

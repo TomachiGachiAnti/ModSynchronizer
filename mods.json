@@ -118,6 +118,11 @@
     {
       "filename": "mystcraft-1.12.2-0.13.7.06.jar",
       "url": "https://mediafilez.forgecdn.net/files/2958/490/mystcraft-1.12.2-0.13.7.06.jar",
+      "deprecated": true
+    },
+    {
+      "filename": "mystcraft-1.12.2-0.13.7.06-no-hugetrees-1.0.0.jar",
+      "url": "http://test.hinotosan.com/test/mystcraft-1.12.2-0.13.7.06-no-hugetrees-1.0.0.jar",
       "deprecated": false
     },
     {

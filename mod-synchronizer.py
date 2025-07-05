@@ -40,12 +40,23 @@ class ModSyncApp:
     def sync_mods(self):
         minecraft_dir = self.minecraft_dir.get()
         mod_dir = os.path.join(minecraft_dir, "mods")
+        scripts_dir = os.path.join(minecraft_dir, "scripts")
 
+        # modsフォルダ存在チェック
         if not os.path.isdir(mod_dir):
             messagebox.showerror("エラー", "正しいMinecraftフォルダ（modsフォルダがある場所）を選択してください。")
             return
 
+        # scriptsフォルダがなければ作成
+        if not os.path.isdir(scripts_dir):
+            try:
+                os.makedirs(scripts_dir, exist_ok=True)
+            except Exception as e:
+                messagebox.showerror("エラー", f"scriptsフォルダの作成に失敗しました:\n{e}")
+                return
+
         try:
+            # MODS JSON取得
             res = requests.get(MODS_JSON_URL)
             res.raise_for_status()
             data = res.json()
@@ -88,11 +99,35 @@ class ModSyncApp:
                         os.remove(os.path.join(mod_dir, filename))
                         deleted.append(filename)
 
+
+            # scripts フォルダの同期（GitHubリポジトリから最新を取得して上書き）
+            recipe_downloaded = []
+            try:
+                api_url = "https://api.github.com/repos/TomachiGachiAnti/ModSynchronizer/contents/scripts"
+                resp = requests.get(api_url)
+                resp.raise_for_status()
+                scripts_files = resp.json()
+                for fileinfo in scripts_files:
+                    if fileinfo['name'].endswith('.zs') and fileinfo['type'] == 'file':
+                        raw_url = fileinfo['download_url']
+                        dest_path = os.path.join(scripts_dir, fileinfo['name'])
+                        try:
+                            file_resp = requests.get(raw_url)
+                            file_resp.raise_for_status()
+                            with open(dest_path, 'wb') as f:
+                                f.write(file_resp.content)
+                            recipe_downloaded.append(fileinfo['name'])
+                        except Exception as e:
+                            messagebox.showwarning("スクリプト同期エラー", f"{fileinfo['name']} の同期に失敗しました:\n{e}")
+            except Exception as e:
+                messagebox.showwarning("スクリプト同期エラー", f"GitHubからのスクリプト取得に失敗しました:\n{e}")
+
             self.progress["value"] = self.progress["maximum"]
 
             summary = (
-                f"✅ ダウンロード: {len(downloaded)} 個\n" + "\n".join(downloaded) +
-                f"\n\n🗑️ 削除: {len(deleted)} 個\n" + "\n".join(deleted)
+                f"✅ ダウンロード: {len(downloaded)} 個\n" + ("\n".join(downloaded) if downloaded else "(なし)") +
+                f"\n\n🗑️ 削除: {len(deleted)} 個\n" + ("\n".join(deleted) if deleted else "(なし)") +
+                f"\n\n📜 レシピ同期: {len(recipe_downloaded)} 個\n" + ("\n".join(recipe_downloaded) if recipe_downloaded else "(なし)")
             )
             messagebox.showinfo("同期完了", summary)
 

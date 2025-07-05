@@ -14,7 +14,7 @@ pip3 install -r requirements.txt
 
 - exe化
 ```sh
-pyinstaller --noconfirm --onefile --windowed app.py
+pyinstaller --noconfirm --onefile --windowed mod-synchronizer.py
 ```
 
 ## mods.jsonについて

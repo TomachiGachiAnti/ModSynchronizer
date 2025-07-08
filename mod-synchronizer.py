@@ -8,7 +8,7 @@ from tkinter import filedialog, messagebox, ttk
 import requests
 
 # === 定数 ===
-APP_VERSION = "1.2.0"
+APP_VERSION = "1.2.1"
 MODS_JSON_URL = "https://raw.githubusercontent.com/TomachiGachiAnti/ModSynchronizer/refs/heads/main/mods.json"
 GITHUB_RELEASES_API = "https://api.github.com/repos/TomachiGachiAnti/ModSynchronizer/releases/latest"
 

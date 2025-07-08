@@ -17,6 +17,9 @@ pip3 install -r requirements.txt
 pyinstaller --noconfirm --onefile --windowed mod-synchronizer.py
 ```
 
+※ウイルス判定されないようにpyinstallerを自分で用意してインストールすること。  
+参考ページ：`https://qiita.com/tru-y/items/cb3cebe9612d367dccb2`
+
 ## mods.jsonについて
 mods.jsonでmodの管理をしています。  
 tool.htmlでmods.jsonの作成を簡単に行えます。

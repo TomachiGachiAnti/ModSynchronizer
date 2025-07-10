@@ -8,20 +8,19 @@ from tkinter import filedialog, messagebox, ttk
 import requests
 
 # === 定数 ===
-APP_VERSION = "1.2.1"
+APP_VERSION = "1.2.2"
 MODS_JSON_URL = "https://raw.githubusercontent.com/TomachiGachiAnti/ModSynchronizer/refs/heads/main/mods.json"
 GITHUB_RELEASES_API = "https://api.github.com/repos/TomachiGachiAnti/ModSynchronizer/releases/latest"
 
-class ModSyncApp:
-    def update_app(self, download_url):
+class ModSyncronizer:
+    def update_app(self, download_url: str) -> None:
         """
-        PyInstallerでexe化された自身を自動更新する仕組み（Windows向け）。
+        PyInstallerでexe化された自身を自動更新するメソッド
         1. 一時ディレクトリに最新版exeをダウンロード
         2. バッチファイルを生成し、自身を終了→exeを置換→再起動
         """
         import tempfile
         import sys
-        import time
         temp_dir = tempfile.gettempdir()
         exe_name = os.path.basename(sys.executable)
         new_exe_path = os.path.join(temp_dir, f"new_{exe_name}")
@@ -34,7 +33,7 @@ class ModSyncApp:
             with open(new_exe_path, "wb") as f:
                 shutil.copyfileobj(res.raw, f)
         except Exception as e:
-            messagebox.showerror("アップデート失敗", f"ダウンロードに失敗しました:\n{e}")
+            messagebox.showerror(title="アップデート失敗", message=f"ダウンロードに失敗しました:\n{e}")
             return
 
         # バッチ生成
@@ -53,8 +52,16 @@ start "" "{sys.executable}"
     def __init__(self, root):
         self.root = root
         self.version = APP_VERSION
-        self.root.title(f"MOD 同期ランチャー v.{APP_VERSION}")
-        self.root.geometry("520x320")
+        self.root.title(f"Mod Syncronizer v.{APP_VERSION}")
+
+        # 画面中央に表示するための計算
+        window_width = 520
+        window_height = 320
+        screen_width = self.root.winfo_screenwidth()
+        screen_height = self.root.winfo_screenheight()
+        position_x = (screen_width // 2) - (window_width // 2)
+        position_y = (screen_height // 2) - (window_height // 2)
+        self.root.geometry(f'{window_width}x{window_height}+{position_x}+{position_y}')
 
         default_minecraft_path = os.path.join(os.environ.get("APPDATA", ""), ".minecraft")
         self.minecraft_dir = tk.StringVar(value=default_minecraft_path)
@@ -63,7 +70,8 @@ start "" "{sys.executable}"
 
         # バージョンチェックを別スレッドで実行
         threading.Thread(target=self.check_latest_version, daemon=True).start()
-    def check_latest_version(self):
+
+    def check_latest_version(self) -> None:
         try:
             res = requests.get(GITHUB_RELEASES_API, timeout=5)
             res.raise_for_status()
@@ -80,7 +88,7 @@ start "" "{sys.executable}"
         except Exception:
             pass  # ネットワークエラー等は無視
 
-    def is_newer_version(self, v1, v2):
+    def is_newer_version(self, v1, v2) -> bool:
         def parse(v):
             return [int(x) for x in v.split(".") if x.isdigit()]
         p1 = parse(v1)
@@ -91,7 +99,7 @@ start "" "{sys.executable}"
         p2 += [0] * (l - len(p2))
         return p1 > p2
 
-    def show_update_info(self, latest_version, url):
+    def show_update_info(self, latest_version, url) -> None:
         def show():
             msg = f"新しいバージョン v{latest_version} が利用可能です。\n\n自動アップデートを実行しますか？\n(はい:自動更新/いいえ:リリースページを開く)"
             result = messagebox.askyesnocancel("アップデートのお知らせ", msg)
@@ -108,7 +116,7 @@ start "" "{sys.executable}"
             # Cancelは何もしない
         self.root.after(0, show)
 
-    def get_latest_exe_url(self):
+    def get_latest_exe_url(self) -> None:
         """
         GitHubリリースAPIから最新のexeアセットURLを取得
         """
@@ -124,7 +132,7 @@ start "" "{sys.executable}"
             pass
         return None
 
-    def create_widgets(self):
+    def create_widgets(self) -> None:
         tk.Label(self.root, text="Minecraftのインストールフォルダ（.minecraft）を選択：").pack(pady=10)
 
         self.entry = tk.Entry(self.root, textvariable=self.minecraft_dir, width=60)
@@ -139,12 +147,12 @@ start "" "{sys.executable}"
         self.progress = ttk.Progressbar(self.root, mode="determinate", length=400)
         self.progress.pack(pady=15)
 
-    def browse_folder(self):
+    def browse_folder(self) -> None:
         folder_path = filedialog.askdirectory()
         if folder_path:
             self.minecraft_dir.set(folder_path)
 
-    def sync_mods(self):
+    def sync_mods(self) -> None:
         minecraft_dir = self.minecraft_dir.get()
         mod_dir = os.path.join(minecraft_dir, "mods")
         scripts_dir = os.path.join(minecraft_dir, "scripts")
@@ -243,7 +251,7 @@ start "" "{sys.executable}"
         finally:
             self.progress["value"] = 0
 
-    def download_mod(self, url, dest_path):
+    def download_mod(self, url: str, dest_path: str) -> None:
         res = requests.get(url, stream=True)
         res.raise_for_status()
         with open(dest_path, "wb") as f:
@@ -251,5 +259,5 @@ start "" "{sys.executable}"
 
 if __name__ == "__main__":
     root = tk.Tk()
-    app = ModSyncApp(root)
+    app = ModSyncronizer(root)
     root.mainloop()

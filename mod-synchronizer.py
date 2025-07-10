@@ -10,7 +10,7 @@ from tkinter import filedialog, messagebox
 from tkinter import ttk
 import subprocess
 
-APP_VERSION = "1.2.1"
+APP_VERSION = "1.2.3"
 MODS_JSON_URL = "https://raw.githubusercontent.com/TomachiGachiAnti/ModSynchronizer/refs/heads/main/mods.json"
 GITHUB_RELEASES_API = "https://api.github.com/repos/TomachiGachiAnti/ModSynchronizer/releases/latest"
 

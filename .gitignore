@@ -1,5 +1,4 @@
 dist
 build
 venv
-mod-synchronizer.spec
 pyinstaller

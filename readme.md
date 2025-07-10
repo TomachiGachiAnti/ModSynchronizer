@@ -14,7 +14,7 @@ pip3 install -r requirements.txt
 
 - exe化
 ```sh
-pyinstaller --noconfirm --onefile --windowed mod-synchronizer.py
+pyinstaller ModSynchronizer.spec
 ```
 
 ※ウイルス判定されないようにpyinstallerを自分で用意してインストールすること。  

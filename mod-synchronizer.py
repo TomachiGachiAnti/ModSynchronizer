@@ -3,22 +3,23 @@ import shutil
 import threading
 import tempfile
 import sys
+import uuid
 import requests
 import customtkinter as ctk
 from tkinter import filedialog, messagebox
 from tkinter import ttk
+import subprocess
 
-# === 定数 ===
-APP_VERSION = "1.2.2"
+APP_VERSION = "1.2.1"
 MODS_JSON_URL = "https://raw.githubusercontent.com/TomachiGachiAnti/ModSynchronizer/refs/heads/main/mods.json"
 GITHUB_RELEASES_API = "https://api.github.com/repos/TomachiGachiAnti/ModSynchronizer/releases/latest"
 
 
-class ModSyncronizer:
+class ModSynchronizer:
     def __init__(self, root):
         self.root = root
         self.version = APP_VERSION
-        self.root.title(f"Mod Syncronizer v{APP_VERSION}")
+        self.root.title(f"Mod Synchronizer v{APP_VERSION}")
         self.center_window(600, 250)
         self.root.resizable(False, False)
 
@@ -105,29 +106,55 @@ class ModSyncronizer:
 
     def update_app(self, download_url):
         temp_dir = tempfile.gettempdir()
-        exe_name = os.path.basename(sys.executable)
-        new_exe_path = os.path.join(temp_dir, f"new_{exe_name}")
-        batch_path = os.path.join(temp_dir, "update_modsync.bat")
+        exe_path = sys.executable
+        exe_name = os.path.basename(exe_path)
+
+        try:
+            latest_res = requests.get(GITHUB_RELEASES_API, timeout=5)
+            latest_res.raise_for_status()
+            latest_version = latest_res.json().get("tag_name", "").lstrip("v")
+            if not latest_version:
+                messagebox.showerror("アップデート失敗", "バージョン番号の取得に失敗しました。")
+                return
+        except Exception as e:
+            messagebox.showerror("アップデート失敗", f"バージョン情報の取得に失敗しました:\n{e}")
+            return
+
+        new_exe_name = f"ModSynchronizer_v{latest_version}.exe"
+        new_exe_temp_path = os.path.join(temp_dir, new_exe_name)
+
+        batch_name = f"update_{uuid.uuid4().hex}.bat"
+        batch_path = os.path.join(temp_dir, batch_name)
 
         try:
             res = requests.get(download_url, stream=True, timeout=30)
             res.raise_for_status()
-            with open(new_exe_path, "wb") as f:
+            with open(new_exe_temp_path, "wb") as f:
                 shutil.copyfileobj(res.raw, f)
         except Exception as e:
-            messagebox.showerror(title="アップデート失敗", message=f"ダウンロードに失敗しました:\n{e}")
+            messagebox.showerror("アップデート失敗", f"ダウンロードに失敗しました:\n{e}")
             return
 
-        batch = f"""@echo off
-timeout /t 2 >nul
-move /y "{new_exe_path}" "{sys.executable}"
-start "" "{sys.executable}"
-"""
-        with open(batch_path, "w", encoding="utf-8") as f:
-            f.write(batch)
+        # バッチファイルの内容を作成
+        batch_script = f"""
+taskkill /f /im "{exe_name}" >nul 2>&1
+del /f /q "{exe_path}" >nul 2>&1
+move /Y "{new_exe_temp_path}" "{exe_path}" >nul 2>&1
+call "{exe_path}"
+pause
+        """
 
-        os.startfile(batch_path)
-        self.root.after(500, self.root.quit)
+        try:
+            with open(batch_path, "w", encoding="utf-8") as f:
+                f.write(batch_script)
+            # cmd + start でウィンドウ付きで表示
+            subprocess.Popen(f'"{batch_path}"', shell=True)
+
+        except Exception as e:
+            messagebox.showerror("アップデート失敗", f"アップデートスクリプトの実行に失敗しました:\n{e}")
+            return
+
+        self.root.after(0, self.root.quit)
 
     def sync_mods(self):
         minecraft_dir = self.minecraft_dir.get()
@@ -234,5 +261,5 @@ if __name__ == "__main__":
     ctk.set_appearance_mode("dark")
     ctk.set_default_color_theme("blue")
     root = ctk.CTk()
-    app = ModSyncronizer(root)
+    app = ModSynchronizer(root)
     root.mainloop()

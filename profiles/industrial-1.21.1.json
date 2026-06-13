@@ -199,8 +199,8 @@
       "filename": "ConnectorExtras-1.12.1+1.21.1.jar",
       "url": "https://cdn.modrinth.com/data/FYpiwiBR/versions/dgLCqZyo/ConnectorExtras-1.12.1%2B1.21.1.jar",
       "sha256": "ee89c3425b9a4bff766aaff02ccf8110c06f5da6ef5d71974556885cf25d4880",
-      "required": true,
-      "deprecated": false,
+      "required": false,
+      "deprecated": true,
       "tags": [
         "candidate",
         "neoforge-1.21.1",
@@ -326,6 +326,19 @@
       "tags": [
         "candidate",
         "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-24a",
+      "filename": "kubejs-neoforge-2101.7.2-build.368.jar",
+      "url": "https://cdn.modrinth.com/data/umyGl7zF/versions/F2nzeC19/kubejs-neoforge-2101.7.2-build.368.jar",
+      "sha256": "01767bb677a9c4a8f318717c4c21bca7e7ef80995603403a551068a0e064e740",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1",
+        "dependency"
       ]
     },
     {
@@ -679,6 +692,19 @@
       ]
     },
     {
+      "id": "industrial-53a",
+      "filename": "rhino-2101.2.7-build.85.jar",
+      "url": "https://cdn.modrinth.com/data/sk9knFPE/versions/cQ4POTah/rhino-2101.2.7-build.85.jar",
+      "sha256": "e0e9b0e78edd380440266c0f4ea8d489dac851ef075a4566a66a6dae2f7bbb66",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1",
+        "dependency"
+      ]
+    },
+    {
       "id": "industrial-54",
       "filename": "ScalableCatsForce-NeoForge-3.7.1-build-11-with-library.jar",
       "url": "https://cdn.modrinth.com/data/zr0QMQMo/versions/WG1FLeZM/ScalableCatsForce-NeoForge-3.7.1-build-11-with-library.jar",
@@ -814,9 +840,9 @@
     },
     {
       "id": "industrial-66",
-      "filename": "gtceu-1.21.1-7.0.2.jar",
-      "url": "https://mediafilez.forgecdn.net/files/6792/853/gtceu-1.21.1-7.0.2.jar",
-      "sha256": "c09a550523e931342a575193cbaad2e4b643e5de2cefe280cd1de540022c6388",
+      "filename": "gtceu-1.21.1-8.0.0-SNAPSHOT+20260512-100141-ab9bc59.jar",
+      "url": "https://github.com/GregTechCEu/GregTech-Modern/releases/download/latest-1.21/gtceu-1.21.1-8.0.0-SNAPSHOT%2B20260512-100141-ab9bc59.jar",
+      "sha256": "820600269e2aaace163b08ea9687dcfae1ee1064e861995b97df7ba8ba5cbfe3",
       "required": true,
       "deprecated": false,
       "tags": [

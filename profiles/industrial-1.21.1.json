@@ -763,19 +763,6 @@
       ]
     },
     {
-      "id": "industrial-61",
-      "filename": "paradise-lost-2.4.1-beta+1.21.1-SINYTRA.jar",
-      "url": "https://mediafilez.forgecdn.net/files/7851/767/paradise-lost-2.4.1-beta%2B1.21.1-SINYTRA.jar",
-      "sha256": "325f3694e714f040f8b5d2830016714d6b04b7d7b2850a26e2f38322e5115931",
-      "required": true,
-      "deprecated": false,
-      "tags": [
-        "candidate",
-        "neoforge-1.21.1",
-        "compat-layer"
-      ]
-    },
-    {
       "id": "industrial-62",
       "filename": "Voidscape-1.21.1-1.9.588.jar",
       "url": "https://mediafilez.forgecdn.net/files/8175/491/Voidscape-1.21.1-1.9.588.jar",
@@ -823,6 +810,18 @@
         "candidate",
         "neoforge-1.21.1",
         "dependency"
+      ]
+    },
+    {
+      "id": "industrial-66",
+      "filename": "gtceu-1.21.1-7.0.2.jar",
+      "url": "https://mediafilez.forgecdn.net/files/6792/853/gtceu-1.21.1-7.0.2.jar",
+      "sha256": "c09a550523e931342a575193cbaad2e4b643e5de2cefe280cd1de540022c6388",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
       ]
     }
   ],

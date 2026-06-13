@@ -23,4 +23,12 @@ dotnet run --project src/ModSetup.App/ModSetup.App.csproj
 構成は `profiles` フォルダ配下の JSON で管理します。
 
 ## Ubuntu サーバー構築
-Ubuntu サーバー側は `tools/setup-server.sh` を `wget` または `curl` で取得して実行する想定です。
+Ubuntu サーバー側は Release アセットではなく、repo 上のシェルスクリプトを取得して実行する想定です。
+
+- [setup-server.sh](https://github.com/TomachiGachiAnti/ModSynchronizer/blob/main/tools/setup-server.sh)
+- [raw setup-server.sh](https://raw.githubusercontent.com/TomachiGachiAnti/ModSynchronizer/main/tools/setup-server.sh)
+
+```bash
+wget -O setup-server.sh https://raw.githubusercontent.com/TomachiGachiAnti/ModSynchronizer/main/tools/setup-server.sh
+sudo bash setup-server.sh
+```

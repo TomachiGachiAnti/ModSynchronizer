@@ -196,6 +196,9 @@ E:\project\ModSynchronizer\
   - mods/config 同期
   - EULA 確認
   - tmux + systemd 構成
+  - `/mnt/hdd/backup/<profile>` への差分バックアップ構築
+  - バックアップ用 `systemd timer` 登録
+  - `tmux` への `save-all` 自動実行 timer 登録
 
 ### 未完了
 - NeoForge 導入失敗時の再試行導線整備
@@ -294,6 +297,9 @@ E:\project\ModSynchronizer\
   - `/opt/minecraft/<profile>` 配置
   - NeoForge 導入
   - `systemd` サービス化
+  - `/mnt/hdd/backup/<profile>` へのバックアップ設定
+  - バックアップ用 `systemd timer` 設定
+  - `save-all` 用 `systemd timer` 設定
 - [sync-server-profile.sh](E:\project\ModSynchronizer\tools\sync-server-profile.sh)
   - GitHub 上の profile と server 用 config を同期
   - クライアント専用 MOD を除外
@@ -365,6 +371,13 @@ E:\project\ModSynchronizer\
 - `minecraft` ユーザーを作成し、配置先は `/opt/minecraft/<profile>` とする
 - `tmux` セッション名は profile 名を使う
 - `systemd` サービス名は `minecraft-<profile>.service` とする
+- バックアップ先は `/mnt/hdd/backup/<profile>` 固定とする
+- バックアップは差分方式で保持し、`latest` シンボリックリンクを更新する
+- バックアップ保持期間は 14 日とする
+- バックアップ用手動スクリプトを `/usr/local/bin/minecraft-backup-<profile>.sh` に配置する
+- バックアップ用 `systemd timer` を登録し、1 時間ごとに自動実行する
+- `save-all` 用手動スクリプトを `/usr/local/bin/minecraft-saveall-<profile>.sh` に配置する
+- `save-all` 用 `systemd timer` を登録し、3 分ごとに自動実行する
 
 ## 現在の自己更新方式
 - profile の `self_update.enabled` と `self_update.manifest_url` で有効化する

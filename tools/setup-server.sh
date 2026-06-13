@@ -16,6 +16,15 @@ PROFILE_PATH="$REPO_DIR/profiles/$PROFILE_NAME.json"
 SYNC_SCRIPT_PATH="$REPO_DIR/tools/sync-server-profile.sh"
 DOWNLOADS_DIR="$BOOTSTRAP_ROOT/downloads"
 SERVER_JVM_ARGS_FILE="$SERVER_ROOT/user_jvm_args.txt"
+BACKUP_ROOT_BASE="${BACKUP_ROOT_BASE:-/mnt/hdd/backup}"
+BACKUP_ROOT="${BACKUP_ROOT:-$BACKUP_ROOT_BASE/$PROFILE_NAME}"
+BACKUP_SCRIPT_PATH="${BACKUP_SCRIPT_PATH:-/usr/local/bin/minecraft-backup-$PROFILE_NAME.sh}"
+BACKUP_RETENTION_DAYS="${BACKUP_RETENTION_DAYS:-14}"
+BACKUP_SERVICE_NAME="${BACKUP_SERVICE_NAME:-minecraft-backup-$PROFILE_NAME.service}"
+BACKUP_TIMER_NAME="${BACKUP_TIMER_NAME:-minecraft-backup-$PROFILE_NAME.timer}"
+SAVEALL_SCRIPT_PATH="${SAVEALL_SCRIPT_PATH:-/usr/local/bin/minecraft-saveall-$PROFILE_NAME.sh}"
+SAVEALL_SERVICE_NAME="${SAVEALL_SERVICE_NAME:-minecraft-saveall-$PROFILE_NAME.service}"
+SAVEALL_TIMER_NAME="${SAVEALL_TIMER_NAME:-minecraft-saveall-$PROFILE_NAME.timer}"
 
 log() {
     echo "[setup-server] $*"
@@ -38,11 +47,23 @@ require_command() {
     fi
 }
 
+ensure_backup_mount() {
+    if [[ ! -d "/mnt/hdd" ]]; then
+        fail "/mnt/hdd が見つかりません。バックアップ先を用意してから再実行してください。"
+    fi
+
+    if command -v mountpoint >/dev/null 2>&1; then
+        if ! mountpoint -q /mnt/hdd; then
+            fail "/mnt/hdd はマウントポイントではありません。誤った場所へのバックアップを防ぐため中断しました。"
+        fi
+    fi
+}
+
 install_packages() {
     export DEBIAN_FRONTEND=noninteractive
     log "必要パッケージを確認します。"
     apt-get update
-    apt-get install -y ca-certificates curl git tmux openjdk-21-jre-headless
+    apt-get install -y ca-certificates curl git tmux openjdk-21-jre-headless rsync
 }
 
 prepare_repo() {
@@ -117,7 +138,9 @@ ensure_minecraft_user() {
 prepare_directories() {
     mkdir -p "$SERVER_BASE_DIR" "$SERVER_ROOT" "$DOWNLOADS_DIR"
     mkdir -p "$SERVER_ROOT/mods" "$SERVER_ROOT/config"
+    mkdir -p "$BACKUP_ROOT"
     chown -R "$MINECRAFT_USER:$MINECRAFT_GROUP" "$SERVER_BASE_DIR"
+    chown -R "$MINECRAFT_USER:$MINECRAFT_GROUP" "$BACKUP_ROOT"
 }
 
 download_file() {
@@ -214,6 +237,96 @@ EOF
     chown "$MINECRAFT_USER:$MINECRAFT_GROUP" "$SERVER_JVM_ARGS_FILE"
 }
 
+write_backup_script() {
+    log "バックアップスクリプトを作成します。"
+    cat >"$BACKUP_SCRIPT_PATH" <<EOF
+#!/usr/bin/env bash
+set -euo pipefail
+
+PROFILE_NAME="$PROFILE_NAME"
+SERVER_ROOT="$SERVER_ROOT"
+BACKUP_ROOT="$BACKUP_ROOT"
+LATEST_LINK="\$BACKUP_ROOT/latest"
+RETENTION_DAYS="$BACKUP_RETENTION_DAYS"
+TMUX_SESSION_NAME="$TMUX_SESSION_NAME"
+TIMESTAMP="\$(date +%Y%m%d%H%M)"
+BACKUP_DIR="\$BACKUP_ROOT/backup_\$TIMESTAMP"
+
+log() {
+    echo "[minecraft-backup:\$PROFILE_NAME] \$*"
+}
+
+require_command() {
+    if ! command -v "\$1" >/dev/null 2>&1; then
+        echo "必要なコマンドが見つかりません: \$1" >&2
+        exit 1
+    fi
+}
+
+flush_server_save() {
+    if ! /usr/bin/tmux has-session -t "\$TMUX_SESSION_NAME" 2>/dev/null; then
+        return
+    fi
+
+    /usr/bin/tmux send-keys -t "\$TMUX_SESSION_NAME" save-all C-m
+    sleep 2
+    /usr/bin/tmux send-keys -t "\$TMUX_SESSION_NAME" save-off C-m
+    sleep 2
+}
+
+resume_server_save() {
+    if ! /usr/bin/tmux has-session -t "\$TMUX_SESSION_NAME" 2>/dev/null; then
+        return
+    fi
+
+    /usr/bin/tmux send-keys -t "\$TMUX_SESSION_NAME" save-on C-m
+}
+
+main() {
+    require_command rsync
+    require_command find
+
+    mkdir -p "\$BACKUP_ROOT"
+
+    trap resume_server_save EXIT
+    flush_server_save
+
+    log "バックアップを開始します: \$BACKUP_DIR"
+    if [[ -L "\$LATEST_LINK" ]] || [[ -d "\$LATEST_LINK" ]]; then
+        rsync -a --delete --link-dest="\$LATEST_LINK" "\$SERVER_ROOT/" "\$BACKUP_DIR/"
+    else
+        rsync -a --delete "\$SERVER_ROOT/" "\$BACKUP_DIR/"
+    fi
+
+    ln -sfn "\$BACKUP_DIR" "\$LATEST_LINK"
+    find "\$BACKUP_ROOT" -maxdepth 1 -mindepth 1 -type d -name 'backup_*' -mtime "+\$RETENTION_DAYS" -exec rm -rf {} +
+    log "バックアップが完了しました。"
+}
+
+main "\$@"
+EOF
+
+    chmod 755 "$BACKUP_SCRIPT_PATH"
+}
+
+write_saveall_script() {
+    log "save-all スクリプトを作成します。"
+    cat >"$SAVEALL_SCRIPT_PATH" <<EOF
+#!/usr/bin/env bash
+set -euo pipefail
+
+TMUX_SESSION_NAME="$TMUX_SESSION_NAME"
+
+if ! /usr/bin/tmux has-session -t "\$TMUX_SESSION_NAME" 2>/dev/null; then
+    exit 0
+fi
+
+/usr/bin/tmux send-keys -t "\$TMUX_SESSION_NAME" save-all C-m
+EOF
+
+    chmod 755 "$SAVEALL_SCRIPT_PATH"
+}
+
 sync_profile_contents() {
     log "mods と config を同期します。"
     REPO_URL="$REPO_URL" \
@@ -277,6 +390,74 @@ EOF
     systemctl enable "$SYSTEMD_SERVICE_NAME"
 }
 
+write_backup_systemd_units() {
+    local service_path="/etc/systemd/system/$BACKUP_SERVICE_NAME"
+    local timer_path="/etc/systemd/system/$BACKUP_TIMER_NAME"
+
+    log "バックアップ用 systemd service を作成します: $BACKUP_SERVICE_NAME"
+    cat >"$service_path" <<EOF
+[Unit]
+Description=Minecraft Backup ($PROFILE_NAME)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=root
+ExecStart=$BACKUP_SCRIPT_PATH
+EOF
+
+    log "バックアップ用 systemd timer を作成します: $BACKUP_TIMER_NAME"
+    cat >"$timer_path" <<EOF
+[Unit]
+Description=Minecraft Backup Timer ($PROFILE_NAME)
+
+[Timer]
+OnCalendar=hourly
+Persistent=true
+RandomizedDelaySec=15m
+
+[Install]
+WantedBy=timers.target
+EOF
+
+    systemctl daemon-reload
+    systemctl enable --now "$BACKUP_TIMER_NAME"
+}
+
+write_saveall_systemd_units() {
+    local service_path="/etc/systemd/system/$SAVEALL_SERVICE_NAME"
+    local timer_path="/etc/systemd/system/$SAVEALL_TIMER_NAME"
+
+    log "save-all 用 systemd service を作成します: $SAVEALL_SERVICE_NAME"
+    cat >"$service_path" <<EOF
+[Unit]
+Description=Minecraft save-all ($PROFILE_NAME)
+
+[Service]
+Type=oneshot
+User=root
+ExecStart=$SAVEALL_SCRIPT_PATH
+EOF
+
+    log "save-all 用 systemd timer を作成します: $SAVEALL_TIMER_NAME"
+    cat >"$timer_path" <<EOF
+[Unit]
+Description=Minecraft save-all Timer ($PROFILE_NAME)
+
+[Timer]
+OnBootSec=3min
+OnUnitActiveSec=3min
+Persistent=true
+
+[Install]
+WantedBy=timers.target
+EOF
+
+    systemctl daemon-reload
+    systemctl enable --now "$SAVEALL_TIMER_NAME"
+}
+
 start_service() {
     log "Minecraft サーバーを起動します。"
     systemctl restart "$SYSTEMD_SERVICE_NAME"
@@ -293,10 +474,19 @@ show_summary() {
 - 配置先: $SERVER_ROOT
 - systemd: $SYSTEMD_SERVICE_NAME
 - tmux: $TMUX_SESSION_NAME
+- backup: $BACKUP_ROOT
+- backup script: $BACKUP_SCRIPT_PATH
+- backup timer: $BACKUP_TIMER_NAME
+- save-all script: $SAVEALL_SCRIPT_PATH
+- save-all timer: $SAVEALL_TIMER_NAME
 
 確認コマンド:
 - systemctl status $SYSTEMD_SERVICE_NAME
 - tmux attach -t $TMUX_SESSION_NAME
+- systemctl status $BACKUP_TIMER_NAME
+- $BACKUP_SCRIPT_PATH
+- systemctl status $SAVEALL_TIMER_NAME
+- $SAVEALL_SCRIPT_PATH
 
 EOF
 }
@@ -309,19 +499,25 @@ main() {
     require_command tmux
     require_command java
     require_command runuser
+    require_command rsync
     require_command systemctl
     require_command sha1sum
 
     prepare_repo
     ensure_profile_exists
     ensure_minecraft_user
+    ensure_backup_mount
     prepare_directories
     ensure_server_jar
     ensure_neoforge_server
     ensure_jvm_args
+    write_backup_script
+    write_saveall_script
     sync_profile_contents
     confirm_eula
     write_systemd_service
+    write_backup_systemd_units
+    write_saveall_systemd_units
     start_service
     show_summary
 }

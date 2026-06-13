@@ -1,25 +1,26 @@
-# TGA Industrial Minecraft Server Mod Synchronizer
+# TGA Minecraft Mod Setup
 
 ## 説明
-TGA 工業マイクラサーバーのmodを同期するためのアプリです。
+サーバー提供側が検証済みの Minecraft 構成を、利用者向けにセットアップするための Windows アプリです。
 
 ## 使い方
-Releaseから最新版をダウンロードして実行してください。
+Release から対象構成の `.exe` をダウンロードして実行してください。
+
+配布 `.exe` 自体には MOD 構成の本体は埋め込まず、実行時に GitHub 上の `profiles/*.json` を取得して同期します。
 
 ## 開発 - Build
-- ライブラリをインストール
+- ビルド
 ```sh
-pip3 install -r requirements.txt
+dotnet build ModSetup.sln
 ```
 
-- exe化
+- 実行
 ```sh
-pyinstaller ModSynchronizer.spec
+dotnet run --project src/ModSetup.App/ModSetup.App.csproj
 ```
 
-※ウイルス判定されないようにpyinstallerを自分で用意してインストールすること。  
-参考ページ：`https://qiita.com/tru-y/items/cb3cebe9612d367dccb2`
+## 構成ファイル
+構成は `profiles` フォルダ配下の JSON で管理します。
 
-## mods.jsonについて
-mods.jsonでmodの管理をしています。  
-tool.htmlでmods.jsonの作成を簡単に行えます。
+## Ubuntu サーバー構築
+Ubuntu サーバー側は `tools/setup-server.sh` を `wget` または `curl` で取得して実行する想定です。

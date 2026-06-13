@@ -1,4 +1,4 @@
-dist
-build
-venv
-pyinstaller
+bin
+obj
+.vs
+publish

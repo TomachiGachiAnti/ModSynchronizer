@@ -1,0 +1,832 @@
+{
+  "format_version": 1,
+  "config_id": "industrial-1.21.1",
+  "display_name": "Industrial 1.21.1",
+  "minecraft_version": "1.21.1",
+  "self_update": {
+    "enabled": false,
+    "manifest_url": "",
+    "github_releases_api_url": "https://api.github.com/repos/TomachiGachiAnti/ModSynchronizer/releases/latest",
+    "asset_name": "industrial-1.21.1-Setup.exe"
+  },
+  "loader": {
+    "type": "neoforge",
+    "version": "21.1.228",
+    "installer_url": "https://maven.neoforged.net/releases/net/neoforged/neoforge/21.1.228/neoforge-21.1.228-installer.jar",
+    "version_id": "neoforge-21.1.228"
+  },
+  "game_directory": {
+    "name": "industrial-1.21.1"
+  },
+  "launcher": {
+    "create_profile": true,
+    "profile_id": "industrial-1.21.1",
+    "profile_name": "Industrial 1.21.1",
+    "version_id": "neoforge-21.1.228",
+    "icon": "Furnace",
+    "java_args": "-Xmx8G -XX:+UnlockExperimentalVMOptions -XX:+UseG1GC -XX:G1NewSizePercent=20 -XX:G1ReservePercent=20 -XX:MaxGCPauseMillis=50 -XX:G1HeapRegionSize=32M",
+    "java_dir": ""
+  },
+  "sync": {
+    "remove_managed_files_not_in_manifest": true,
+    "remove_deprecated_files": true
+  },
+  "server_setup": {
+    "server_jar_url": "https://piston-data.mojang.com/v1/objects/59353fb40c36d304f2035d51e7d6e6baa98dc05c/server.jar",
+    "server_jar_sha1": "59353fb40c36d304f2035d51e7d6e6baa98dc05c",
+    "config_bundle_path": "assets/industrial-1.21.1-server/config"
+  },
+  "mods": [
+    {
+      "id": "industrial-01",
+      "filename": "AdditionalEnchantedMiner-1.21.1-neoforge-21.1.153.jar",
+      "url": "https://mediafilez.forgecdn.net/files/8008/305/AdditionalEnchantedMiner-1.21.1-neoforge-21.1.153.jar",
+      "sha256": "b07670991cb9ed1248a3fac27e092233853f12f2c953b49728dc2c734f54e170",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-02",
+      "filename": "AoA3-1.21.1-3.7.16.1.jar",
+      "url": "https://cdn.modrinth.com/data/9qn2AQBc/versions/vIo8vp51/AoA3-1.21.1-3.7.16.1.jar",
+      "sha256": "16da1e00373bd854f0397c28d5b0d2c376e6eeec97135b35cac48607e4bfe66b",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-03",
+      "filename": "appliedenergistics2-19.2.17.jar",
+      "url": "https://cdn.modrinth.com/data/XxWD5pD3/versions/kfyIqgJ6/appliedenergistics2-19.2.17.jar",
+      "sha256": "460d779a0609b81409907d9956de8f6f70a1b0912257e3e5c3c7e75ac9630e95",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-04",
+      "filename": "architectury-13.0.8-neoforge.jar",
+      "url": "https://cdn.modrinth.com/data/lhGA9TYQ/versions/ZxYGwlk0/architectury-13.0.8-neoforge.jar",
+      "sha256": "5ec578f814e8cca87aeffa6e424032e78d9ea5ea6b603dd834c2dc13c31141ee",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-05",
+      "filename": "athena-neoforge-1.21.1-4.0.5.jar",
+      "url": "https://cdn.modrinth.com/data/b1ZV3DIJ/versions/HV2wsFB9/athena-neoforge-1.21.1-4.0.5.jar",
+      "sha256": "c2071ccfe22cb352c557896a066132a240e3c670fe60b4eaf557dc476746586d",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-06",
+      "filename": "balm-neoforge-1.21.1-21.0.56.jar",
+      "url": "https://cdn.modrinth.com/data/MBAkmtvl/versions/Yoii3Xj6/balm-neoforge-1.21.1-21.0.56.jar",
+      "sha256": "868960025d7da92d08ba382cddef18a2b2b238de5d635048cef29f9af0e58c8f",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-07",
+      "filename": "BrandonsCore-1.21.1-3.2.1.309.jar",
+      "url": "https://cdn.modrinth.com/data/iFDWVIFV/versions/56nwe5IX/BrandonsCore-1.21.1-3.2.1.309.jar",
+      "sha256": "076b44de51c606e6cdd89694ac0a879fc028d4f0103880ef44f47dbcc69f1d23",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-08",
+      "filename": "car-neoforge-1.21.1-1.0.46.jar",
+      "url": "https://cdn.modrinth.com/data/DCPUF5Rv/versions/pdJf8Ces/car-neoforge-1.21.1-1.0.46.jar",
+      "sha256": "31fd3e6e3cfeeb21dd0b6cd94d2625893b3873dbc81b5460f98023b6611cade8",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-09",
+      "filename": "carryon-neoforge-1.21.1-2.2.4.4.jar",
+      "url": "https://cdn.modrinth.com/data/joEfVgkn/versions/cgZi7nC7/carryon-neoforge-1.21.1-2.2.4.4.jar",
+      "sha256": "ad69537be8be8b433227792e43f8df7b4d3cef7e359255d471a44e776ad8dd57",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-10",
+      "filename": "CBMultipart-1.21.1-3.5.0.155.jar",
+      "url": "https://cdn.modrinth.com/data/LmvnWWSV/versions/mhteXGK9/CBMultipart-1.21.1-3.5.0.155.jar",
+      "sha256": "b95ad536b91a264c484937909e5d3dab4bab9b268fc72f1e51611d0a80506da5",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-11",
+      "filename": "ChickenChunks-1.21.1-2.12.0.103.jar",
+      "url": "https://cdn.modrinth.com/data/2JkvF271/versions/qjLycJpg/ChickenChunks-1.21.1-2.12.0.103.jar",
+      "sha256": "23e35201d5e6ea7e2b17272a101f766d6454103e44c56a2fb0c89fbc7081f213",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-12",
+      "filename": "CodeChickenLib-1.21.1-4.6.1.526.jar",
+      "url": "https://cdn.modrinth.com/data/2gq0ALnz/versions/gQ1srSKh/CodeChickenLib-1.21.1-4.6.1.526.jar",
+      "sha256": "e35cb0ca3e3aeb87e1e171242454426d22edf517b06dc38e5c3d5b6d44d6bc04",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-13",
+      "filename": "connector-2.0.0-beta.14+1.21.1-full.jar",
+      "url": "https://cdn.modrinth.com/data/u58R1TMW/versions/1i8teo7m/connector-2.0.0-beta.14%2B1.21.1-full.jar",
+      "sha256": "a79817f1076e2e6499b0ab09c4e8c032d04b071341b66d036c3d96112804e51b",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1",
+        "compat-layer"
+      ]
+    },
+    {
+      "id": "industrial-14",
+      "filename": "ConnectorExtras-1.12.1+1.21.1.jar",
+      "url": "https://cdn.modrinth.com/data/FYpiwiBR/versions/dgLCqZyo/ConnectorExtras-1.12.1%2B1.21.1.jar",
+      "sha256": "ee89c3425b9a4bff766aaff02ccf8110c06f5da6ef5d71974556885cf25d4880",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1",
+        "compat-layer"
+      ]
+    },
+    {
+      "id": "industrial-15",
+      "filename": "cookingforblockheads-neoforge-1.21.1-21.1.21.jar",
+      "url": "https://cdn.modrinth.com/data/vJnhuDde/versions/dzMpBcgd/cookingforblockheads-neoforge-1.21.1-21.1.21.jar",
+      "sha256": "57b5195b2f549428109fc3d17647a6ae534f6882792e9e3dcebc667b473bd6e7",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-16",
+      "filename": "create-1.21.1-6.0.10.jar",
+      "url": "https://cdn.modrinth.com/data/LNytGWDc/versions/UjX6dr61/create-1.21.1-6.0.10.jar",
+      "sha256": "ef87fe5709f1ba1f5b8bb20a2925b5afb4669e178fd6d8bf10c167759eefe37a",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-17",
+      "filename": "createaddition-1.5.10.jar",
+      "url": "https://cdn.modrinth.com/data/kU1G12Nn/versions/CP8Lhuwu/createaddition-1.5.10.jar",
+      "sha256": "72653762c1014c33ce151858d1478573dbd74cbc23c74ffe1fb2d71fb73627ee",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-18",
+      "filename": "Draconic-Evolution-1.21.1-3.1.4.632.jar",
+      "url": "https://cdn.modrinth.com/data/nBqivi8H/versions/lBMsiWyw/Draconic-Evolution-1.21.1-3.1.4.632.jar",
+      "sha256": "623d7d58e58428a206015b56bf67387c79ff6d97f7221cff23b1dad0bed9544e",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-19",
+      "filename": "enderio-8.2.7-beta.jar",
+      "url": "https://cdn.modrinth.com/data/49ZofO4f/versions/eZLhhXlc/enderio-8.2.7-beta.jar",
+      "sha256": "a24012414b9179e597e02290cc054e1fec2b0b239cb426634430a9d087083ae5",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-20",
+      "filename": "FarmersDelight-1.21.1-1.3.1.jar",
+      "url": "https://cdn.modrinth.com/data/R2OftAxM/versions/9gp7w8NC/FarmersDelight-1.21.1-1.3.1.jar",
+      "sha256": "f02ffbf597af17d481b930daeed4b5906d6a6fddb464d392f28f42560965f4f4",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-21",
+      "filename": "ForgeConfigAPIPort-v21.1.6-1.21.1-NeoForge.jar",
+      "url": "https://cdn.modrinth.com/data/ohNO6lps/versions/tWlsPKJI/ForgeConfigAPIPort-v21.1.6-1.21.1-NeoForge.jar",
+      "sha256": "1fffe12e3e8343ef52d306ee29f7d6f6724d47a185a375c4a3c75aab3894c68d",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-22",
+      "filename": "forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar",
+      "url": "https://cdn.modrinth.com/data/Aqlf1Shp/versions/7nHK7hMg/forgified-fabric-api-0.116.7%2B2.2.4%2B1.21.1.jar",
+      "sha256": "68abf2864e957df26ac0cc3bd5352ee67880e052b47a80f22f28556c1179f18d",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1",
+        "compat-layer"
+      ]
+    },
+    {
+      "id": "industrial-23",
+      "filename": "geckolib-neoforge-1.21.1-4.8.4.jar",
+      "url": "https://cdn.modrinth.com/data/8BmcQJ2H/versions/gFmrC8Ru/geckolib-neoforge-1.21.1-4.8.4.jar",
+      "sha256": "a1b6ce25e8627aa7e748672eedb6b71af68e0993462313649c259f38e42bcac9",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-24",
+      "filename": "guideme-21.1.15.jar",
+      "url": "https://cdn.modrinth.com/data/Ck4E7v7R/versions/ILW6vM7o/guideme-21.1.15.jar",
+      "sha256": "0901f237e6711af4194512b73410d4f6e8abb7b0bf51e33b5ee98a4f9a515be7",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-25",
+      "filename": "ImmersiveEngineering-1.21.1-12.4.2-194.jar",
+      "url": "https://cdn.modrinth.com/data/tIm2nV03/versions/uNRARSH2/ImmersiveEngineering-1.21.1-12.4.2-194.jar",
+      "sha256": "45942985a4a4aebf265b8e22a0c54a96208637471f36f2532ff5d4911322debc",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-26",
+      "filename": "ImmersivePetroleum-1.21.1-4.4.1-37.jar",
+      "url": "https://cdn.modrinth.com/data/MOw5TN6u/versions/CV6UXQBi/ImmersivePetroleum-1.21.1-4.4.1-37.jar",
+      "sha256": "5c83cfb4d8b1437648b0de072cc1a46081bfdc7413257f1d0d438813c6f3cf98",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-27",
+      "filename": "industrialforegoing-1.21-3.6.38.jar",
+      "url": "https://cdn.modrinth.com/data/lWxpUd04/versions/os5V2Plx/industrialforegoing-1.21-3.6.38.jar",
+      "sha256": "e242dc05af2bc1e1316e1a8f7807ccc037b13e2594ce3967b77639a21deaf0a4",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-28",
+      "filename": "jei-1.21.1-neoforge-19.27.0.336.jar",
+      "url": "https://cdn.modrinth.com/data/u6dRKJwZ/versions/Zgmbmpd4/jei-1.21.1-neoforge-19.27.0.336.jar",
+      "sha256": "2b6d84df11ab2bb94a75be8bac6790bfbb2c0112a1622cd5f5f234468a196721",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-29",
+      "filename": "journeymap-neoforge-1.21.1-6.0.0-beta.66.jar",
+      "url": "https://cdn.modrinth.com/data/lfHFW1mp/versions/E44vwUJO/journeymap-neoforge-1.21.1-6.0.0-beta.66.jar",
+      "sha256": "cbb076cf913962683a9b74b1865dddcc94f13c1a24916a19052f6dd504df4e4b",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-30",
+      "filename": "kotlinforforge-5.11.0-all.jar",
+      "url": "https://cdn.modrinth.com/data/ordsPcFz/versions/NrSebcsG/kotlinforforge-5.11.0-all.jar",
+      "sha256": "ac827b62ce8fe71760208671b4a694e3ccd35049075f9406a751cffb5a5c9779",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-31",
+      "filename": "logistics-0.7.1+mc1.21.1.neoforge.jar",
+      "url": "https://cdn.modrinth.com/data/cyW2SS1x/versions/v4cxDnGN/logistics-0.7.1%2Bmc1.21.1.neoforge.jar?mr_download_reason=standalone&mr_game_version=1.21.1",
+      "sha256": "1b96f563fe1728d3580d4f3ab1c2be1bbc22ba4a89f4bc687aec65677845e19c",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1",
+        "compat-layer"
+      ]
+    },
+    {
+      "id": "industrial-32",
+      "filename": "maruchipagechest-1.0.2.jar",
+      "url": "https://pub-68c215f0592745cfb576efb8f8d7d67c.r2.dev/maruchipagechest-1.0.2.jar",
+      "sha256": "c1a1ed4398904b774b857d990cccd874aeba40d9a3a40b0768c69bdf32be287a",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-33",
+      "filename": "mcjtylib-1.21-9.0.20.jar",
+      "url": "https://cdn.modrinth.com/data/1Zu0uTEE/versions/UUyC6hPr/mcjtylib-1.21-9.0.20.jar",
+      "sha256": "38607fc0128ebfb64848370cfb30c405528963b28d85293c3821daca3810b8a1",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-34",
+      "filename": "Mekanism-1.21.1-10.7.19.85.jar",
+      "url": "https://cdn.modrinth.com/data/Ce6I4WUE/versions/5KzzycBT/Mekanism-1.21.1-10.7.19.85.jar",
+      "sha256": "004dbc9f3106f4d192aeaa1ee1190dd16ec9ca8059ed3d093b80034f4c574f43",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-35",
+      "filename": "MekanismAdditions-1.21.1-10.7.19.85.jar",
+      "url": "https://cdn.modrinth.com/data/a6F3uASn/versions/6mkdykZa/MekanismAdditions-1.21.1-10.7.19.85.jar",
+      "sha256": "3d8a6ed67f5ccf3797ad9d5236ec4e22b74481aa9cd45636feb16f89e1d56311",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-36",
+      "filename": "MekanismGenerators-1.21.1-10.7.19.85.jar",
+      "url": "https://cdn.modrinth.com/data/OFVYKsAk/versions/a6gl7srE/MekanismGenerators-1.21.1-10.7.19.85.jar",
+      "sha256": "0e5783b111e756f27b48c62b2f0e02fff750c77f7985ff809bfadc5f444ba4ac",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-37",
+      "filename": "MekanismTools-1.21.1-10.7.19.85.jar",
+      "url": "https://cdn.modrinth.com/data/tqQpq1lt/versions/v5zlSE9s/MekanismTools-1.21.1-10.7.19.85.jar",
+      "sha256": "e1dbca7d70df150101da535f6ab4b165a2e402fde830d34df75b58d9aad24dd8",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-38",
+      "filename": "solcarrot-1.21.1-1.16.6.jar",
+      "url": "https://mediafilez.forgecdn.net/files/7374/98/solcarrot-1.21.1-1.16.6.jar",
+      "sha256": "ae3e73a08c8373fbee639b2feaf21c2e08caf9e4a44f8dfa610f44a5143f2fd1",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-39",
+      "filename": "NetherEx-neoforge-1.21.1-1.2.4.jar",
+      "url": "https://mediafilez.forgecdn.net/files/7593/434/NetherEx-neoforge-1.21.1-1.2.4.jar",
+      "sha256": "7f866ded17111ece6a3233fec5c48fc39bfe207c35c615bb6237033ba88db670",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-40",
+      "filename": "OreExcavation-NeoForge-1.21.1-1.16.43.jar",
+      "url": "https://mediafilez.forgecdn.net/files/6327/284/OreExcavation-NeoForge-1.21.1-1.16.43.jar",
+      "sha256": "bc34445e726f354e4f7c8d1f8981080d5ab95286eda8cb43719fc937c488789b",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-41",
+      "filename": "pamhc2crops-NEOFORGE-1.21.1-1.0.8.jar",
+      "url": "https://mediafilez.forgecdn.net/files/8039/800/pamhc2crops-NEOFORGE-1.21.1-1.0.8.jar",
+      "sha256": "a50b50f8df3937230d90bc7158218ef9ba4400dfc58b7f4725635ea1491a3c16",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-42",
+      "filename": "pamhc2fantasy-NEOFORGE-1.21.0-1.0.3.jar",
+      "url": "https://mediafilez.forgecdn.net/files/7758/698/pamhc2fantasy-NEOFORGE-1.21.0-1.0.3.jar",
+      "sha256": "2fb7277c7eee15c21aeeda25fbde169e00988394c282794fed63f0ef922cbaf2",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-43",
+      "filename": "pamhc2foodcore-NEOFORGE-1.21.1-1.0.4.jar",
+      "url": "https://mediafilez.forgecdn.net/files/6919/485/pamhc2foodcore-NEOFORGE-1.21.1-1.0.4.jar",
+      "sha256": "acd5dd380eafc3f317b67231a2355c204cab254dfdf4ab1f25c084fdd3d317b9",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-44",
+      "filename": "pamhc2foodextended-NEOFORGE-1.21.1-1.0.0.jar",
+      "url": "https://cdn.modrinth.com/data/bdPeAbPS/versions/8Jv3MDxv/pamhc2foodextended-NEOFORGE-1.21.1-1.0.0.jar",
+      "sha256": "d61dda7d00ab69bfaef45854df01ab6cfd64243d7f9a5ae870c89dd954247a8c",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-45",
+      "filename": "pamhc2trees-NEOFORGE-1.21.1-1.0.9.jar",
+      "url": "https://mediafilez.forgecdn.net/files/7847/533/pamhc2trees-NEOFORGE-1.21.1-1.0.9.jar",
+      "sha256": "64c34129468b0d75738cf0faf667a52067d2db1e72ee8564c0a8f850bbf154c7",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-46",
+      "filename": "ProjectRed-1.21.1-4.22.0-core.jar",
+      "url": "https://github.com/MrTJP/ProjectRed/releases/download/v1.21.1-4.22.0/ProjectRed-1.21.1-4.22.0-core.jar",
+      "sha256": "82d0d2bf31b9da96e7656e9ba0dd344e5b19a91099e173d607122ba058cac7d1",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-47",
+      "filename": "ProjectRed-1.21.1-4.22.0-expansion.jar",
+      "url": "https://github.com/MrTJP/ProjectRed/releases/download/v1.21.1-4.22.0/ProjectRed-1.21.1-4.22.0-expansion.jar",
+      "sha256": "1c349c3fe3d5762633355de8ff59a50c8dce37894a4c0579fb76fdb8bf37a83c",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-48",
+      "filename": "ProjectRed-1.21.1-4.22.0-exploration.jar",
+      "url": "https://github.com/MrTJP/ProjectRed/releases/download/v1.21.1-4.22.0/ProjectRed-1.21.1-4.22.0-exploration.jar",
+      "sha256": "d54af9b4d4c9f864d89ff5e1633fbd7ec581bc3f33c4a8dd66ed0960ec847b6d",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-49",
+      "filename": "ProjectRed-1.21.1-4.22.0-fabrication.jar",
+      "url": "https://github.com/MrTJP/ProjectRed/releases/download/v1.21.1-4.22.0/ProjectRed-1.21.1-4.22.0-fabrication.jar",
+      "sha256": "d320f8ed92724ff374e62c42be4f764319108c5f274f4ea88ced3e696ae14296",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1",
+        "compat-layer"
+      ]
+    },
+    {
+      "id": "industrial-50",
+      "filename": "ProjectRed-1.21.1-4.22.0-illumination.jar",
+      "url": "https://github.com/MrTJP/ProjectRed/releases/download/v1.21.1-4.22.0/ProjectRed-1.21.1-4.22.0-illumination.jar",
+      "sha256": "370aa88f1779f63a725c2f59a9e96942fa69da78119e5fdaeaa3f87f74fe5dbe",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-51",
+      "filename": "ProjectRed-1.21.1-4.22.0-integration.jar",
+      "url": "https://github.com/MrTJP/ProjectRed/releases/download/v1.21.1-4.22.0/ProjectRed-1.21.1-4.22.0-integration.jar",
+      "sha256": "e1b77ed9921739ce0d890eb3fae2e60fe000719764323c0a34961c9fbe5f4b1f",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-52",
+      "filename": "ProjectRed-1.21.1-4.22.0-transmission.jar",
+      "url": "https://github.com/MrTJP/ProjectRed/releases/download/v1.21.1-4.22.0/ProjectRed-1.21.1-4.22.0-transmission.jar",
+      "sha256": "1924870cc829e82baab8dd24a08aba231e065b4daf32367d0c26eaf1658646fb",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-53",
+      "filename": "rftoolsbase-1.21-6.0.10.jar",
+      "url": "https://cdn.modrinth.com/data/hIO8IsD8/versions/j6hRpxDU/rftoolsbase-1.21-6.0.10.jar",
+      "sha256": "a623d1120246a10a77ef18258bffeae5f7ede703f804f51240bafb5dcb9e84b7",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-54",
+      "filename": "ScalableCatsForce-NeoForge-3.7.1-build-11-with-library.jar",
+      "url": "https://cdn.modrinth.com/data/zr0QMQMo/versions/WG1FLeZM/ScalableCatsForce-NeoForge-3.7.1-build-11-with-library.jar",
+      "sha256": "48cc7a8b4448d539aa7f4b56ae899b1484ec40ed8481af56818416726ee01193",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-55",
+      "filename": "simpleplanes-1.21.1-5.3.7.jar",
+      "url": "https://cdn.modrinth.com/data/74piZbBF/versions/ZR8M3fcv/simpleplanes-1.21.1-5.3.7.jar",
+      "sha256": "4945b6d489011965e2be9910573860fcb8f0a23cfffde5fd2b75482a12eb2751",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-56",
+      "filename": "sodium-neoforge-0.6.13+mc1.21.1.jar",
+      "url": "https://cdn.modrinth.com/data/AANobbMI/versions/Pb3OXVqC/sodium-neoforge-0.6.13%2Bmc1.21.1.jar",
+      "sha256": "7acd7af2ef75ec883a6872c17494ead65e38025151eb08a1d60e36d34377f403",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-57",
+      "filename": "TechReborn-5.11.19.jar",
+      "url": "https://cdn.modrinth.com/data/3eMENr4V/versions/CNwZZ4FD/TechReborn-5.11.19.jar",
+      "sha256": "bf65a8c52037ccd0b39dd9aa06209e28d774ab876e4381bcbb0ae8289a706e55",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-58",
+      "filename": "titanium-1.21-4.0.43.jar",
+      "url": "https://cdn.modrinth.com/data/1Ro7m06l/versions/ENONQ5aP/titanium-1.21-4.0.43.jar",
+      "sha256": "34c58645cc1e624ec976f6fd711b7d69ddea76de495354a19a594c1bc92da6b0",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-59",
+      "filename": "twilightforest-1.21.1-4.8.3345-universal.jar",
+      "url": "https://mediafilez.forgecdn.net/files/7797/302/twilightforest-1.21.1-4.8.3345-universal.jar",
+      "sha256": "493da16d10210f9f53a3c33b3d8fcb4ae9b14016ee420d753c894562bd9aba35",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-60",
+      "filename": "divinerpg-1.10.9.3.jar",
+      "url": "https://mediafilez.forgecdn.net/files/7371/103/divinerpg-1.10.9.3.jar",
+      "sha256": "6e4b4bc9c073de5b7a7de4106c54eedb186cc237b19b6e78848457a298c61fd8",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-61",
+      "filename": "paradise-lost-2.4.1-beta+1.21.1-SINYTRA.jar",
+      "url": "https://mediafilez.forgecdn.net/files/7851/767/paradise-lost-2.4.1-beta%2B1.21.1-SINYTRA.jar",
+      "sha256": "325f3694e714f040f8b5d2830016714d6b04b7d7b2850a26e2f38322e5115931",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1",
+        "compat-layer"
+      ]
+    },
+    {
+      "id": "industrial-62",
+      "filename": "Voidscape-1.21.1-1.9.588.jar",
+      "url": "https://mediafilez.forgecdn.net/files/8175/491/Voidscape-1.21.1-1.9.588.jar",
+      "sha256": "f667d32e44286f0d75c18b0affbb8ecf87f5aac4b7c945e78df6db5a09f251a1",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-63",
+      "filename": "NoChatReports-NEOFORGE-1.21.1-v2.9.1.jar",
+      "url": "https://mediafilez.forgecdn.net/files/5885/735/NoChatReports-NEOFORGE-1.21.1-v2.9.1.jar",
+      "sha256": "866ac9a47afcd829bdb03890b5d8f80bb4c6f47332c64717b6e909bee51337b6",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-64",
+      "filename": "TerraBlender-neoforge-1.21.1-4.1.0.8.jar",
+      "url": "https://cdn.modrinth.com/data/kkmrDlKT/versions/6e8GCrLb/TerraBlender-neoforge-1.21.1-4.1.0.8.jar?mr_download_reason=standalone",
+      "sha256": "0c49b5ef447a7f09100e9a210888a7347fbda0aa75322063991f6063b25fe3f9",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1",
+        "dependency"
+      ]
+    },
+    {
+      "id": "industrial-65",
+      "filename": "resourcefulconfig-neoforge-1.21-3.0.11.jar",
+      "url": "https://cdn.modrinth.com/data/M1953qlQ/versions/lSbyRD6v/resourcefulconfig-neoforge-1.21-3.0.11.jar?mr_download_reason=standalone",
+      "sha256": "25b4f3502d25c535004acd4a9420272fff01d2f1e2df352239fec93fdab005d4",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1",
+        "dependency"
+      ]
+    }
+  ],
+  "files": [],
+  "directories": [],
+  "servers": []
+}

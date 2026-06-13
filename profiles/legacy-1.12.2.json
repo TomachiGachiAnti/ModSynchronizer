@@ -1,0 +1,447 @@
+{
+  "format_version": 1,
+  "config_id": "legacy-1.12.2",
+  "display_name": "Legacy 1.12.2",
+  "minecraft_version": "1.12.2",
+  "self_update": {
+    "enabled": false,
+    "manifest_url": "",
+    "github_releases_api_url": "https://api.github.com/repos/TomachiGachiAnti/ModSynchronizer/releases/latest",
+    "asset_name": "legacy-1.12.2-Setup.exe"
+  },
+  "loader": {
+    "type": "forge",
+    "version": "legacy"
+  },
+  "game_directory": {
+    "name": "legacy-1.12.2"
+  },
+  "launcher": {
+    "create_profile": true,
+    "profile_id": "legacy-1.12.2",
+    "profile_name": "Legacy 1.12.2",
+    "version_id": "1.12.2-forge-14.23.5.2860",
+    "icon": "Furnace",
+    "java_args": "-Xmx6G -XX:+UnlockExperimentalVMOptions -XX:+UseG1GC -XX:G1NewSizePercent=20 -XX:G1ReservePercent=20 -XX:MaxGCPauseMillis=50 -XX:G1HeapRegionSize=32M",
+    "java_dir": ""
+  },
+  "sync": {
+    "remove_managed_files_not_in_manifest": true,
+    "remove_deprecated_files": true
+  },
+  "mods": [
+    {
+      "id": "legacy-01",
+      "filename": "!mixinbooter-10.6.jar",
+      "url": "https://mediafilez.forgecdn.net/files/6344/449/%21mixinbooter-10.6.jar",
+      "sha256": "",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "legacy",
+        "forge-1122"
+      ]
+    },
+    {
+      "id": "legacy-02",
+      "filename": "AdditionalEnchantedMiner-1.12.2-12.5.7.jar",
+      "url": "https://mediafilez.forgecdn.net/files/3851/282/AdditionalEnchantedMiner-1.12.2-12.5.7.jar",
+      "sha256": "",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "legacy",
+        "forge-1122"
+      ]
+    },
+    {
+      "id": "legacy-03",
+      "filename": "AsmodeusCore-1.12.2-1.0.3.jar",
+      "url": "https://mediafilez.forgecdn.net/files/6058/953/AsmodeusCore-1.12.2-1.0.3.jar",
+      "sha256": "",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "legacy",
+        "forge-1122"
+      ]
+    },
+    {
+      "id": "legacy-04",
+      "filename": "buildcraft-all-8.0.0.jar",
+      "url": "https://mediafilez.forgecdn.net/files/6376/391/buildcraft-all-8.0.0.jar",
+      "sha256": "",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "legacy",
+        "forge-1122"
+      ]
+    },
+    {
+      "id": "legacy-05",
+      "filename": "ChickenChunks-1.12.2-2.4.2.74-universal.jar",
+      "url": "https://mediafilez.forgecdn.net/files/2755/785/ChickenChunks-1.12.2-2.4.2.74-universal.jar",
+      "sha256": "",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "legacy",
+        "forge-1122"
+      ]
+    },
+    {
+      "id": "legacy-06",
+      "filename": "CodeChickenLib-1.12.2-3.2.3.358-universal.jar",
+      "url": "https://mediafilez.forgecdn.net/files/2779/848/CodeChickenLib-1.12.2-3.2.3.358-universal.jar",
+      "sha256": "",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "legacy",
+        "forge-1122"
+      ]
+    },
+    {
+      "id": "legacy-07",
+      "filename": "CraftTweaker2-1.12-4.1.20.704.jar",
+      "url": "https://mediafilez.forgecdn.net/files/6669/824/CraftTweaker2-1.12-4.1.20.704.jar",
+      "sha256": "",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "legacy",
+        "forge-1122"
+      ]
+    },
+    {
+      "id": "legacy-08",
+      "filename": "cxlibrary-1.12.1-1.6.1.jar",
+      "url": "https://mediafilez.forgecdn.net/files/2463/886/cxlibrary-1.12.1-1.6.1.jar",
+      "sha256": "",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "legacy",
+        "forge-1122"
+      ]
+    },
+    {
+      "id": "legacy-09",
+      "filename": "EnderCore-1.12.2-0.5.78.jar",
+      "url": "https://mediafilez.forgecdn.net/files/4671/384/EnderCore-1.12.2-0.5.78.jar",
+      "sha256": "",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "legacy",
+        "forge-1122"
+      ]
+    },
+    {
+      "id": "legacy-10",
+      "filename": "EnderIO-1.12.2-5.3.72.jar",
+      "url": "https://mediafilez.forgecdn.net/files/4674/244/EnderIO-1.12.2-5.3.72.jar",
+      "sha256": "",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "legacy",
+        "forge-1122"
+      ]
+    },
+    {
+      "id": "legacy-11",
+      "filename": "EnderStorage-1.12.2-2.4.6.137-universal.jar",
+      "url": "https://mediafilez.forgecdn.net/files/2755/787/EnderStorage-1.12.2-2.4.6.137-universal.jar",
+      "sha256": "",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "legacy",
+        "forge-1122"
+      ]
+    },
+    {
+      "id": "legacy-12",
+      "filename": "Forgelin-1.8.4.jar",
+      "url": "https://mediafilez.forgecdn.net/files/2785/465/Forgelin-1.8.4.jar",
+      "sha256": "",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "legacy",
+        "forge-1122"
+      ]
+    },
+    {
+      "id": "legacy-13",
+      "filename": "forgemod_VoxelMap-1.9.27_for_1.12.2.jar",
+      "url": "https://mediafilez.forgecdn.net/files/3017/424/forgemod_VoxelMap-1.9.27_for_1.12.2.jar",
+      "sha256": "",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "legacy",
+        "forge-1122"
+      ]
+    },
+    {
+      "id": "legacy-14",
+      "filename": "Galacticraft-1.12.2-4.0.7.jar",
+      "url": "https://mediafilez.forgecdn.net/files/6364/107/Galacticraft-1.12.2-4.0.7.jar",
+      "sha256": "",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "legacy",
+        "forge-1122"
+      ]
+    },
+    {
+      "id": "legacy-15",
+      "filename": "GalaxySpace-1.12.2-2.1.5.jar",
+      "url": "https://mediafilez.forgecdn.net/files/6058/956/GalaxySpace-1.12.2-2.1.5.jar",
+      "sha256": "",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "legacy",
+        "forge-1122"
+      ]
+    },
+    {
+      "id": "legacy-16",
+      "filename": "industrialcraft-2-2.8.222-ex112.jar",
+      "url": "https://mediafilez.forgecdn.net/files/3838/713/industrialcraft-2-2.8.222-ex112.jar",
+      "sha256": "",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "legacy",
+        "forge-1122"
+      ]
+    },
+    {
+      "id": "legacy-17",
+      "filename": "industrialforegoing-1.12.2-1.12.13-237.jar",
+      "url": "https://mediafilez.forgecdn.net/files/2745/321/industrialforegoing-1.12.2-1.12.13-237.jar",
+      "sha256": "",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "legacy",
+        "forge-1122"
+      ]
+    },
+    {
+      "id": "legacy-18",
+      "filename": "InventoryTweaks-1.63.jar",
+      "url": "https://mediafilez.forgecdn.net/files/2482/481/InventoryTweaks-1.63.jar",
+      "sha256": "",
+      "required": true,
+      "deprecated": true,
+      "tags": [
+        "legacy",
+        "forge-1122"
+      ]
+    },
+    {
+      "id": "legacy-19",
+      "filename": "jei_1.12.2-4.16.1.1013.jar",
+      "url": "https://mediafilez.forgecdn.net/files/5846/804/jei_1.12.2-4.16.1.1013.jar",
+      "sha256": "",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "legacy",
+        "forge-1122"
+      ]
+    },
+    {
+      "id": "legacy-20",
+      "filename": "logisticspipes-0.10.4.49.jar",
+      "url": "https://mediafilez.forgecdn.net/files/4849/512/logisticspipes-0.10.4.49.jar",
+      "sha256": "",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "legacy",
+        "forge-1122"
+      ]
+    },
+    {
+      "id": "legacy-21",
+      "filename": "Mekanism-1.12.2-9.8.3.390.jar",
+      "url": "https://mediafilez.forgecdn.net/files/2835/175/Mekanism-1.12.2-9.8.3.390.jar",
+      "sha256": "",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "legacy",
+        "forge-1122"
+      ]
+    },
+    {
+      "id": "legacy-22",
+      "filename": "MekanismGenerators-1.12.2-9.8.3.390.jar",
+      "url": "https://mediafilez.forgecdn.net/files/2835/177/MekanismGenerators-1.12.2-9.8.3.390.jar",
+      "sha256": "",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "legacy",
+        "forge-1122"
+      ]
+    },
+    {
+      "id": "legacy-23",
+      "filename": "MultiPageChest-1.12-1.9.1.jar",
+      "url": "https://mediafilez.forgecdn.net/files/2441/299/MultiPageChest-1.12-1.9.1.jar",
+      "sha256": "",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "legacy",
+        "forge-1122"
+      ]
+    },
+    {
+      "id": "legacy-24",
+      "filename": "mystcraft-1.12.2-0.13.7.06.jar",
+      "url": "https://mediafilez.forgecdn.net/files/2958/490/mystcraft-1.12.2-0.13.7.06.jar",
+      "sha256": "",
+      "required": true,
+      "deprecated": true,
+      "tags": [
+        "legacy",
+        "forge-1122"
+      ]
+    },
+    {
+      "id": "legacy-25",
+      "filename": "mystcraft-1.12.2-0.13.7.06-no-hugetrees-1.0.0.jar",
+      "url": "http://test.hinotosan.com/test/mystcraft-1.12.2-0.13.7.06-no-hugetrees-1.0.0.jar",
+      "sha256": "",
+      "required": true,
+      "deprecated": true,
+      "tags": [
+        "legacy",
+        "forge-1122"
+      ]
+    },
+    {
+      "id": "legacy-26",
+      "filename": "mystcraft-1.12.2-0.13.7.06-no-hugetrees-1.0.0.jar",
+      "url": "https://pub-68c215f0592745cfb576efb8f8d7d67c.r2.dev/mystcraft-1.12.2-0.13.7.06-no-hugetrees-1.0.0.jar",
+      "sha256": "",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "legacy",
+        "forge-1122"
+      ]
+    },
+    {
+      "id": "legacy-27",
+      "filename": "Patchouli-1.0-23.6.jar",
+      "url": "https://mediafilez.forgecdn.net/files/3162/874/Patchouli-1.0-23.6.jar",
+      "sha256": "",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "legacy",
+        "forge-1122"
+      ]
+    },
+    {
+      "id": "legacy-28",
+      "filename": "TerraFirmaCraft-MC1.12.2-1.7.23.181.jar",
+      "url": "",
+      "sha256": "",
+      "required": true,
+      "deprecated": true,
+      "tags": [
+        "legacy",
+        "forge-1122"
+      ]
+    },
+    {
+      "id": "legacy-29",
+      "filename": "tesla-core-lib-1.12.2-1.0.18.jar",
+      "url": "https://mediafilez.forgecdn.net/files/3438/487/tesla-core-lib-1.12.2-1.0.18.jar",
+      "sha256": "",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "legacy",
+        "forge-1122"
+      ]
+    },
+    {
+      "id": "legacy-30",
+      "filename": "VisibleRayGenerator-1.12-5.0.1-universal.jar",
+      "url": "https://mediafilez.forgecdn.net/files/2447/874/VisibleRayGenerator-1.12-5.0.1-universal.jar",
+      "sha256": "",
+      "required": true,
+      "deprecated": true,
+      "tags": [
+        "legacy",
+        "forge-1122"
+      ]
+    },
+    {
+      "id": "legacy-31",
+      "filename": "VisibleRayGenerator-1.12-5.0.1-universal.jar",
+      "url": "http://test.hinotosan.com/test/VisibleRayGenerator-1.12-5.0.1-modified-1.0.0-universal.jar",
+      "sha256": "",
+      "required": true,
+      "deprecated": true,
+      "tags": [
+        "legacy",
+        "forge-1122"
+      ]
+    },
+    {
+      "id": "legacy-32",
+      "filename": "VisibleRayGenerator-1.12-100.0.0-universal.jar",
+      "url": "https://pub-68c215f0592745cfb576efb8f8d7d67c.r2.dev/VisibleRayGenerator-1.12-100.0.0-universal.jar",
+      "sha256": "",
+      "required": true,
+      "deprecated": true,
+      "tags": [
+        "legacy",
+        "forge-1122"
+      ]
+    },
+    {
+      "id": "legacy-33",
+      "filename": "VisibleRayGenerator-1.12-100.0.1-universal.jar",
+      "url": "https://pub-68c215f0592745cfb576efb8f8d7d67c.r2.dev/VisibleRayGenerator-1.12-100.0.1-universal.jar",
+      "sha256": "",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "legacy",
+        "forge-1122"
+      ]
+    }
+  ],
+  "files": [
+    {
+      "path": "scripts/ic2.zs",
+      "url": "https://raw.githubusercontent.com/TomachiGachiAnti/ModSynchronizer/main/assets/legacy-1.12.2/scripts/ic2.zs",
+      "sha256": "",
+      "required": true,
+      "category": "script"
+    },
+    {
+      "path": "scripts/matter.zs",
+      "url": "https://raw.githubusercontent.com/TomachiGachiAnti/ModSynchronizer/main/assets/legacy-1.12.2/scripts/matter.zs",
+      "sha256": "",
+      "required": true,
+      "category": "script"
+    }
+  ],
+  "servers": []
+}

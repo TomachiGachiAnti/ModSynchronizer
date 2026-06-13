@@ -106,7 +106,7 @@ read_mod_entries() {
             if ($0 ~ /^[[:space:]]*$/) {
                 next
             }
-            if ($0 ~ /^[[:space:]]*\][[:space:]]*,?[[:space:]]*$/) {
+            if (brace_depth == 0 && $0 ~ /^[[:space:]]*\][[:space:]]*,?[[:space:]]*$/) {
                 exit
             }
             if ($0 ~ /^[[:space:]]*{[[:space:]]*$/) {

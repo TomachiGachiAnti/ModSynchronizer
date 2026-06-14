@@ -793,8 +793,8 @@
       "filename": "Voidscape-1.21.1-1.9.588.jar",
       "url": "https://mediafilez.forgecdn.net/files/8175/491/Voidscape-1.21.1-1.9.588.jar",
       "sha256": "f667d32e44286f0d75c18b0affbb8ecf87f5aac4b7c945e78df6db5a09f251a1",
-      "required": true,
-      "deprecated": false,
+      "required": false,
+      "deprecated": true,
       "tags": [
         "candidate",
         "neoforge-1.21.1"

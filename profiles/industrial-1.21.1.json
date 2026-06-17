@@ -890,6 +890,18 @@
       "filename": "misutodim-0.1.4.jar",
       "url": "https://pub-68c215f0592745cfb576efb8f8d7d67c.r2.dev/misutodim-0.1.4.jar",
       "sha256": "7f862cfa5c1778e1e313a4fce358f35622c7dfd4fb6dd1e0b426b2b3e16441d5",
+      "required": false,
+      "deprecated": true,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-71",
+      "filename": "misutodim-0.1.5.jar",
+      "url": "https://pub-68c215f0592745cfb576efb8f8d7d67c.r2.dev/misutodim-0.1.5.jar",
+      "sha256": "3d1eb19458fe47df5bb188d410ff5a40c14b9a99e964c4b650c65998ffddbf81",
       "required": true,
       "deprecated": false,
       "tags": [
@@ -898,7 +910,7 @@
       ]
     },
     {
-      "id": "industrial-71",
+      "id": "industrial-72",
       "filename": "invtweaks-1.21.1-1.3.2.jar",
       "url": "https://mediafilez.forgecdn.net/files/6407/807/invtweaks-1.21.1-1.3.2.jar",
       "sha256": "ceb5b20a43ca1c5bd707f60bb5d5fa61099c7a7ba50b19f6bddfe93f1ca0073c",
@@ -910,7 +922,7 @@
       ]
     },
     {
-      "id": "industrial-72",
+      "id": "industrial-73",
       "filename": "gtceu-1.21.1-8.0.0-SNAPSHOT+20260512-100141-ab9bc59.jar",
       "url": "https://github.com/GregTechCEu/GregTech-Modern/releases/download/latest-1.21/gtceu-1.21.1-8.0.0-SNAPSHOT%2B20260512-100141-ab9bc59.jar",
       "sha256": "820600269e2aaace163b08ea9687dcfae1ee1064e861995b97df7ba8ba5cbfe3",

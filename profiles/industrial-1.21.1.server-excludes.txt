@@ -1,7 +1,6 @@
 # サーバーへ入れないMODをここに列挙する
 # 1行に1ファイル名
 
-jei-1.21.1-neoforge-19.27.0.336.jar
 journeymap-neoforge-1.21.1-6.0.0-beta.66.jar
 sodium-neoforge-0.6.13+mc1.21.1.jar
 NoChatReports-NEOFORGE-1.21.1-v2.9.1.jar

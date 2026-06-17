@@ -8,7 +8,7 @@ param(
 $ErrorActionPreference = "Stop"
 
 $repoRoot = Split-Path -Parent $PSScriptRoot
-$appProject = Join-Path $repoRoot "src\\ModSetup.App\\ModSetup.App.csproj"
+$appProject = Join-Path $repoRoot "src\\ModSynchronizer.App\\ModSynchronizer.App.csproj"
 $profilesRoot = Join-Path $repoRoot "profiles"
 $assetsRoot = Join-Path $repoRoot "assets"
 $publishRoot = Join-Path $repoRoot "publish"
@@ -25,10 +25,16 @@ if (Test-Path -LiteralPath $publishDir) {
     Remove-Item -LiteralPath $publishDir -Recurse -Force
 }
 
+$legacyManifestPath = Join-Path $publishDir "update-manifest.json"
+if (Test-Path -LiteralPath $legacyManifestPath) {
+    Remove-Item -LiteralPath $legacyManifestPath -Force
+}
+
 dotnet publish $appProject `
     -c $Configuration `
     -r $RuntimeIdentifier `
     --self-contained true `
+    /p:EmbeddedProfileName=$profileBaseName `
     /p:Version=$AppVersion `
     /p:AssemblyVersion=$AppVersion `
     /p:FileVersion=$AppVersion `
@@ -50,7 +56,7 @@ if (Test-Path -LiteralPath $publishAssetsDir) {
     Remove-Item -LiteralPath $publishAssetsDir -Recurse -Force
 }
 
-$defaultExe = Join-Path $publishDir "ModSetup.App.exe"
+$defaultExe = Join-Path $publishDir "ModSynchronizer.App.exe"
 $targetExe = Join-Path $publishDir ($profileBaseName + "-Setup.exe")
 if (Test-Path -LiteralPath $defaultExe) {
     Move-Item -LiteralPath $defaultExe -Destination $targetExe
@@ -66,16 +72,5 @@ if (Test-Path -LiteralPath $publishAssetsDir) {
     }
 }
 
-$hash = (Get-FileHash -LiteralPath $targetExe -Algorithm SHA256).Hash.ToLowerInvariant()
-$manifestPath = Join-Path $publishDir "update-manifest.json"
-$manifest = [ordered]@{
-    version = $AppVersion
-    url = [System.IO.Path]::GetFileName($targetExe)
-    sha256 = $hash
-}
-$manifestJson = $manifest | ConvertTo-Json -Depth 4
-[System.IO.File]::WriteAllText($manifestPath, $manifestJson + [Environment]::NewLine, [System.Text.UTF8Encoding]::new($false))
-
 Write-Output "publish_dir=$publishDir"
 Write-Output "exe_path=$targetExe"
-Write-Output "manifest_path=$manifestPath"

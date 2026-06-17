@@ -1,4 +1,4 @@
-# ModSetup 管理メモ
+# ModSynchronizer 管理メモ
 
 ## 目的
 このリポジトリは、Minecraft サーバー参加用のクライアント環境を配布 `.exe` で構築・更新するための Windows アプリを管理する。
@@ -70,7 +70,7 @@
   - `config` は毎回全量上書きではなく、変更が必要なものだけ同期する方針
 - GitHub 上の構成ファイル取得
 - 公式ランチャー構成の作成または更新
-- GitHub Releases または自己更新マニフェスト確認
+- GitHub Releases 確認
 - 必要に応じたアプリ本体自己更新
 - 公式 Minecraft ランチャーの起動
 
@@ -130,14 +130,14 @@
 ## 現在のファイル構成
 ```text
 E:\project\ModSynchronizer\
-  ModSetup.sln
+  ModSynchronizer.sln
   PROJECT_STATUS.md
   profiles\
     legacy-1.12.2.json
     industrial-1.21.1.json
   src\
-    ModSetup.Core\
-    ModSetup.App\
+    ModSynchronizer.Core\
+    ModSynchronizer.App\
   assets\
     legacy-1.12.2\
       scripts\
@@ -153,8 +153,8 @@ E:\project\ModSynchronizer\
 ## 現在の実装状況
 ### 完了
 - C# ソリューション作成
-- `ModSetup.Core` 作成
-- `ModSetup.App` 作成
+- `ModSynchronizer.Core` 作成
+- `ModSynchronizer.App` 作成
 - WinForms の最小画面作成
 - profile JSON 読込
 - 専用ゲームディレクトリ解決
@@ -186,8 +186,6 @@ E:\project\ModSynchronizer\
 - 構成別 exe 名から GitHub 上の profile を自動取得する処理追加
 - 構成別 exe 名から対象 profile を自動選択する処理追加
 - GitHub Releases ベース自己更新対応
-- 自己更新マニフェスト対応
-- 自己更新用 publish マニフェスト出力対応
 - Ubuntu 向けサーバー簡易同期スクリプト追加
   - `jq` 非依存の簡易 JSON 抽出版
 - Ubuntu 向けサーバー一撃構築スクリプト追加
@@ -253,39 +251,39 @@ E:\project\ModSynchronizer\
 
 ## 主要コード
 ### コア
-- [ProfileLoader.cs](E:\project\ModSynchronizer\src\ModSetup.Core\Services\ProfileLoader.cs)
+- [ProfileLoader.cs](E:\project\ModSynchronizer\src\ModSynchronizer.Core\Services\ProfileLoader.cs)
   - profile 読込と基本検証
-- [PathResolver.cs](E:\project\ModSynchronizer\src\ModSetup.Core\Services\PathResolver.cs)
+- [PathResolver.cs](E:\project\ModSynchronizer\src\ModSynchronizer.Core\Services\PathResolver.cs)
   - `.minecraft` と `%APPDATA%\\.modded-minecraft` の解決
-- [SyncService.cs](E:\project\ModSynchronizer\src\ModSetup.Core\Services\SyncService.cs)
+- [SyncService.cs](E:\project\ModSynchronizer\src\ModSynchronizer.Core\Services\SyncService.cs)
   - MOD と管理ファイルの同期
   - ディレクトリ同期
-- [MinecraftEnvironmentService.cs](E:\project\ModSynchronizer\src\ModSetup.Core\Services\MinecraftEnvironmentService.cs)
+- [MinecraftEnvironmentService.cs](E:\project\ModSynchronizer\src\ModSynchronizer.Core\Services\MinecraftEnvironmentService.cs)
   - Minecraft 本体確認
   - 対象バージョン確認
   - 対象 ModLoader 確認
-- [LoaderPreparationService.cs](E:\project\ModSynchronizer\src\ModSetup.Core\Services\LoaderPreparationService.cs)
+- [LoaderPreparationService.cs](E:\project\ModSynchronizer\src\ModSynchronizer.Core\Services\LoaderPreparationService.cs)
   - ModLoader インストーラー取得
   - ModLoader インストーラー実行
-- [JavaRuntimeResolver.cs](E:\project\ModSynchronizer\src\ModSetup.Core\Services\JavaRuntimeResolver.cs)
+- [JavaRuntimeResolver.cs](E:\project\ModSynchronizer\src\ModSynchronizer.Core\Services\JavaRuntimeResolver.cs)
   - `PATH` 上の Java 探索
   - Minecraft Launcher 同梱 Java 探索
-- [SetupRunner.cs](E:\project\ModSynchronizer\src\ModSetup.Core\Services\SetupRunner.cs)
+- [SetupRunner.cs](E:\project\ModSynchronizer\src\ModSynchronizer.Core\Services\SetupRunner.cs)
   - 確認フェーズ
   - 導入フェーズ
   - 構成フェーズ
   - 起動フェーズ
-- [LauncherService.cs](E:\project\ModSynchronizer\src\ModSetup.Core\Services\LauncherService.cs)
+- [LauncherService.cs](E:\project\ModSynchronizer\src\ModSynchronizer.Core\Services\LauncherService.cs)
   - `launcher_profiles.json` 更新
   - 公式ランチャー起動
 
 ### UI
-- [MainForm.cs](E:\project\ModSynchronizer\src\ModSetup.App\Forms\MainForm.cs)
+- [MainForm.cs](E:\project\ModSynchronizer\src\ModSynchronizer.App\Forms\MainForm.cs)
   - profile 選択
   - セットアップ開始
   - 進捗表示
   - 結果表示
-- [ProfileCatalogService.cs](E:\project\ModSynchronizer\src\ModSetup.App\Services\ProfileCatalogService.cs)
+- [ProfileCatalogService.cs](E:\project\ModSynchronizer\src\ModSynchronizer.App\Services\ProfileCatalogService.cs)
   - 構成別 exe 名から対象 profile 名を解決
   - GitHub raw 上の profile を取得してローカルキャッシュする
   - 開発実行時はローカル `profiles` を列挙する
@@ -356,7 +354,7 @@ E:\project\ModSynchronizer\
 - 構成別 exe 名から対象 profile 名を決定する
   - 例: `industrial-1.21.1-Setup.exe` は `industrial-1.21.1.json` を対象にする
 - 対象 profile は GitHub raw の `profiles/<profile>.json` から取得する
-- 取得した profile は `%LOCALAPPDATA%\\ModSetup\\profiles-cache` に保存する
+- 取得した profile は `%TEMP%\\ModSynchronizer\\profiles-cache` に保存する
 - GitHub 取得に失敗した場合は、キャッシュ済み profile があればそれを使う
 - 開発時に `-Setup` 名ではない実行ファイルから起動した場合のみ、ローカル `profiles` フォルダを読む
 
@@ -380,13 +378,10 @@ E:\project\ModSynchronizer\
 - `save-all` 用 `systemd timer` を登録し、3 分ごとに自動実行する
 
 ## 現在の自己更新方式
-- profile の `self_update.enabled` と `self_update.manifest_url` で有効化する
-- 旧Python版互換として `self_update.github_releases_api_url` も使える
-- 起動時に更新マニフェストを取得する
-- マニフェストの `version` が現行 exe より新しければ新しい exe をダウンロードする
+- profile の `self_update.enabled` と `self_update.github_releases_api_url` で有効化する
+- 起動時に GitHub Releases を取得する
 - ダウンロード後、別 PowerShell プロセスで現在の exe を差し替える
 - 差し替え後に更新済み exe を自動再起動する
-- 更新マニフェストは `version` `url` `sha256` を持つ
 
 GitHub Releases 使用時:
 
@@ -431,7 +426,7 @@ GitHub Releases 使用時:
 現在のビルド確認コマンド:
 
 ```powershell
-dotnet build E:\project\ModSynchronizer\ModSetup.sln
+dotnet build E:\project\ModSynchronizer\ModSynchronizer.sln
 ```
 
 現状はビルド成功状態。
@@ -442,5 +437,4 @@ dotnet build E:\project\ModSynchronizer\ModSetup.sln
 - `tools/publish-single-file.ps1 -ProfileFile industrial-1.21.1.json` で publish 済み
 - 現在の出力先は `publish/industrial-1.21.1/industrial-1.21.1-Setup.exe`
 - publish 出力は単体 exe で起動確認済み
-- publish 時に `update-manifest.json` も同時生成する
 - publish された exe は GitHub 上の profile を取得して同期する想定

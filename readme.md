@@ -19,6 +19,21 @@ dotnet build ModSynchronizer.sln
 dotnet run --project src/ModSynchronizer.App/ModSynchronizer.App.csproj
 ```
 
+## 開発 - ローカル profile テスト
+GitHub に push する前に、ローカルの `profiles` フォルダを同期元としてテストできます。
+
+```powershell
+$env:MODSYNCHRONIZER_PROFILES_BASE_URL = "E:\project\ModSynchronizer\profiles"
+& "E:\project\ModSynchronizer\publish\industrial-1.21.1\industrial-1.21.1-Setup.exe"
+```
+
+`sync-only` の確認だけをしたい場合は次を使います。
+
+```powershell
+$env:MODSYNCHRONIZER_PROFILES_BASE_URL = "E:\project\ModSynchronizer\profiles"
+& "E:\project\ModSynchronizer\publish\industrial-1.21.1\industrial-1.21.1-Setup.exe" --mode sync-only --profile industrial-1.21.1
+```
+
 ## 構成ファイル
 構成は `profiles` フォルダ配下の JSON で管理します。
 

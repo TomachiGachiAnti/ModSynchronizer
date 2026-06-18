@@ -8,4 +8,5 @@ public sealed class SetupResult
     public SyncItemResult Files { get; } = new();
     public List<string> Warnings { get; } = new();
     public bool OfficialLauncherLaunchSucceeded { get; set; }
+    public bool HasSyncFailures => Mods.Failed.Count > 0 || Files.Failed.Count > 0;
 }

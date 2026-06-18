@@ -37,6 +37,16 @@ public sealed class PathResolver
         return Path.Combine(GetGameDirectory(profile), relativePath.Replace('/', Path.DirectorySeparatorChar));
     }
 
+    public string GetJavaProxyProfileDirectory(ProfileConfig profile)
+    {
+        return Path.Combine(GetModdedMinecraftRoot(), "java-proxy", profile.ConfigId);
+    }
+
+    public string GetJavaProxyBinDirectory(ProfileConfig profile)
+    {
+        return Path.Combine(GetJavaProxyProfileDirectory(profile), "bin");
+    }
+
     public string GetModdedMinecraftRoot()
     {
         var appData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);

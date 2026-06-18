@@ -8,6 +8,8 @@ public sealed class ProfileCatalogService
 {
     private const string SetupExecutableSuffix = "-Setup";
     private const string DefaultProfilesBaseUrl = "https://raw.githubusercontent.com/TomachiGachiAnti/ModSynchronizer/main/profiles";
+    private const string ProfilesBaseUrlEnvironmentVariableName = "MODSYNCHRONIZER_PROFILES_BASE_URL";
+    private const string LegacyProfilesBaseUrlEnvironmentVariableName = "MODSETUP_PROFILES_BASE_URL";
     private const string CacheRootDirectoryName = "ModSynchronizer";
     private const string LegacyCacheRootDirectoryName = "ModSetup";
     private const string CacheSubDirectoryName = "profiles-cache";
@@ -17,11 +19,11 @@ public sealed class ProfileCatalogService
     public string? PreferredProfileName { get; }
     public bool HasFixedProfile => !string.IsNullOrWhiteSpace(PreferredProfileName);
 
-    public ProfileCatalogService(HttpClient httpClient, ProfileLoader profileLoader)
+    public ProfileCatalogService(HttpClient httpClient, ProfileLoader profileLoader, string? preferredProfileName = null)
     {
         _httpClient = httpClient;
         _profileLoader = profileLoader;
-        PreferredProfileName = ResolvePreferredProfileName();
+        PreferredProfileName = ResolvePreferredProfileName(preferredProfileName);
     }
 
     public async Task<IReadOnlyList<ProfileCatalogEntry>> LoadAvailableProfilesAsync(CancellationToken cancellationToken)
@@ -43,6 +45,21 @@ public sealed class ProfileCatalogService
         }
 
         return await LoadRemoteProfileAsync(entry.ProfileName, cancellationToken);
+    }
+
+    public string GetRequiredProfileName()
+    {
+        if (!string.IsNullOrWhiteSpace(PreferredProfileName))
+        {
+            return PreferredProfileName;
+        }
+
+        throw new InvalidOperationException("プロファイル名が確定できません。");
+    }
+
+    public Task<ProfileCatalogEntry> LoadProfileByNameAsync(string profileName, CancellationToken cancellationToken)
+    {
+        return LoadRemoteProfileAsync(profileName, cancellationToken);
     }
 
     private IReadOnlyList<ProfileCatalogEntry> LoadLocalProfiles()
@@ -105,6 +122,13 @@ public sealed class ProfileCatalogService
 
     private async Task<ProfileCatalogEntry> LoadRemoteProfileAsync(string profileName, CancellationToken cancellationToken)
     {
+        var localOverridePath = TryResolveLocalOverridePath(profileName);
+        if (!string.IsNullOrWhiteSpace(localOverridePath))
+        {
+            var localProfile = _profileLoader.LoadFromFile(localOverridePath);
+            return new ProfileCatalogEntry(profileName, localProfile.DisplayName, localOverridePath, false);
+        }
+
         var cachePath = GetCachePath(profileName);
         var remoteUrl = BuildProfileUrl(profileName);
         string? warningMessage = null;
@@ -134,13 +158,68 @@ public sealed class ProfileCatalogService
 
     private static string BuildProfileUrl(string profileName)
     {
-        var baseUrl = Environment.GetEnvironmentVariable("MODSETUP_PROFILES_BASE_URL");
+        var baseUrl = GetProfilesBaseSource();
         if (string.IsNullOrWhiteSpace(baseUrl))
         {
             baseUrl = DefaultProfilesBaseUrl;
         }
 
         return $"{baseUrl.TrimEnd('/')}/{Uri.EscapeDataString(profileName)}.json";
+    }
+
+    private static string GetProfilesBaseSource()
+    {
+        var baseSource = Environment.GetEnvironmentVariable(ProfilesBaseUrlEnvironmentVariableName);
+        if (!string.IsNullOrWhiteSpace(baseSource))
+        {
+            return baseSource;
+        }
+
+        baseSource = Environment.GetEnvironmentVariable(LegacyProfilesBaseUrlEnvironmentVariableName);
+        return string.IsNullOrWhiteSpace(baseSource) ? DefaultProfilesBaseUrl : baseSource;
+    }
+
+    private static string? TryResolveLocalOverridePath(string profileName)
+    {
+        var localProfilesDirectory = ResolveLocalProfilesDirectory();
+        if (!string.IsNullOrWhiteSpace(localProfilesDirectory))
+        {
+            var localProfilePath = Path.Combine(localProfilesDirectory, $"{profileName}.json");
+            if (File.Exists(localProfilePath))
+            {
+                return localProfilePath;
+            }
+        }
+
+        var baseSource = GetProfilesBaseSource();
+        if (string.IsNullOrWhiteSpace(baseSource))
+        {
+            return null;
+        }
+
+        if (Uri.TryCreate(baseSource, UriKind.Absolute, out var uri) && uri.IsFile)
+        {
+            baseSource = uri.LocalPath;
+        }
+
+        if (!Path.IsPathRooted(baseSource))
+        {
+            return null;
+        }
+
+        if (Directory.Exists(baseSource))
+        {
+            var profilePath = Path.Combine(baseSource, $"{profileName}.json");
+            return File.Exists(profilePath) ? profilePath : null;
+        }
+
+        if (File.Exists(baseSource) &&
+            string.Equals(Path.GetFileNameWithoutExtension(baseSource), profileName, StringComparison.OrdinalIgnoreCase))
+        {
+            return baseSource;
+        }
+
+        return null;
     }
 
     private static string GetCachePath(string profileName)
@@ -207,8 +286,13 @@ public sealed class ProfileCatalogService
         deletedDirectories.Add(directoryPath);
     }
 
-    private static string? ResolvePreferredProfileName()
+    private static string? ResolvePreferredProfileName(string? preferredProfileName)
     {
+        if (!string.IsNullOrWhiteSpace(preferredProfileName))
+        {
+            return preferredProfileName;
+        }
+
         var embeddedProfileName = GetEmbeddedProfileName();
         if (!string.IsNullOrWhiteSpace(embeddedProfileName))
         {

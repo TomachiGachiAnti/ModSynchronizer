@@ -17,30 +17,22 @@ public sealed class MainForm : Form
     private readonly ProfileCatalogService _profileCatalogService;
     private readonly SetupRunner _setupRunner;
     private readonly SelfUpdateService _selfUpdateService;
+    private readonly AppRuntimeServices _runtimeServices;
 
     public MainForm()
+        : this(AppRuntimeServicesFactory.Create())
     {
+    }
+
+    internal MainForm(AppRuntimeServices runtimeServices)
+    {
+        _runtimeServices = runtimeServices;
         Text = "ModSynchronizer";
         StartPosition = FormStartPosition.CenterScreen;
         MinimumSize = new Size(640, 320);
-
-        var httpClient = new HttpClient();
-        var pathResolver = new PathResolver();
-        var downloadService = new DownloadService(httpClient);
-        var hashService = new HashService();
-        var profileLoader = new ProfileLoader();
-        var minecraftEnvironmentService = new MinecraftEnvironmentService(pathResolver);
-        var loaderPreparationService = new LoaderPreparationService(downloadService, new JavaRuntimeResolver(), hashService);
-        var syncService = new SyncService(pathResolver, downloadService, hashService);
-        _selfUpdateService = new SelfUpdateService(httpClient, downloadService, hashService);
-        _profileCatalogService = new ProfileCatalogService(httpClient, profileLoader);
-        _setupRunner = new SetupRunner(
-            profileLoader,
-            pathResolver,
-            minecraftEnvironmentService,
-            loaderPreparationService,
-            syncService,
-            new LauncherService());
+        _selfUpdateService = runtimeServices.SelfUpdateService;
+        _profileCatalogService = runtimeServices.ProfileCatalogService;
+        _setupRunner = runtimeServices.SetupRunner;
 
         _tabs = new TabControl
         {
@@ -153,6 +145,7 @@ public sealed class MainForm : Form
         Controls.Add(_tabs);
 
         Shown += async (_, _) => await LoadProfilesAsync();
+        FormClosed += (_, _) => _runtimeServices.Dispose();
     }
 
     private async Task LoadProfilesAsync()

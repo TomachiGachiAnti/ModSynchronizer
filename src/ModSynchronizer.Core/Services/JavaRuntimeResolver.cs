@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using System.Text.Json;
+using ModSynchronizer.Core.Models;
 
 namespace ModSynchronizer.Core.Services;
 
@@ -7,19 +8,22 @@ public sealed class JavaRuntimeResolver
 {
     public string ResolveJavaExecutable()
     {
+        return ResolveJavaRuntime().JavaExecutablePath;
+    }
+
+    public JavaRuntimeInfo ResolveJavaRuntime()
+    {
+        var candidates = GetBundledJavaCandidates().ToList();
+        var javaExecutablePath = candidates.FirstOrDefault(File.Exists);
+        if (!string.IsNullOrWhiteSpace(javaExecutablePath))
+        {
+            return BuildRuntimeInfo(javaExecutablePath);
+        }
+
         var fromPath = TryResolveFromPath();
         if (!string.IsNullOrWhiteSpace(fromPath))
         {
-            return fromPath;
-        }
-
-        var candidates = GetBundledJavaCandidates();
-        foreach (var candidate in candidates)
-        {
-            if (File.Exists(candidate))
-            {
-                return candidate;
-            }
+            return BuildRuntimeInfo(fromPath);
         }
 
         throw new InvalidOperationException("Java 実行環境が見つかりませんでした。");
@@ -138,5 +142,44 @@ public sealed class JavaRuntimeResolver
         yield return Path.Combine(runtimeRoot, "java-runtime-delta", "windows-x64", "java-runtime-delta", "bin", "javaw.exe");
         yield return Path.Combine(runtimeRoot, "jre-legacy", "windows-x64", "jre-legacy", "bin", "java.exe");
         yield return Path.Combine(runtimeRoot, "jre-legacy", "windows-x64", "jre-legacy", "bin", "javaw.exe");
+    }
+
+    private static JavaRuntimeInfo BuildRuntimeInfo(string javaExecutablePath)
+    {
+        var javaDirectory = Path.GetDirectoryName(javaExecutablePath);
+        if (string.IsNullOrWhiteSpace(javaDirectory))
+        {
+            throw new InvalidOperationException("Java 実行環境のフォルダが取得できませんでした。");
+        }
+
+        var javaFileName = Path.GetFileName(javaExecutablePath);
+        string javaPath;
+        string javawPath;
+        if (string.Equals(javaFileName, "javaw.exe", StringComparison.OrdinalIgnoreCase))
+        {
+            javawPath = javaExecutablePath;
+            javaPath = Path.Combine(javaDirectory, "java.exe");
+        }
+        else
+        {
+            javaPath = javaExecutablePath;
+            javawPath = Path.Combine(javaDirectory, "javaw.exe");
+        }
+
+        if (!File.Exists(javaPath))
+        {
+            throw new InvalidOperationException("java.exe が見つかりませんでした。");
+        }
+
+        if (!File.Exists(javawPath))
+        {
+            throw new InvalidOperationException("javaw.exe が見つかりませんでした。");
+        }
+
+        return new JavaRuntimeInfo
+        {
+            JavaExecutablePath = javaPath,
+            JavaWindowExecutablePath = javawPath
+        };
     }
 }

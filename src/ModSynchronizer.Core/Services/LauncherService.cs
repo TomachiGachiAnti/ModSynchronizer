@@ -13,7 +13,7 @@ public sealed class LauncherService
         WriteIndented = true
     };
 
-    public void EnsureProfile(ProfileConfig profile, string gameDirectory)
+    public void EnsureProfile(ProfileConfig profile, string gameDirectory, string? javaDirectoryOverride = null)
     {
         if (!profile.Launcher.CreateProfile)
         {
@@ -58,9 +58,13 @@ public sealed class LauncherService
             launcherProfile["javaArgs"] = profile.Launcher.JavaArgs;
         }
 
-        if (!string.IsNullOrWhiteSpace(profile.Launcher.JavaDir))
+        var configuredJavaDirectory = string.IsNullOrWhiteSpace(javaDirectoryOverride)
+            ? profile.Launcher.JavaDir
+            : javaDirectoryOverride;
+
+        if (!string.IsNullOrWhiteSpace(configuredJavaDirectory))
         {
-            launcherProfile["javaDir"] = profile.Launcher.JavaDir;
+            launcherProfile["javaDir"] = configuredJavaDirectory;
         }
 
         profilesNode[profileId] = launcherProfile;

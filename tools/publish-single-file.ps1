@@ -49,6 +49,8 @@ $publishProfilesDir = Join-Path $publishDir "profiles"
 if (Test-Path -LiteralPath $publishProfilesDir) {
     Remove-Item -LiteralPath $publishProfilesDir -Recurse -Force
 }
+New-Item -ItemType Directory -Path $publishProfilesDir -Force | Out-Null
+Copy-Item -LiteralPath $profilePath -Destination (Join-Path $publishProfilesDir $ProfileFile) -Force
 
 $profileAssetDir = Join-Path $assetsRoot $profileBaseName
 $publishAssetsDir = Join-Path $publishDir "assets"

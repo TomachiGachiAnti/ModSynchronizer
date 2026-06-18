@@ -10,6 +10,7 @@ public sealed class SetupRunner
     private readonly LoaderPreparationService _loaderPreparationService;
     private readonly SyncService _syncService;
     private readonly LauncherService _launcherService;
+    private readonly JavaProxyInstallerService _javaProxyInstallerService;
 
     public SetupRunner(
         ProfileLoader profileLoader,
@@ -17,7 +18,8 @@ public sealed class SetupRunner
         MinecraftEnvironmentService minecraftEnvironmentService,
         LoaderPreparationService loaderPreparationService,
         SyncService syncService,
-        LauncherService launcherService)
+        LauncherService launcherService,
+        JavaProxyInstallerService javaProxyInstallerService)
     {
         _profileLoader = profileLoader;
         _pathResolver = pathResolver;
@@ -25,6 +27,7 @@ public sealed class SetupRunner
         _loaderPreparationService = loaderPreparationService;
         _syncService = syncService;
         _launcherService = launcherService;
+        _javaProxyInstallerService = javaProxyInstallerService;
     }
 
     public ProfileConfig LoadProfile(string profilePath)
@@ -35,8 +38,10 @@ public sealed class SetupRunner
     public async Task<SetupResult> RunAsync(
         string profilePath,
         IProgress<SetupProgress>? progress,
-        CancellationToken cancellationToken)
+        CancellationToken cancellationToken,
+        SetupRunOptions? options = null)
     {
+        options ??= new SetupRunOptions();
         var profile = _profileLoader.LoadFromFile(profilePath);
         var result = new SetupResult
         {
@@ -75,8 +80,17 @@ public sealed class SetupRunner
         result.Warnings.AddRange(syncResult.Warnings);
         var gameDirectory = _pathResolver.GetGameDirectory(profile);
 
-        _launcherService.EnsureProfile(profile, gameDirectory);
-        result.OfficialLauncherLaunchSucceeded = _launcherService.TryLaunchOfficialLauncher();
+        string? javaProxyDirectory = null;
+        if (options.EnsureLauncherProfile)
+        {
+            javaProxyDirectory = _javaProxyInstallerService.EnsureProxy(profile);
+            _launcherService.EnsureProfile(profile, gameDirectory, javaProxyDirectory);
+        }
+
+        if (options.LaunchOfficialLauncher)
+        {
+            result.OfficialLauncherLaunchSucceeded = _launcherService.TryLaunchOfficialLauncher();
+        }
 
         return result;
     }

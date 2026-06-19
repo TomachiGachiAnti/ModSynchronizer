@@ -2,7 +2,8 @@ param(
     [string]$ProfileFile = "industrial-1.21.1.json",
     [string]$Configuration = "Release",
     [string]$RuntimeIdentifier = "win-x64",
-    [string]$AppVersion = "1.0.0"
+    [Parameter(Mandatory = $true)]
+    [string]$AppVersion
 )
 
 $ErrorActionPreference = "Stop"
@@ -45,23 +46,26 @@ dotnet publish $appProject `
     /p:PublishTrimmed=false `
     -o $publishDir
 
-$publishProfilesDir = Join-Path $publishDir "profiles"
-if (Test-Path -LiteralPath $publishProfilesDir) {
-    Remove-Item -LiteralPath $publishProfilesDir -Recurse -Force
-}
-New-Item -ItemType Directory -Path $publishProfilesDir -Force | Out-Null
-Copy-Item -LiteralPath $profilePath -Destination (Join-Path $publishProfilesDir $ProfileFile) -Force
-
 $profileAssetDir = Join-Path $assetsRoot $profileBaseName
 $publishAssetsDir = Join-Path $publishDir "assets"
 if (Test-Path -LiteralPath $publishAssetsDir) {
     Remove-Item -LiteralPath $publishAssetsDir -Recurse -Force
 }
 
+$publishProfilesDir = Join-Path $publishDir "profiles"
+if (Test-Path -LiteralPath $publishProfilesDir) {
+    Remove-Item -LiteralPath $publishProfilesDir -Recurse -Force
+}
+
 $defaultExe = Join-Path $publishDir "ModSynchronizer.App.exe"
 $targetExe = Join-Path $publishDir ($profileBaseName + "-Setup.exe")
 if (Test-Path -LiteralPath $defaultExe) {
     Move-Item -LiteralPath $defaultExe -Destination $targetExe
+}
+
+$publishedVersion = (Get-Item -LiteralPath $targetExe).VersionInfo.FileVersion
+if ($publishedVersion -ne $AppVersion) {
+    throw "publish された exe の FileVersion が指定値と一致しません。expected=$AppVersion actual=$publishedVersion"
 }
 
 Get-ChildItem -LiteralPath $publishDir -Filter *.pdb -File | Remove-Item -Force

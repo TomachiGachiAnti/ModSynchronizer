@@ -1020,9 +1020,9 @@
     },
     {
       "id": "industrial-78",
-      "filename": "gtceu-1.21.1-8.0.0-SNAPSHOT+20260617-112959-27d1cd3.jar",
-      "url": "https://github.com/GregTechCEu/GregTech-Modern/releases/download/latest-1.21/gtceu-1.21.1-8.0.0-SNAPSHOT%2B20260617-112959-27d1cd3.jar",
-      "sha256": "e82a2bb93dadc02a9f69ea81b0eaec0a42213fa7a787649a6860b96b12138b3a",
+      "filename": "gtceu-1.21.1-8.0.0-SNAPSHOT+20260619-055937-73eca47.jar",
+      "url": "https://github.com/GregTechCEu/GregTech-Modern/releases/download/latest-1.21/gtceu-1.21.1-8.0.0-SNAPSHOT%2B20260619-055937-73eca47.jar",
+      "sha256": "50af90dd247397fa1454dd8ec56edfed61b2e54053c42a49daff3590273b94a4",
       "required": true,
       "deprecated": false,
       "tags": [

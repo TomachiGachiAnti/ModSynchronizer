@@ -98,12 +98,6 @@ public sealed class ProfileCatalogService
 
     private static string? ResolveLocalProfilesDirectory()
     {
-        var directPath = Path.Combine(AppContext.BaseDirectory, "profiles");
-        if (Directory.Exists(directPath))
-        {
-            return directPath;
-        }
-
         var current = new DirectoryInfo(AppContext.BaseDirectory);
         while (current is not null)
         {

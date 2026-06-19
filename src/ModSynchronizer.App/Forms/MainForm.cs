@@ -228,13 +228,19 @@ public sealed class MainForm : Form
 
             var profile = _setupRunner.LoadProfile(resolvedItem.Path);
             _statusLabel.Text = "自己更新を確認しています。";
-            var selfUpdateResult = await _selfUpdateService.CheckAndApplyAsync(profile, CancellationToken.None);
+            var relaunchArguments = $"--mode setup-and-launch --profile {QuoteCommandLineValue(item.ProfileName)}";
+            var selfUpdateResult = await _selfUpdateService.CheckAndApplyAsync(
+                profile,
+                CancellationToken.None,
+                relaunchAfterUpdate: true,
+                relaunchArgumentsOverride: relaunchArguments);
+
             if (selfUpdateResult.UpdateScheduled)
             {
                 _statusLabel.Text = "アプリを更新しています。";
                 MessageBox.Show(
                     this,
-                    $"新しい版 {selfUpdateResult.LatestVersion} を適用します。アプリを閉じて更新後に自動で再起動します。",
+                    $"新しい版 {selfUpdateResult.LatestVersion} を適用します。更新後にセットアップを続行します。",
                     "更新",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
@@ -315,6 +321,11 @@ public sealed class MainForm : Form
 
         var value = (int)Math.Round(progress.Current * 100d / progress.Total);
         _progressBar.Value = Math.Max(_progressBar.Minimum, Math.Min(_progressBar.Maximum, value));
+    }
+
+    private static string QuoteCommandLineValue(string value)
+    {
+        return "\"" + value.Replace("\"", "\\\"") + "\"";
     }
 
     private sealed record ProfileItem(

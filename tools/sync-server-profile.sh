@@ -72,7 +72,12 @@ download_mod() {
     local temp_file
 
     temp_file="$(mktemp)"
-    curl -L --fail --show-error --silent "$url" -o "$temp_file"
+    if ! curl -L --fail --show-error --silent "$url" -o "$temp_file"; then
+        rm -f "$temp_file"
+        echo "ダウンロードに失敗しました: $url" >&2
+        echo "保存先: $destination" >&2
+        exit 1
+    fi
 
     if [[ -n "$expected_sha256" ]]; then
         local actual_sha256

@@ -24,10 +24,19 @@ public sealed class RuntimeInstallerService
         var runtimeExecutablePath = _pathResolver.GetInstalledRuntimeExecutablePath();
         File.Copy(currentExecutablePath, runtimeExecutablePath, true);
 
-        CopyOptionalDirectory(currentBaseDirectory, runtimeDirectory, "profiles");
         CopyOptionalDirectory(currentBaseDirectory, runtimeDirectory, "assets");
+        DeleteLegacyDirectory(runtimeDirectory, "profiles");
 
         return runtimeExecutablePath;
+    }
+
+    private static void DeleteLegacyDirectory(string destinationRoot, string directoryName)
+    {
+        var directoryPath = Path.Combine(destinationRoot, directoryName);
+        if (Directory.Exists(directoryPath))
+        {
+            Directory.Delete(directoryPath, true);
+        }
     }
 
     private static void CopyOptionalDirectory(string sourceRoot, string destinationRoot, string directoryName)

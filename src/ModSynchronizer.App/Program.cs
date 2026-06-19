@@ -41,7 +41,8 @@ internal static class Program
 
     private static async Task<int> RunCommandLineModeAsync(CommandLineOptions options)
     {
-        if (!string.Equals(options.Mode, "sync-only", StringComparison.OrdinalIgnoreCase))
+        if (!string.Equals(options.Mode, "sync-only", StringComparison.OrdinalIgnoreCase) &&
+            !string.Equals(options.Mode, "setup-and-launch", StringComparison.OrdinalIgnoreCase))
         {
             return 1;
         }
@@ -72,13 +73,16 @@ internal static class Program
         try
         {
             var profile = runtimeServices.SetupRunner.LoadProfile(profileEntry.Path);
-            var selfUpdateResult = await runtimeServices.SelfUpdateService.CheckAndApplyAsync(
-                profile,
-                CancellationToken.None,
-                relaunchAfterUpdate: false);
-            if (selfUpdateResult.UpdateScheduled)
+            if (string.Equals(options.Mode, "sync-only", StringComparison.OrdinalIgnoreCase))
             {
-                return SelfUpdateScheduledExitCode;
+                var selfUpdateResult = await runtimeServices.SelfUpdateService.CheckAndApplyAsync(
+                    profile,
+                    CancellationToken.None,
+                    relaunchAfterUpdate: false);
+                if (selfUpdateResult.UpdateScheduled)
+                {
+                    return SelfUpdateScheduledExitCode;
+                }
             }
 
             var progress = new Progress<SetupProgress>(WriteProgressToConsole);
@@ -88,8 +92,8 @@ internal static class Program
                 cancellationToken: CancellationToken.None,
                 options: new SetupRunOptions
                 {
-                    EnsureLauncherProfile = false,
-                    LaunchOfficialLauncher = false
+                    EnsureLauncherProfile = !string.Equals(options.Mode, "sync-only", StringComparison.OrdinalIgnoreCase),
+                    LaunchOfficialLauncher = string.Equals(options.Mode, "setup-and-launch", StringComparison.OrdinalIgnoreCase)
                 });
         }
         catch
@@ -97,7 +101,23 @@ internal static class Program
             return 1;
         }
 
+        WriteSyncFailuresToError(result);
         return result.HasSyncFailures ? 5 : 0;
+    }
+
+    private static void WriteSyncFailuresToError(SetupResult result)
+    {
+        foreach (var mod in result.Mods.Failed)
+        {
+            Console.Error.WriteLine($"FAILED MOD\t{mod}");
+        }
+
+        foreach (var file in result.Files.Failed)
+        {
+            Console.Error.WriteLine($"FAILED FILE\t{file}");
+        }
+
+        Console.Error.Flush();
     }
 
     private static void WriteProgressToConsole(SetupProgress progress)

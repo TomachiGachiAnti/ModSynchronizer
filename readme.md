@@ -34,6 +34,9 @@ $env:MODSYNCHRONIZER_PROFILES_BASE_URL = "E:\project\ModSynchronizer\profiles"
 & "E:\project\ModSynchronizer\publish\industrial-1.21.1\industrial-1.21.1-Setup.exe" --mode sync-only --profile industrial-1.21.1
 ```
 
+profile だけを更新した場合は publish し直す必要はありません。  
+ローカル検証では `MODSYNCHRONIZER_PROFILES_BASE_URL` を repo の `profiles` に向ければ、そのまま最新 JSON を参照します。
+
 ## 構成ファイル
 構成は `profiles` フォルダ配下の JSON で管理します。
 

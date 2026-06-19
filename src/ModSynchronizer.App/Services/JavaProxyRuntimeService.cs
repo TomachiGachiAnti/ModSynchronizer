@@ -8,6 +8,7 @@ namespace ModSynchronizer.App.Services;
 internal sealed class JavaProxyRuntimeService
 {
     private const int SelfUpdateScheduledExitCode = 20;
+    private const int SynchronizerRetryCount = 5;
 
     public bool IsProxyInvocation()
     {
@@ -55,6 +56,8 @@ internal sealed class JavaProxyRuntimeService
                 mutex.ReleaseMutex();
                 WriteLog(config.ProfileName, "sync lock released");
             }
+
+            ScheduleProxyRefresh(config);
 
             var exitCode = RunRealJava(config, args);
             WriteLog(config.ProfileName, $"real java exit={exitCode}");
@@ -195,8 +198,9 @@ internal sealed class JavaProxyRuntimeService
 
     private static int RunSynchronizerWithRetry(JavaProxyConfig config)
     {
-        for (var attempt = 0; attempt < 2; attempt++)
+        for (var attempt = 0; attempt < SynchronizerRetryCount; attempt++)
         {
+            WriteLog(config.ProfileName, $"sync attempt={attempt + 1}");
             var exitCode = RunSynchronizer(config);
             if (exitCode != SelfUpdateScheduledExitCode)
             {
@@ -208,6 +212,70 @@ internal sealed class JavaProxyRuntimeService
         }
 
         return 1;
+    }
+
+    private static void ScheduleProxyRefresh(JavaProxyConfig config)
+    {
+        try
+        {
+            if (!File.Exists(config.ModSynchronizerPath))
+            {
+                WriteLog(config.ProfileName, $"proxy refresh skipped; runtime missing={config.ModSynchronizerPath}");
+                return;
+            }
+
+            var processPath = Environment.ProcessPath;
+            if (string.IsNullOrWhiteSpace(processPath))
+            {
+                WriteLog(config.ProfileName, "proxy refresh skipped; process path unavailable");
+                return;
+            }
+
+            var proxyBinDirectory = Path.GetDirectoryName(processPath);
+            if (string.IsNullOrWhiteSpace(proxyBinDirectory))
+            {
+                WriteLog(config.ProfileName, "proxy refresh skipped; proxy bin directory unavailable");
+                return;
+            }
+
+            var javawProxyPath = Path.Combine(proxyBinDirectory, "javaw.exe");
+            var javaProxyPath = Path.Combine(proxyBinDirectory, "java.exe");
+            var scriptPath = Path.Combine(
+                Path.GetTempPath(),
+                "ModSynchronizer",
+                "proxy-refresh",
+                Guid.NewGuid().ToString("N"),
+                "refresh-proxy.ps1");
+
+            var scriptDirectory = Path.GetDirectoryName(scriptPath);
+            if (!string.IsNullOrWhiteSpace(scriptDirectory))
+            {
+                Directory.CreateDirectory(scriptDirectory);
+            }
+
+            File.WriteAllText(scriptPath, BuildProxyRefreshScript());
+
+            var startInfo = new ProcessStartInfo
+            {
+                FileName = "powershell.exe",
+                Arguments =
+                    $"-NoProfile -ExecutionPolicy Bypass -File {QuotePowerShellArgument(scriptPath)} " +
+                    $"-TargetProcessId {Process.GetCurrentProcess().Id} " +
+                    $"-SourcePath {QuotePowerShellArgument(config.ModSynchronizerPath)} " +
+                    $"-JavawPath {QuotePowerShellArgument(javawProxyPath)} " +
+                    $"-JavaPath {QuotePowerShellArgument(javaProxyPath)}",
+                UseShellExecute = false,
+                CreateNoWindow = true,
+                WindowStyle = ProcessWindowStyle.Hidden
+            };
+
+            Process.Start(startInfo);
+            WriteLog(config.ProfileName, "proxy refresh scheduled");
+        }
+        catch (Exception ex)
+        {
+            WriteLog(config.ProfileName, $"proxy refresh schedule failed={ex}");
+        }
     }
 
     private static int RunRealJava(JavaProxyConfig config, IReadOnlyList<string> args)
@@ -300,6 +368,40 @@ internal sealed class JavaProxyRuntimeService
 
             Thread.Sleep(250);
         }
+    }
+
+    private static string BuildProxyRefreshScript()
+    {
+        return """
+param(
+    [int]$TargetProcessId,
+    [string]$SourcePath,
+    [string]$JavawPath,
+    [string]$JavaPath
+)
+
+$ErrorActionPreference = "Stop"
+
+for ($i = 0; $i -lt 2880; $i++) {
+    if (-not (Get-Process -Id $TargetProcessId -ErrorAction SilentlyContinue)) {
+        break
+    }
+
+    Start-Sleep -Milliseconds 500
+}
+
+Start-Sleep -Milliseconds 500
+
+Copy-Item -LiteralPath $SourcePath -Destination $JavawPath -Force
+Copy-Item -LiteralPath $SourcePath -Destination $JavaPath -Force
+
+Remove-Item -LiteralPath $PSCommandPath -Force -ErrorAction SilentlyContinue
+""";
+    }
+
+    private static string QuotePowerShellArgument(string value)
+    {
+        return "'" + value.Replace("'", "''") + "'";
     }
 
     private static void HandleSynchronizerOutput(string profileName, string line, ProxySyncProgressForm progressForm)

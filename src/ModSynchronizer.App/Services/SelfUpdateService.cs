@@ -29,7 +29,8 @@ public sealed class SelfUpdateService
     public async Task<SelfUpdateResult> CheckAndApplyAsync(
         ProfileConfig profile,
         CancellationToken cancellationToken,
-        bool relaunchAfterUpdate = true)
+        bool relaunchAfterUpdate = true,
+        string? relaunchArgumentsOverride = null)
     {
         var result = new SelfUpdateResult
         {
@@ -45,12 +46,12 @@ public sealed class SelfUpdateService
 
         if (!string.IsNullOrWhiteSpace(profile.SelfUpdate.GithubReleasesApiUrl))
         {
-            return await CheckGithubReleaseAndApplyAsync(profile, result, cancellationToken, relaunchAfterUpdate);
+            return await CheckGithubReleaseAndApplyAsync(profile, result, cancellationToken, relaunchAfterUpdate, relaunchArgumentsOverride);
         }
 
         if (!string.IsNullOrWhiteSpace(profile.SelfUpdate.ManifestUrl))
         {
-            return await CheckManifestAndApplyAsync(profile, result, cancellationToken, relaunchAfterUpdate);
+            return await CheckManifestAndApplyAsync(profile, result, cancellationToken, relaunchAfterUpdate, relaunchArgumentsOverride);
         }
 
         return result;
@@ -60,7 +61,8 @@ public sealed class SelfUpdateService
         ProfileConfig profile,
         SelfUpdateResult result,
         CancellationToken cancellationToken,
-        bool relaunchAfterUpdate)
+        bool relaunchAfterUpdate,
+        string? relaunchArgumentsOverride)
     {
         var manifestUri = new Uri(profile.SelfUpdate.ManifestUrl, UriKind.Absolute);
         using var response = await _httpClient.GetAsync(manifestUri, cancellationToken);
@@ -110,7 +112,7 @@ public sealed class SelfUpdateService
 
         result.DownloadPath = downloadPath;
 
-        ScheduleReplacement(GetRequiredProcessPath(), downloadPath, relaunchAfterUpdate);
+        ScheduleReplacement(GetRequiredProcessPath(), downloadPath, relaunchAfterUpdate, relaunchArgumentsOverride);
         result.UpdateScheduled = true;
         return result;
     }
@@ -119,7 +121,8 @@ public sealed class SelfUpdateService
         ProfileConfig profile,
         SelfUpdateResult result,
         CancellationToken cancellationToken,
-        bool relaunchAfterUpdate)
+        bool relaunchAfterUpdate,
+        string? relaunchArgumentsOverride)
     {
         var apiUri = new Uri(profile.SelfUpdate.GithubReleasesApiUrl, UriKind.Absolute);
         using var response = await _httpClient.GetAsync(apiUri, cancellationToken);
@@ -160,7 +163,7 @@ public sealed class SelfUpdateService
         result.DownloadUrl = asset.BrowserDownloadUrl;
         var downloadPath = await DownloadUpdateAsync(profile, latestVersion, asset.BrowserDownloadUrl, cancellationToken);
         result.DownloadPath = downloadPath;
-        ScheduleReplacement(GetRequiredProcessPath(), downloadPath, relaunchAfterUpdate);
+        ScheduleReplacement(GetRequiredProcessPath(), downloadPath, relaunchAfterUpdate, relaunchArgumentsOverride);
         result.UpdateScheduled = true;
         return result;
     }
@@ -251,7 +254,11 @@ public sealed class SelfUpdateService
             asset.Name.EndsWith(".exe", StringComparison.OrdinalIgnoreCase));
     }
 
-    private static void ScheduleReplacement(string currentExecutablePath, string downloadedExecutablePath, bool relaunchAfterUpdate)
+    private static void ScheduleReplacement(
+        string currentExecutablePath,
+        string downloadedExecutablePath,
+        bool relaunchAfterUpdate,
+        string? relaunchArgumentsOverride)
     {
         var scriptPath = Path.Combine(
             Path.GetTempPath(),
@@ -268,7 +275,7 @@ public sealed class SelfUpdateService
 
         File.WriteAllText(scriptPath, BuildScript(), new UTF8Encoding(false));
 
-        var arguments = string.Join(" ", Environment.GetCommandLineArgs().Skip(1).Select(QuotePowerShellArgument));
+        var arguments = relaunchArgumentsOverride ?? string.Join(" ", Environment.GetCommandLineArgs().Skip(1).Select(QuotePowerShellArgument));
         var process = Process.GetCurrentProcess();
         var startInfo = new ProcessStartInfo
         {

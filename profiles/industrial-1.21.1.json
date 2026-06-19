@@ -1000,6 +1000,18 @@
       "filename": "misutodim-0.1.11.jar",
       "url": "https://pub-68c215f0592745cfb576efb8f8d7d67c.r2.dev/misutodim-0.1.11.jar",
       "sha256": "c2252bcf0207e7e6b0c39795f627af9281363b71c25ceaffb8b1fa06e1e6ffb1",
+      "required": false,
+      "deprecated": true,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-75b",
+      "filename": "misutodim-0.1.12.jar",
+      "url": "https://pub-68c215f0592745cfb576efb8f8d7d67c.r2.dev/misutodim-0.1.12.jar",
+      "sha256": "6fe2aa3c8ab9694b5753e5ae167f5ec479517c9ebbea595fb1c0c63e693529a5",
       "required": true,
       "deprecated": false,
       "tags": [
@@ -1048,6 +1060,30 @@
       "filename": "EnderStorage-1.21.1-2.13.0.191.jar",
       "url": "https://mediafilez.forgecdn.net/files/6159/37/EnderStorage-1.21.1-2.13.0.191.jar",
       "sha256": "f52f23f9df8925c7aec26154c2f1816cc76422c67a4fa4e30fa8b80b7a854202",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-80",
+      "filename": "stellaris-1.21-neoforge-1.4.23.jar",
+      "url": "https://mediafilez.forgecdn.net/files/8154/670/stellaris-1.21-neoforge-1.4.23.jar",
+      "sha256": "c201124207c358981c2c43d62b12f74c61faecf6bdf939ca394f543ac927a2cc",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-81",
+      "filename": "potentials-neoforge-1.21-0.7.1.jar",
+      "url": "https://cdn.modrinth.com/data/J9pKOkxP/versions/EEjnSxLK/potentials-neoforge-1.21-0.7.1.jar?mr_download_reason=standalone&mr_game_version=1.21.1&mr_loader=neoforge",
+      "sha256": "b09ac57b03593b62e044b5e73536c369598f5181180050942f973210bfdf4cc7",
       "required": true,
       "deprecated": false,
       "tags": [

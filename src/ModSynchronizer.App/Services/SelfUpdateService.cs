@@ -26,7 +26,10 @@ public sealed class SelfUpdateService
         _hashService = hashService;
     }
 
-    public async Task<SelfUpdateResult> CheckAndApplyAsync(ProfileConfig profile, CancellationToken cancellationToken)
+    public async Task<SelfUpdateResult> CheckAndApplyAsync(
+        ProfileConfig profile,
+        CancellationToken cancellationToken,
+        bool relaunchAfterUpdate = true)
     {
         var result = new SelfUpdateResult
         {
@@ -42,12 +45,12 @@ public sealed class SelfUpdateService
 
         if (!string.IsNullOrWhiteSpace(profile.SelfUpdate.GithubReleasesApiUrl))
         {
-            return await CheckGithubReleaseAndApplyAsync(profile, result, cancellationToken);
+            return await CheckGithubReleaseAndApplyAsync(profile, result, cancellationToken, relaunchAfterUpdate);
         }
 
         if (!string.IsNullOrWhiteSpace(profile.SelfUpdate.ManifestUrl))
         {
-            return await CheckManifestAndApplyAsync(profile, result, cancellationToken);
+            return await CheckManifestAndApplyAsync(profile, result, cancellationToken, relaunchAfterUpdate);
         }
 
         return result;
@@ -56,7 +59,8 @@ public sealed class SelfUpdateService
     private async Task<SelfUpdateResult> CheckManifestAndApplyAsync(
         ProfileConfig profile,
         SelfUpdateResult result,
-        CancellationToken cancellationToken)
+        CancellationToken cancellationToken,
+        bool relaunchAfterUpdate)
     {
         var manifestUri = new Uri(profile.SelfUpdate.ManifestUrl, UriKind.Absolute);
         using var response = await _httpClient.GetAsync(manifestUri, cancellationToken);
@@ -106,7 +110,7 @@ public sealed class SelfUpdateService
 
         result.DownloadPath = downloadPath;
 
-        ScheduleReplacement(GetRequiredProcessPath(), downloadPath);
+        ScheduleReplacement(GetRequiredProcessPath(), downloadPath, relaunchAfterUpdate);
         result.UpdateScheduled = true;
         return result;
     }
@@ -114,7 +118,8 @@ public sealed class SelfUpdateService
     private async Task<SelfUpdateResult> CheckGithubReleaseAndApplyAsync(
         ProfileConfig profile,
         SelfUpdateResult result,
-        CancellationToken cancellationToken)
+        CancellationToken cancellationToken,
+        bool relaunchAfterUpdate)
     {
         var apiUri = new Uri(profile.SelfUpdate.GithubReleasesApiUrl, UriKind.Absolute);
         using var response = await _httpClient.GetAsync(apiUri, cancellationToken);
@@ -127,7 +132,7 @@ public sealed class SelfUpdateService
             throw new InvalidOperationException("GitHub Releases の応答を読み込めませんでした。");
         }
 
-        var latestVersionText = release.TagName.Trim().TrimStart('v', 'V');
+        var latestVersionText = NormalizeVersionText(release.TagName);
         if (string.IsNullOrWhiteSpace(latestVersionText))
         {
             throw new InvalidOperationException("GitHub Releases の tag_name が取得できませんでした。");
@@ -155,7 +160,7 @@ public sealed class SelfUpdateService
         result.DownloadUrl = asset.BrowserDownloadUrl;
         var downloadPath = await DownloadUpdateAsync(profile, latestVersion, asset.BrowserDownloadUrl, cancellationToken);
         result.DownloadPath = downloadPath;
-        ScheduleReplacement(GetRequiredProcessPath(), downloadPath);
+        ScheduleReplacement(GetRequiredProcessPath(), downloadPath, relaunchAfterUpdate);
         result.UpdateScheduled = true;
         return result;
     }
@@ -246,7 +251,7 @@ public sealed class SelfUpdateService
             asset.Name.EndsWith(".exe", StringComparison.OrdinalIgnoreCase));
     }
 
-    private static void ScheduleReplacement(string currentExecutablePath, string downloadedExecutablePath)
+    private static void ScheduleReplacement(string currentExecutablePath, string downloadedExecutablePath, bool relaunchAfterUpdate)
     {
         var scriptPath = Path.Combine(
             Path.GetTempPath(),
@@ -274,7 +279,8 @@ public sealed class SelfUpdateService
                 $"-SourcePath {QuotePowerShellArgument(downloadedExecutablePath)} " +
                 $"-DestinationPath {QuotePowerShellArgument(currentExecutablePath)} " +
                 $"-RelaunchPath {QuotePowerShellArgument(currentExecutablePath)} " +
-                $"-OriginalArguments {QuotePowerShellArgument(arguments)}",
+                $"-OriginalArguments {QuotePowerShellArgument(arguments)} " +
+                $"-RelaunchAfterUpdate {(relaunchAfterUpdate ? "$true" : "$false")}",
             UseShellExecute = false,
             CreateNoWindow = true,
             WindowStyle = ProcessWindowStyle.Hidden
@@ -291,7 +297,8 @@ param(
     [string]$SourcePath,
     [string]$DestinationPath,
     [string]$RelaunchPath,
-    [string]$OriginalArguments
+    [string]$OriginalArguments,
+    [bool]$RelaunchAfterUpdate
 )
 
 $ErrorActionPreference = "Stop"
@@ -312,11 +319,13 @@ if (Test-Path -LiteralPath $DestinationPath) {
 
 Move-Item -LiteralPath $SourcePath -Destination $DestinationPath -Force
 
-if ([string]::IsNullOrWhiteSpace($OriginalArguments)) {
-    Start-Process -FilePath $RelaunchPath
-}
-else {
-    Start-Process -FilePath $RelaunchPath -ArgumentList $OriginalArguments
+if ($RelaunchAfterUpdate) {
+    if ([string]::IsNullOrWhiteSpace($OriginalArguments)) {
+        Start-Process -FilePath $RelaunchPath
+    }
+    else {
+        Start-Process -FilePath $RelaunchPath -ArgumentList $OriginalArguments
+    }
 }
 
 Remove-Item -LiteralPath $PSCommandPath -Force -ErrorAction SilentlyContinue
@@ -326,5 +335,20 @@ Remove-Item -LiteralPath $PSCommandPath -Force -ErrorAction SilentlyContinue
     private static string QuotePowerShellArgument(string value)
     {
         return "'" + value.Replace("'", "''") + "'";
+    }
+
+    private static string NormalizeVersionText(string versionText)
+    {
+        var normalized = versionText.Trim();
+        if (normalized.StartsWith("v.", StringComparison.OrdinalIgnoreCase))
+        {
+            normalized = normalized[2..];
+        }
+        else
+        {
+            normalized = normalized.TrimStart('v', 'V');
+        }
+
+        return normalized.Trim();
     }
 }

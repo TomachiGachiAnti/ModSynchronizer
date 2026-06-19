@@ -47,6 +47,21 @@ public sealed class PathResolver
         return Path.Combine(GetJavaProxyProfileDirectory(profile), "bin");
     }
 
+    public string GetToolsRootDirectory()
+    {
+        return Path.Combine(GetModdedMinecraftRoot(), "tools");
+    }
+
+    public string GetInstalledRuntimeDirectory()
+    {
+        return Path.Combine(GetToolsRootDirectory(), "ModSynchronizer");
+    }
+
+    public string GetInstalledRuntimeExecutablePath()
+    {
+        return Path.Combine(GetInstalledRuntimeDirectory(), "ModSynchronizer.exe");
+    }
+
     public string GetModdedMinecraftRoot()
     {
         var appData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);

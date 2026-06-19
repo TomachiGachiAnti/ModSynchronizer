@@ -19,12 +19,11 @@ public sealed class JavaProxyInstallerService
         _javaRuntimeResolver = javaRuntimeResolver;
     }
 
-    public string EnsureProxy(ProfileConfig profile)
+    public string EnsureProxy(ProfileConfig profile, string modSynchronizerPath)
     {
-        var currentExecutablePath = Environment.ProcessPath;
-        if (string.IsNullOrWhiteSpace(currentExecutablePath) || !File.Exists(currentExecutablePath))
+        if (string.IsNullOrWhiteSpace(modSynchronizerPath) || !File.Exists(modSynchronizerPath))
         {
-            throw new InvalidOperationException("ModSynchronizer の実行ファイルパスが取得できません。");
+            throw new InvalidOperationException("常設 ModSynchronizer ランタイムが見つかりません。");
         }
 
         var runtimeInfo = _javaRuntimeResolver.ResolveJavaRuntime();
@@ -35,13 +34,13 @@ public sealed class JavaProxyInstallerService
         var javawProxyPath = Path.Combine(proxyBinDirectory, "javaw.exe");
         var javaProxyPath = Path.Combine(proxyBinDirectory, "java.exe");
 
-        File.Copy(currentExecutablePath, javawProxyPath, true);
-        File.Copy(currentExecutablePath, javaProxyPath, true);
+        File.Copy(modSynchronizerPath, javawProxyPath, true);
+        File.Copy(modSynchronizerPath, javaProxyPath, true);
 
         var config = new JavaProxyConfig
         {
             ProfileName = profile.ConfigId,
-            ModSynchronizerPath = currentExecutablePath,
+            ModSynchronizerPath = modSynchronizerPath,
             RealJavaPath = runtimeInfo.JavaExecutablePath,
             RealJavawPath = runtimeInfo.JavaWindowExecutablePath
         };

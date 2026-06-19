@@ -7,6 +7,8 @@ namespace ModSynchronizer.App.Services;
 
 internal sealed class JavaProxyRuntimeService
 {
+    private const int SelfUpdateScheduledExitCode = 20;
+
     public bool IsProxyInvocation()
     {
         var configPath = TryGetProxyConfigPath();
@@ -41,7 +43,7 @@ internal sealed class JavaProxyRuntimeService
 
             try
             {
-                var syncExitCode = RunSynchronizer(config);
+                var syncExitCode = RunSynchronizerWithRetry(config);
                 WriteLog(config.ProfileName, $"sync exit={syncExitCode}");
                 if (syncExitCode != 0)
                 {
@@ -191,6 +193,23 @@ internal sealed class JavaProxyRuntimeService
         return process.ExitCode;
     }
 
+    private static int RunSynchronizerWithRetry(JavaProxyConfig config)
+    {
+        for (var attempt = 0; attempt < 2; attempt++)
+        {
+            var exitCode = RunSynchronizer(config);
+            if (exitCode != SelfUpdateScheduledExitCode)
+            {
+                return exitCode;
+            }
+
+            WriteLog(config.ProfileName, "self update scheduled; waiting for runtime replacement");
+            WaitForRuntimeReplacement(config.ModSynchronizerPath);
+        }
+
+        return 1;
+    }
+
     private static int RunRealJava(JavaProxyConfig config, IReadOnlyList<string> args)
     {
         var processPath = Environment.ProcessPath;
@@ -253,6 +272,33 @@ internal sealed class JavaProxyRuntimeService
         }
         catch
         {
+        }
+    }
+
+    private static void WaitForRuntimeReplacement(string runtimePath)
+    {
+        for (var attempt = 0; attempt < 40; attempt++)
+        {
+            if (!File.Exists(runtimePath))
+            {
+                Thread.Sleep(250);
+                continue;
+            }
+
+            try
+            {
+                using var stream = File.Open(runtimePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+                if (stream.Length > 0)
+                {
+                    Thread.Sleep(500);
+                    return;
+                }
+            }
+            catch
+            {
+            }
+
+            Thread.Sleep(250);
         }
     }
 

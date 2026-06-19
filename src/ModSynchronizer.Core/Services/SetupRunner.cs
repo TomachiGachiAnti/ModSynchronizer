@@ -11,6 +11,7 @@ public sealed class SetupRunner
     private readonly SyncService _syncService;
     private readonly LauncherService _launcherService;
     private readonly JavaProxyInstallerService _javaProxyInstallerService;
+    private readonly RuntimeInstallerService _runtimeInstallerService;
 
     public SetupRunner(
         ProfileLoader profileLoader,
@@ -19,7 +20,8 @@ public sealed class SetupRunner
         LoaderPreparationService loaderPreparationService,
         SyncService syncService,
         LauncherService launcherService,
-        JavaProxyInstallerService javaProxyInstallerService)
+        JavaProxyInstallerService javaProxyInstallerService,
+        RuntimeInstallerService runtimeInstallerService)
     {
         _profileLoader = profileLoader;
         _pathResolver = pathResolver;
@@ -28,6 +30,7 @@ public sealed class SetupRunner
         _syncService = syncService;
         _launcherService = launcherService;
         _javaProxyInstallerService = javaProxyInstallerService;
+        _runtimeInstallerService = runtimeInstallerService;
     }
 
     public ProfileConfig LoadProfile(string profilePath)
@@ -83,7 +86,8 @@ public sealed class SetupRunner
         string? javaProxyDirectory = null;
         if (options.EnsureLauncherProfile)
         {
-            javaProxyDirectory = _javaProxyInstallerService.EnsureProxy(profile);
+            var runtimeExecutablePath = _runtimeInstallerService.EnsureInstalledRuntime();
+            javaProxyDirectory = _javaProxyInstallerService.EnsureProxy(profile, runtimeExecutablePath);
             _launcherService.EnsureProfile(profile, gameDirectory, javaProxyDirectory);
         }
 

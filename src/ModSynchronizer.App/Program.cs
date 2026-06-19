@@ -7,6 +7,8 @@ namespace ModSynchronizer.App;
 
 internal static class Program
 {
+    private const int SelfUpdateScheduledExitCode = 20;
+
     [STAThread]
     private static int Main(string[] args)
     {
@@ -69,6 +71,16 @@ internal static class Program
         SetupResult result;
         try
         {
+            var profile = runtimeServices.SetupRunner.LoadProfile(profileEntry.Path);
+            var selfUpdateResult = await runtimeServices.SelfUpdateService.CheckAndApplyAsync(
+                profile,
+                CancellationToken.None,
+                relaunchAfterUpdate: false);
+            if (selfUpdateResult.UpdateScheduled)
+            {
+                return SelfUpdateScheduledExitCode;
+            }
+
             var progress = new Progress<SetupProgress>(WriteProgressToConsole);
             result = await runtimeServices.SetupRunner.RunAsync(
                 profileEntry.Path,

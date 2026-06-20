@@ -44,14 +44,25 @@ public sealed class SelfUpdateService
 
         result.Checked = true;
 
-        if (!string.IsNullOrWhiteSpace(profile.SelfUpdate.GithubReleasesApiUrl))
+        try
         {
-            return await CheckGithubReleaseAndApplyAsync(profile, result, cancellationToken, relaunchAfterUpdate, relaunchArgumentsOverride);
-        }
+            if (!string.IsNullOrWhiteSpace(profile.SelfUpdate.GithubReleasesApiUrl))
+            {
+                return await CheckGithubReleaseAndApplyAsync(profile, result, cancellationToken, relaunchAfterUpdate, relaunchArgumentsOverride);
+            }
 
-        if (!string.IsNullOrWhiteSpace(profile.SelfUpdate.ManifestUrl))
+            if (!string.IsNullOrWhiteSpace(profile.SelfUpdate.ManifestUrl))
+            {
+                return await CheckManifestAndApplyAsync(profile, result, cancellationToken, relaunchAfterUpdate, relaunchArgumentsOverride);
+            }
+        }
+        catch (OperationCanceledException)
         {
-            return await CheckManifestAndApplyAsync(profile, result, cancellationToken, relaunchAfterUpdate, relaunchArgumentsOverride);
+            throw;
+        }
+        catch (Exception ex)
+        {
+            result.WarningMessage = $"自己更新を確認できなかったため、現在の版で続行します。{Environment.NewLine}{ex.Message}";
         }
 
         return result;

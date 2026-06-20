@@ -234,6 +234,10 @@ public sealed class MainForm : Form
                 CancellationToken.None,
                 relaunchAfterUpdate: true,
                 relaunchArgumentsOverride: relaunchArguments);
+            if (!string.IsNullOrWhiteSpace(selfUpdateResult.WarningMessage))
+            {
+                _statusLabel.Text = "自己更新を確認できなかったため、現在の版で続行します。";
+            }
 
             if (selfUpdateResult.UpdateScheduled)
             {

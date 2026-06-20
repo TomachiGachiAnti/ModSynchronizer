@@ -9,4 +9,5 @@ public sealed class SelfUpdateResult
     public string LatestVersion { get; set; } = "";
     public string DownloadUrl { get; set; } = "";
     public string DownloadPath { get; set; } = "";
+    public string WarningMessage { get; set; } = "";
 }

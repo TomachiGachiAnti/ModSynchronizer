@@ -83,6 +83,12 @@ internal static class Program
                 {
                     return SelfUpdateScheduledExitCode;
                 }
+
+                if (!string.IsNullOrWhiteSpace(selfUpdateResult.WarningMessage))
+                {
+                    Console.Error.WriteLine(selfUpdateResult.WarningMessage);
+                    Console.Error.Flush();
+                }
             }
 
             var progress = new Progress<SetupProgress>(WriteProgressToConsole);

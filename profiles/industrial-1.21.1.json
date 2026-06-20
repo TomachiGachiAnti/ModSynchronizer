@@ -481,6 +481,18 @@
       "filename": "maruchipagechest-1.0.2.jar",
       "url": "https://pub-68c215f0592745cfb576efb8f8d7d67c.r2.dev/maruchipagechest-1.0.2.jar",
       "sha256": "c1a1ed4398904b774b857d990cccd874aeba40d9a3a40b0768c69bdf32be287a",
+      "required": false,
+      "deprecated": true,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-32a",
+      "filename": "maruchipagechest-1.0.3.jar",
+      "url": "https://pub-68c215f0592745cfb576efb8f8d7d67c.r2.dev/maruchipagechest-1.0.3.jar",
+      "sha256": "dc90f572ef7164aad63a46bf4eb9084878fabf2de5f35ef2a5de74a1e4fac154",
       "required": true,
       "deprecated": false,
       "tags": [

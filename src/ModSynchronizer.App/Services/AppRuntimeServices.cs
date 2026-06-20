@@ -1,5 +1,6 @@
 using ModSynchronizer.Core.Services;
 using System.Net.Http.Headers;
+using System.Reflection;
 
 namespace ModSynchronizer.App.Services;
 
@@ -34,7 +35,7 @@ internal static class AppRuntimeServicesFactory
     {
         var httpClient = new HttpClient();
         httpClient.DefaultRequestHeaders.UserAgent.Add(
-            new ProductInfoHeaderValue("ModSynchronizer", "2.2.0"));
+            new ProductInfoHeaderValue("ModSynchronizer", ResolveProductVersion()));
         httpClient.DefaultRequestHeaders.Accept.Add(
             new MediaTypeWithQualityHeaderValue("application/vnd.github+json"));
         var pathResolver = new PathResolver();
@@ -61,5 +62,11 @@ internal static class AppRuntimeServicesFactory
                 javaProxyInstallerService,
                 runtimeInstallerService),
             new SelfUpdateService(httpClient, downloadService, hashService));
+    }
+
+    private static string ResolveProductVersion()
+    {
+        var version = (Assembly.GetEntryAssembly() ?? Assembly.GetExecutingAssembly()).GetName().Version;
+        return version is null ? "1.0.0" : version.ToString(3);
     }
 }

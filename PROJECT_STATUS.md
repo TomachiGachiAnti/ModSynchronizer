@@ -367,7 +367,8 @@ E:\project\ModSynchronizer\
 - `profiles/industrial-1.21.1.server-excludes.txt` でクライアント専用 MOD を除外する
 - `assets/industrial-1.21.1-server/config` を server 用 config 同期元として使う
 - `minecraft` ユーザーを作成し、配置先は `/opt/minecraft/<profile>` とする
-- `tmux` セッション名は profile 名を使う
+- `tmux` セッション名は profile 名の `.` を `_` に置換した名前を使う
+  - 例: `industrial-1.21.1` は `industrial-1_21_1`
 - `systemd` サービス名は `minecraft-<profile>.service` とする
 - バックアップ先は `/mnt/hdd/backup/<profile>` 固定とする
 - バックアップは差分方式で保持し、`latest` シンボリックリンクを更新する

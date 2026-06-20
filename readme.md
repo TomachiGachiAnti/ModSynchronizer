@@ -59,5 +59,8 @@ sudo bash setup-server.sh
 - バックアップ用 `systemd timer` の登録
 - `tmux` への `save-all` 自動実行 timer の登録
 
+`tmux` セッション名は profile 名の `.` を `_` に置換した名前を使います。  
+例: `industrial-1.21.1` は `industrial-1_21_1` になります。
+
 バックアップは 1 時間ごとに自動実行されます。手動実行スクリプトは `/usr/local/bin/minecraft-backup-<profile>.sh` に配置されます。
 `save-all` は 3 分ごとに自動実行されます。手動実行スクリプトは `/usr/local/bin/minecraft-saveall-<profile>.sh` に配置されます。

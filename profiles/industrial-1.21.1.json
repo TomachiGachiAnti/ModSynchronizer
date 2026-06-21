@@ -481,6 +481,19 @@
       "filename": "logistics-0.0.3.jar",
       "url": "https://pub-68c215f0592745cfb576efb8f8d7d67c.r2.dev/logistics-0.0.3.jar",
       "sha256": "67379e4ec5852e020bc67a86afdb8bbffaafa336980670a6ed88779638644d4a",
+      "required": false,
+      "deprecated": true,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1",
+        "compat-layer"
+      ]
+    },
+    {
+      "id": "industrial-31e",
+      "filename": "logistics-0.0.4.jar",
+      "url": "https://pub-68c215f0592745cfb576efb8f8d7d67c.r2.dev/logistics-0.0.4.jar",
+      "sha256": "8fc7f3ff5860337eea04e0d7437eb629343ab4030093d11256bb7e0d46941071",
       "required": true,
       "deprecated": false,
       "tags": [

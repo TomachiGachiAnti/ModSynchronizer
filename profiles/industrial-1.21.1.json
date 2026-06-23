@@ -1111,6 +1111,18 @@
       "filename": "gtceu-1.21.1-8.0.0-SNAPSHOT+20260619-055937-73eca47.jar",
       "url": "https://github.com/GregTechCEu/GregTech-Modern/releases/download/latest-1.21/gtceu-1.21.1-8.0.0-SNAPSHOT%2B20260619-055937-73eca47.jar",
       "sha256": "50af90dd247397fa1454dd8ec56edfed61b2e54053c42a49daff3590273b94a4",
+      "required": false,
+      "deprecated": true,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-78a",
+      "filename": "gtceu-1.21.1-8.0.0-SNAPSHOT+20260623-111212-ce30253.jar",
+      "url": "https://github.com/GregTechCEu/GregTech-Modern/releases/download/latest-1.21/gtceu-1.21.1-8.0.0-SNAPSHOT%2B20260623-111212-ce30253.jar",
+      "sha256": "5fef9170f7cd9a1c705451353599014d9a8a54df1818e61988f878e7cefa70f8",
       "required": true,
       "deprecated": false,
       "tags": [

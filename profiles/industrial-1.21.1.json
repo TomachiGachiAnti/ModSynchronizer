@@ -196,10 +196,10 @@
     {
       "id": "industrial-14",
       "filename": "ConnectorExtras-1.12.1+1.21.1.jar",
-      "url": "https://cdn.modrinth.com/data/FYpiwiBR/versions/dgLCqZyo/ConnectorExtras-1.12.1%2B1.21.1.jar",
+      "url": "https://mediafilez.forgecdn.net/files/5618/470/ConnectorExtras-1.12.1%2B1.21.1.jar",
       "sha256": "ee89c3425b9a4bff766aaff02ccf8110c06f5da6ef5d71974556885cf25d4880",
-      "required": false,
-      "deprecated": true,
+      "required": true,
+      "deprecated": false,
       "tags": [
         "candidate",
         "neoforge-1.21.1",
@@ -389,6 +389,19 @@
       ]
     },
     {
+      "id": "industrial-57a",
+      "filename": "TechRebornJEI-21.1.7.jar",
+      "url": "https://mediafilez.forgecdn.net/files/6844/229/TechRebornJEI-21.1.7.jar",
+      "sha256": "d1fadf8c042ed75b3e8b7e0c289537907ccb8a71c242b083efd1c7736ccfb726",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1",
+        "client-only"
+      ]
+    },
+    {
       "id": "industrial-28",
       "filename": "jei-1.21.1-neoforge-19.27.0.336.jar",
       "url": "https://cdn.modrinth.com/data/u6dRKJwZ/versions/Zgmbmpd4/jei-1.21.1-neoforge-19.27.0.336.jar",
@@ -507,6 +520,32 @@
       "filename": "logistics-0.0.6.jar",
       "url": "https://pub-68c215f0592745cfb576efb8f8d7d67c.r2.dev/logistics-0.0.6.jar",
       "sha256": "86316634d84d05b5db5b165f2154e11b8944f9ae45978879db4e97529a2642fd",
+      "required": false,
+      "deprecated": true,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1",
+        "compat-layer"
+      ]
+    },
+    {
+      "id": "industrial-31g",
+      "filename": "logistics-0.0.7.jar",
+      "url": "https://pub-68c215f0592745cfb576efb8f8d7d67c.r2.dev/logistics-0.0.7.jar",
+      "sha256": "39f5a8c0c57d3d1a8865b68676e0aec875534705f0a837fb6b07cfb06514492a",
+      "required": false,
+      "deprecated": true,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1",
+        "compat-layer"
+      ]
+    },
+    {
+      "id": "industrial-31h",
+      "filename": "logistics-0.0.8.jar",
+      "url": "https://pub-68c215f0592745cfb576efb8f8d7d67c.r2.dev/logistics-0.0.8.jar",
+      "sha256": "2ad7ebcb58e5ce79e9985163eb4569773a791a54e5c4fce05c86633ab06b7b5a",
       "required": true,
       "deprecated": false,
       "tags": [

@@ -1382,8 +1382,8 @@
       "filename": "nutritiondisease-1.2.1.jar",
       "url": "https://mediafilez.forgecdn.net/files/8094/822/nutritiondisease-1.2.1.jar",
       "sha256": "af114f185e2a4b740e90283aa2b450799f1ef2ab92133bfe85a5c5cd0a7b4411",
-      "required": true,
-      "deprecated": false,
+      "required": false,
+      "deprecated": true,
       "tags": [
         "candidate",
         "neoforge-1.21.1"

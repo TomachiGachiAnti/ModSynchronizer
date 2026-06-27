@@ -1376,6 +1376,114 @@
         "candidate",
         "neoforge-1.21.1"
       ]
+    },
+    {
+      "id": "industrial-91",
+      "filename": "nutritiondisease-1.2.1.jar",
+      "url": "https://mediafilez.forgecdn.net/files/8094/822/nutritiondisease-1.2.1.jar",
+      "sha256": "af114f185e2a4b740e90283aa2b450799f1ef2ab92133bfe85a5c5cd0a7b4411",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-92",
+      "filename": "createfood-neoforge-1.21.1-2.6.0.jar",
+      "url": "https://mediafilez.forgecdn.net/files/8314/335/createfood-neoforge-1.21.1-2.6.0.jar",
+      "sha256": "0e6de446dc911144c3148b091e038f279872ce911bf5436caf43ac649e4c6bc1",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-93",
+      "filename": "sliceanddice-neoforge-4.3.2.jar",
+      "url": "https://mediafilez.forgecdn.net/files/8310/636/sliceanddice-neoforge-4.3.2.jar",
+      "sha256": "334afd3a0d543674823032eb710189d29b6ffb74bc35e27c569c75e6c7ca07e0",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-94",
+      "filename": "pineapple_delight-1.1.3-1.21.1-neoforge.jar",
+      "url": "https://mediafilez.forgecdn.net/files/7888/624/pineapple_delight-1.1.3-1.21.1-neoforge.jar",
+      "sha256": "1b783a46c87d70378ac1bfac68d869bbf4f0da84e0d6c0c21f9715210a982134",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-95",
+      "filename": "culturaldelights-0.17.8.jar",
+      "url": "https://mediafilez.forgecdn.net/files/8126/191/culturaldelights-0.17.8.jar",
+      "sha256": "3d0255548fd4cafb04d7eaa9092a10993b67c9f5084865970b4e3d414a964911",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-96",
+      "filename": "festive_delight-2.0.0-neoforge-1.21.1.jar",
+      "url": "https://mediafilez.forgecdn.net/files/7884/696/festive_delight-2.0.0-neoforge-1.21.1.jar",
+      "sha256": "d17c5de1c434e18d41f8257086d24682368e7984d3b83d6c1b9b7c90eda03f51",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-97",
+      "filename": "aquaculturedelight-1.2.0-neoforge-1.21.1.jar",
+      "url": "https://mediafilez.forgecdn.net/files/6179/576/aquaculturedelight-1.2.0-neoforge-1.21.1.jar",
+      "sha256": "0a0565d1a3801b00801ecec70dcb2c240e68bae9a41ffd4ffa6d0365226b9875",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-98",
+      "filename": "displaydelight-1.7.0.jar",
+      "url": "https://mediafilez.forgecdn.net/files/8242/893/displaydelight-1.7.0.jar",
+      "sha256": "4a77575139aa2fd1e1887243461e4f5cf1a532ac0a3a4d3a80c469d07a6df55c",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-99",
+      "filename": "EggDelight-v1.2-1.21.1.jar",
+      "url": "https://mediafilez.forgecdn.net/files/5953/970/EggDelight-v1.2-1.21.1.jar",
+      "sha256": "ec116c6c6d779af199080db97fcd481ddbf0fe7c5e6312b689611b345798e465",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
     }
   ],
   "files": [],

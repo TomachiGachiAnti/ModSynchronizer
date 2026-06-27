@@ -5,3 +5,4 @@ journeymap-neoforge-1.21.1-6.0.0-beta.66.jar
 sodium-neoforge-0.6.13+mc1.21.1.jar
 NoChatReports-NEOFORGE-1.21.1-v2.9.1.jar
 TechRebornJEI-21.1.7.jar
+jeimultiblocks-1.21.1-1.0.6.jar

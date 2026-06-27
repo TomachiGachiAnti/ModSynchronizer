@@ -559,6 +559,19 @@
       "filename": "logistics-0.0.9.jar",
       "url": "https://pub-68c215f0592745cfb576efb8f8d7d67c.r2.dev/logistics-0.0.9.jar",
       "sha256": "34bdb0bbee7d76cee55189c913d6c4e43bc8c13df9b6fca904928c37dbb4df75",
+      "required": false,
+      "deprecated": true,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1",
+        "compat-layer"
+      ]
+    },
+    {
+      "id": "industrial-31j",
+      "filename": "logistics-0.0.10.jar",
+      "url": "https://pub-68c215f0592745cfb576efb8f8d7d67c.r2.dev/logistics-0.0.10.jar",
+      "sha256": "52bdf9cec0a4e0fa62d7b1b8e38ac0c160c0585a00251224736e41874a33d81d",
       "required": true,
       "deprecated": false,
       "tags": [
@@ -1248,6 +1261,115 @@
       "filename": "potentials-neoforge-1.21-0.7.1.jar",
       "url": "https://cdn.modrinth.com/data/J9pKOkxP/versions/EEjnSxLK/potentials-neoforge-1.21-0.7.1.jar?mr_download_reason=standalone&mr_game_version=1.21.1&mr_loader=neoforge",
       "sha256": "b09ac57b03593b62e044b5e73536c369598f5181180050942f973210bfdf4cc7",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-82",
+      "filename": "jeimultiblocks-1.21.1-1.0.6.jar",
+      "url": "https://mediafilez.forgecdn.net/files/7131/196/jeimultiblocks-1.21.1-1.0.6.jar",
+      "sha256": "86098b6a34a311e845713a199491458972f3a5f68cb7d6b9b380b4f576e20027",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1",
+        "client-only"
+      ]
+    },
+    {
+      "id": "industrial-83",
+      "filename": "cookyourfood--mc1.21--neoforge--1.12.jar",
+      "url": "https://cdn.modrinth.com/data/5L9FxTN2/versions/Xt9g2dmz/cookyourfood--mc1.21--neoforge--1.12.jar",
+      "sha256": "9ee7b5538e0b7901c334bce116348c2915fa0fa4a0995743232bda444712d56b",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-84",
+      "filename": "realisticdining-neoforge-2.0.3.jar",
+      "url": "https://cdn.modrinth.com/data/dvmceGpb/versions/AbJZEVFZ/realisticdining-neoforge-2.0.3.jar",
+      "sha256": "c7237b3f9dc57295f0fb60b89c39ec6e8092a11a604dd6d45fb095fbc3c27b09",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-85",
+      "filename": "yunscuisine-1.8.2.jar",
+      "url": "https://cdn.modrinth.com/data/6El7fetP/versions/m66cQogE/yunscuisine-1.8.2.jar",
+      "sha256": "25716efd2e353de37d2b62c05dd670566ad048175bec0e9dfecaf127c85e2d81",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-86",
+      "filename": "expandeddelight-0.1.4.jar",
+      "url": "https://cdn.modrinth.com/data/e9V6wFcR/versions/RTRYPIJp/expandeddelight-0.1.4.jar",
+      "sha256": "35e9f833432a7a7d25c24e85289a6f58e2cbe2e1cf43b9c0cfef7d5752d04394",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-87",
+      "filename": "kaleidoscopecookery-1.4.1-neoforge+mc1.21.1.jar",
+      "url": "https://cdn.modrinth.com/data/v17FatAc/versions/TqaHu4Ma/kaleidoscopecookery-1.4.1-neoforge%2Bmc1.21.1.jar",
+      "sha256": "04dd114f975df57fb8bb3f09e8c96d6de18587838ab5a019271b51a2aec24f74",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-88",
+      "filename": "letsdo-farm_and_charm-neoforge-1.1.22.jar",
+      "url": "https://mediafilez.forgecdn.net/files/7959/521/letsdo-farm_and_charm-neoforge-1.1.22.jar",
+      "sha256": "2fe62301c96883689bee28a7eac4b05ea026990c26b51d06a124a4bd3a1b5293",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-89",
+      "filename": "Spice of Life Onion_NEOFORGE_v1.5.6_mc1.21.1.jar",
+      "url": "https://mediafilez.forgecdn.net/files/7675/823/Spice%20of%20Life%20Onion_NEOFORGE_v1.5.6_mc1.21.1.jar",
+      "sha256": "11605cfec2ac2e6385fc119d01bb6633b8a9ce8fdf0614cd272254630d56c0a7",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-90",
+      "filename": "CreativeCore_NEOFORGE_v2.13.41_mc1.21.1.jar",
+      "url": "https://cdn.modrinth.com/data/OsZiaDHq/versions/nLLornod/CreativeCore_NEOFORGE_v2.13.41_mc1.21.1.jar?mr_download_reason=standalone&mr_game_version=1.21.1",
+      "sha256": "bd4164b9ec8e21775e34a99a8d21e5280ee8cc6d3bd003a1b32dc3ada59ae887",
       "required": true,
       "deprecated": false,
       "tags": [

@@ -381,6 +381,18 @@
       "filename": "industrialforegoing-ce-1.0.0.jar",
       "url": "https://pub-68c215f0592745cfb576efb8f8d7d67c.r2.dev/industrialforegoing-ce-1.0.0.jar",
       "sha256": "07efdfa93871ca591742b88923b36abb7e75a6e83a61012be5da3133f515429d",
+      "required": false,
+      "deprecated": true,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-27b",
+      "filename": "industrialforegoing-ce-1.0.1.jar",
+      "url": "https://pub-68c215f0592745cfb576efb8f8d7d67c.r2.dev/industrialforegoing-ce-1.0.1.jar",
+      "sha256": "0ae4d76b7a7642801530a244c972fe9ec7d4a7a1ba382b5635e9afccc3f89e7d",
       "required": true,
       "deprecated": false,
       "tags": [
@@ -1491,6 +1503,18 @@
       "filename": "EggDelight-v1.2-1.21.1.jar",
       "url": "https://mediafilez.forgecdn.net/files/5953/970/EggDelight-v1.2-1.21.1.jar",
       "sha256": "ec116c6c6d779af199080db97fcd481ddbf0fe7c5e6312b689611b345798e465",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-100",
+      "filename": "spiceoflife_classic-neoforge-2.12+1.21.1.jar",
+      "url": "https://mediafilez.forgecdn.net/files/8016/489/spiceoflife_classic-neoforge-2.12%2B1.21.1.jar",
+      "sha256": "daa12ec78f82d7b3de778dd3ef77a8c337f507047511a462d56cee0c2fe70dee",
       "required": true,
       "deprecated": false,
       "tags": [

@@ -597,6 +597,45 @@
       "filename": "logistics-0.0.12.jar",
       "url": "https://pub-68c215f0592745cfb576efb8f8d7d67c.r2.dev/logistics-0.0.12.jar",
       "sha256": "9fcc220566c28f257273805c9c79aafa983cc3cbb3f5d63dbf253f41b282d766",
+      "required": false,
+      "deprecated": true,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1",
+        "compat-layer"
+      ]
+    },
+    {
+      "id": "industrial-31l",
+      "filename": "logistics-0.0.13.jar",
+      "url": "https://pub-68c215f0592745cfb576efb8f8d7d67c.r2.dev/logistics-0.0.13.jar",
+      "sha256": "a4046c7820bd3d6d5f5cb2e59603a347b754cae8058fe88add5f821eeabea567",
+      "required": false,
+      "deprecated": true,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1",
+        "compat-layer"
+      ]
+    },
+    {
+      "id": "industrial-31m",
+      "filename": "logistics-0.0.15.jar",
+      "url": "https://pub-68c215f0592745cfb576efb8f8d7d67c.r2.dev/logistics-0.0.15.jar",
+      "sha256": "476e4ed6c10d9f9dca95d8474701f801ffe57914db74e7de88e9378d6e239c0d",
+      "required": false,
+      "deprecated": true,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1",
+        "compat-layer"
+      ]
+    },
+    {
+      "id": "industrial-31n",
+      "filename": "logistics-0.0.16.jar",
+      "url": "https://pub-68c215f0592745cfb576efb8f8d7d67c.r2.dev/logistics-0.0.16.jar",
+      "sha256": "b923332c4861369f1ac2db56d34765156de6dd901f81442c167c164afc98ff18",
       "required": true,
       "deprecated": false,
       "tags": [
@@ -1178,6 +1217,18 @@
       "filename": "misutodim-0.1.12.jar",
       "url": "https://pub-68c215f0592745cfb576efb8f8d7d67c.r2.dev/misutodim-0.1.12.jar",
       "sha256": "6fe2aa3c8ab9694b5753e5ae167f5ec479517c9ebbea595fb1c0c63e693529a5",
+      "required": false,
+      "deprecated": true,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-75c",
+      "filename": "misutodim-0.1.13.jar",
+      "url": "https://pub-68c215f0592745cfb576efb8f8d7d67c.r2.dev/misutodim-0.1.13.jar",
+      "sha256": "035bc5aa740b86025de7301f8efba8c9b52f77ef2c22fc0250c1c3146fb84131",
       "required": true,
       "deprecated": false,
       "tags": [
@@ -1515,6 +1566,42 @@
       "filename": "spiceoflife_classic-neoforge-2.12+1.21.1.jar",
       "url": "https://mediafilez.forgecdn.net/files/8016/489/spiceoflife_classic-neoforge-2.12%2B1.21.1.jar",
       "sha256": "daa12ec78f82d7b3de778dd3ef77a8c337f507047511a462d56cee0c2fe70dee",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-101",
+      "filename": "japanese_food_mod_1.21.1_2.0.0.jar",
+      "url": "https://mediafilez.forgecdn.net/files/7715/76/japanese_food_mod_1.21.1_2.0.0.jar",
+      "sha256": "c5897f2601346afd99041ee4622d27f32dd5bd217f9861c746eba928c0efa257",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-102",
+      "filename": "youkaisfeasts-1.1.0.jar",
+      "url": "https://mediafilez.forgecdn.net/files/8004/770/youkaisfeasts-1.1.0.jar",
+      "sha256": "23f65d4c72a1b766bde7725d03abcc0d62fe1d214c868e9c951b98c6a42c259a",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-103",
+      "filename": "farmingforblockheads-neoforge-1.21.1-21.1.13.jar",
+      "url": "https://mediafilez.forgecdn.net/files/7966/196/farmingforblockheads-neoforge-1.21.1-21.1.13.jar",
+      "sha256": "12d8a9d3e93bfda0fc2cc74df1d56dcb01046fa309ae4610c1dcf722aba48fd2",
       "required": true,
       "deprecated": false,
       "tags": [

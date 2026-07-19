@@ -740,6 +740,19 @@
       "filename": "logistics-0.0.28.jar",
       "url": "https://pub-68c215f0592745cfb576efb8f8d7d67c.r2.dev/logistics-0.0.28.jar",
       "sha256": "27ceb622007b58774d65a6bc7ab7c5c69b40111470459c28b951e329909a0259",
+      "required": false,
+      "deprecated": true,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1",
+        "compat-layer"
+      ]
+    },
+    {
+      "id": "industrial-31w",
+      "filename": "logistics-0.0.29.jar",
+      "url": "https://pub-68c215f0592745cfb576efb8f8d7d67c.r2.dev/logistics-0.0.29.jar",
+      "sha256": "551bddffa8325ad9ec6ace464667c760f5e393708e3f3307d5b58ad0ee57a8c1",
       "required": true,
       "deprecated": false,
       "tags": [
@@ -789,6 +802,18 @@
       "filename": "mcjtylib-1.21-9.0.20.jar",
       "url": "https://cdn.modrinth.com/data/1Zu0uTEE/versions/UUyC6hPr/mcjtylib-1.21-9.0.20.jar",
       "sha256": "38607fc0128ebfb64848370cfb30c405528963b28d85293c3821daca3810b8a1",
+      "required": false,
+      "deprecated": true,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-33a",
+      "filename": "mcjtylib-1.21-9.0.21.jar",
+      "url": "https://cdn.modrinth.com/data/1Zu0uTEE/versions/9B2CiAN5/mcjtylib-1.21-9.0.21.jar",
+      "sha256": "b8eca900d4fe77a495c74137bd6be79c67281e5d7ae67ca55f59980c64960a0e",
       "required": true,
       "deprecated": false,
       "tags": [
@@ -1730,6 +1755,18 @@
       "filename": "shutdownsafety-0.0.1.jar",
       "url": "https://pub-68c215f0592745cfb576efb8f8d7d67c.r2.dev/shutdownsafety-0.0.1.jar",
       "sha256": "7a337f1821cdbbf2cd2b71fa8dbaa83b85c3ee690cbf13a697ed7b2a7f5aedaf",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-105",
+      "filename": "signtastic-1.21-4.0.3.jar",
+      "url": "https://cdn.modrinth.com/data/aHJDK02p/versions/JWC5f9XB/signtastic-1.21-4.0.3.jar",
+      "sha256": "c5f4fdfe8cfeb6454e0a57c40a1d3c20e4c0110acdf314fc599448896345a64c",
       "required": true,
       "deprecated": false,
       "tags": [

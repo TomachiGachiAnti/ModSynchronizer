@@ -831,6 +831,19 @@
       "filename": "logistics-0.0.35.jar",
       "url": "https://pub-68c215f0592745cfb576efb8f8d7d67c.r2.dev/logistics-0.0.35.jar",
       "sha256": "7aef29385be23bd05df3554e06808629ffdd46327509be414fb8ea497a03e604",
+      "required": false,
+      "deprecated": true,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1",
+        "compat-layer"
+      ]
+    },
+    {
+      "id": "industrial-31ad",
+      "filename": "logistics-0.0.36.jar",
+      "url": "https://pub-68c215f0592745cfb576efb8f8d7d67c.r2.dev/logistics-0.0.36.jar",
+      "sha256": "7164eebfb542464de22d6ea38bd0061b5687d6c8fbf94c67522d13457b4f0f4c",
       "required": true,
       "deprecated": false,
       "tags": [
@@ -1857,6 +1870,18 @@
       "filename": "laserio-1.9.11.jar",
       "url": "https://mediafilez.forgecdn.net/files/5730/7/laserio-1.9.11.jar",
       "sha256": "03e8537d75bc2f4ced2fc214d3409753e684d1056ee63b26db7a2b9e199ef4df",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-107",
+      "filename": "JustEnoughMekanismMultiblocks-1.21.1-7.15.jar",
+      "url": "https://mediafilez.forgecdn.net/files/7921/149/JustEnoughMekanismMultiblocks-1.21.1-7.15.jar",
+      "sha256": "4d50bb238e76276b898b91298f12ab1dd40b60a14e2e05bab8e41131d1044b82",
       "required": true,
       "deprecated": false,
       "tags": [

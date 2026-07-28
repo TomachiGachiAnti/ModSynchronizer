@@ -431,6 +431,18 @@
       "url": "https://cdn.modrinth.com/data/lfHFW1mp/versions/E44vwUJO/journeymap-neoforge-1.21.1-6.0.0-beta.66.jar",
       "sha256": "cbb076cf913962683a9b74b1865dddcc94f13c1a24916a19052f6dd504df4e4b",
       "required": true,
+      "deprecated": true,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-29a",
+      "filename": "journeymap-neoforge-1.21.1-6.0.2.jar",
+      "url": "https://mediafilez.forgecdn.net/files/8523/102/journeymap-neoforge-1.21.1-6.0.2.jar",
+      "sha256": "70f929597dc48d29a23b00c2eb7a7f67bb4436e066557ade51a4b88b25ee5a6c",
+      "required": true,
       "deprecated": false,
       "tags": [
         "candidate",
@@ -1521,6 +1533,18 @@
       "filename": "gtceu-1.21.1-8.0.0-SNAPSHOT+20260619-055937-73eca47.jar",
       "url": "https://pub-68c215f0592745cfb576efb8f8d7d67c.r2.dev/gtceu-1.21.1-8.0.0-SNAPSHOT%2B20260619-055937-73eca47.jar",
       "sha256": "50af90dd247397fa1454dd8ec56edfed61b2e54053c42a49daff3590273b94a4",
+      "required": false,
+      "deprecated": true,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-78d",
+      "filename": "gtceu-1.21.1-8.0.0-SNAPSHOT+20260728-131838-ff180b7.jar",
+      "url": "https://pub-68c215f0592745cfb576efb8f8d7d67c.r2.dev/gtceu-1.21.1-8.0.0-SNAPSHOT%2B20260728-131838-ff180b7.jar",
+      "sha256": "70ccf8590fd5c23349e6e548efdf60eb51bb8a8ffaa06619ca02f8e9ce511594",
       "required": true,
       "deprecated": false,
       "tags": [

@@ -1554,10 +1554,34 @@
       ]
     },
     {
+      "id": "industrial-78d-old",
+      "filename": "gtceu-1.21.1-8.0.0-SNAPSHOT+20260728-4f6a8b0-npefix.3.jar",
+      "url": "",
+      "sha256": "cfb01f5de9059582fecf8165497ed3074c0b2dec9aa7c2d9d1a75b3835ad047a",
+      "required": false,
+      "deprecated": true,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
       "id": "industrial-78d",
       "filename": "gtceu-1.21.1-8.0.0-SNAPSHOT+20260728-131838-ff180b7.jar",
       "url": "https://pub-68c215f0592745cfb576efb8f8d7d67c.r2.dev/gtceu-1.21.1-8.0.0-SNAPSHOT%2B20260728-131838-ff180b7.jar",
       "sha256": "70ccf8590fd5c23349e6e548efdf60eb51bb8a8ffaa06619ca02f8e9ce511594",
+      "required": false,
+      "deprecated": true,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-78e",
+      "filename": "gtceu-1.21.1-8.0.0-SNAPSHOT+20260730-ff180b7-jeifix.jar",
+      "url": "https://pub-68c215f0592745cfb576efb8f8d7d67c.r2.dev/gtceu-1.21.1-8.0.0-SNAPSHOT%2B20260730-ff180b7-jeifix.jar",
+      "sha256": "2841841c3ffc7cbdc76d84f1bbd72acb91c7852eb2e555288a4819f323c82fef",
       "required": true,
       "deprecated": false,
       "tags": [

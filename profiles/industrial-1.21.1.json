@@ -882,6 +882,19 @@
       "filename": "logistics-0.0.38.jar",
       "url": "https://pub-68c215f0592745cfb576efb8f8d7d67c.r2.dev/logistics-0.0.38.jar",
       "sha256": "b76fe06488a1422c76c4aa447cce98ea3b8a31f8e3d3a038b12d0ff864dab452",
+      "required": false,
+      "deprecated": true,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1",
+        "compat-layer"
+      ]
+    },
+    {
+      "id": "industrial-31ag",
+      "filename": "logistics-0.0.39.jar",
+      "url": "https://pub-68c215f0592745cfb576efb8f8d7d67c.r2.dev/logistics-0.0.39.jar",
+      "sha256": "d2c65aa94094f3f5a8013369881dc05fc193f24a9f9048320b5d0f91c6f0702a",
       "required": true,
       "deprecated": false,
       "tags": [
@@ -1607,6 +1620,18 @@
       "filename": "gtceu-1.21.1-8.0.0-SNAPSHOT+20260619-055937-73eca47-serverfix1.jar",
       "url": "https://pub-68c215f0592745cfb576efb8f8d7d67c.r2.dev/gtceu-1.21.1-8.0.0-SNAPSHOT%2B20260619-055937-73eca47-serverfix1.jar",
       "sha256": "93782991a7c2efe27d8d40f2c5300894d069303ad01fe77e45e0f5e8d093e8ac",
+      "required": false,
+      "deprecated": true,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-78g",
+      "filename": "gtceu-1.21.1-8.0.0-SNAPSHOT+20260619-055937-73eca47-serverfix4.jar",
+      "url": "https://pub-68c215f0592745cfb576efb8f8d7d67c.r2.dev/gtceu-1.21.1-8.0.0-SNAPSHOT%2B20260619-055937-73eca47-serverfix4.jar",
+      "sha256": "8aaaac8877a03bd9888c2fc2965b764d28c3a94da9bc59940c9b1613e2e9cf32",
       "required": true,
       "deprecated": false,
       "tags": [

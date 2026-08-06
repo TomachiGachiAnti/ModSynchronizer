@@ -370,6 +370,7 @@ E:\project\ModSynchronizer\
 - `tmux` セッション名は profile 名の `.` を `_` に置換した名前を使う
   - 例: `industrial-1.21.1` は `industrial-1_21_1`
 - `systemd` サービス名は `minecraft-<profile>.service` とする
+- Minecraft サーバーが予期せず停止した場合は 10 秒後に自動再起動する
 - バックアップ先は `/mnt/hdd/backup/<profile>` 固定とする
 - バックアップは差分方式で保持し、`latest` シンボリックリンクを更新する
 - バックアップ保持期間は 14 日とする

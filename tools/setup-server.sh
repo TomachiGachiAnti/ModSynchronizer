@@ -377,16 +377,17 @@ After=network-online.target
 Wants=network-online.target
 
 [Service]
-Type=oneshot
-RemainAfterExit=yes
+Type=simple
 User=$MINECRAFT_USER
 Group=$MINECRAFT_GROUP
 WorkingDirectory=$SERVER_ROOT
 ExecStartPre=-/usr/bin/tmux kill-session -t $TMUX_SESSION_NAME
-ExecStart=/usr/bin/tmux new-session -d -s $TMUX_SESSION_NAME /bin/bash -lc './run.sh nogui'
+ExecStart=/bin/bash -lc '/usr/bin/tmux new-session -d -s $TMUX_SESSION_NAME /bin/bash -lc "./run.sh nogui"; while /usr/bin/tmux has-session -t $TMUX_SESSION_NAME 2>/dev/null; do sleep 5; done; exit 1'
 ExecStop=/usr/bin/tmux send-keys -t $TMUX_SESSION_NAME stop C-m
 ExecStop=/bin/bash -lc 'for i in \$(seq 1 120); do if ! /usr/bin/tmux has-session -t $TMUX_SESSION_NAME 2>/dev/null; then exit 0; fi; sleep 1; done; /usr/bin/tmux kill-session -t $TMUX_SESSION_NAME'
 TimeoutStopSec=130
+Restart=on-failure
+RestartSec=10
 
 [Install]
 WantedBy=multi-user.target

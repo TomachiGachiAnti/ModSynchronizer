@@ -55,6 +55,7 @@ sudo bash setup-server.sh
 
 - `/opt/minecraft/<profile>` へのサーバー配置
 - `tmux + systemd` による起動管理
+- Minecraft サーバーが予期せず停止した場合の自動再起動
 - `/mnt/hdd/backup/<profile>` への差分バックアップ
 - バックアップ用 `systemd timer` の登録
 - `tmux` への `save-all` 自動実行 timer の登録

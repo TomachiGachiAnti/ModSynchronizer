@@ -2012,6 +2012,18 @@
         "candidate",
         "neoforge-1.21.1"
       ]
+    },
+    {
+      "id": "industrial-108",
+      "filename": "MekanismElements-1.21.1-3.0.11-NeoForge.jar",
+      "url": "https://mediafilez.forgecdn.net/files/8531/162/MekanismElements-1.21.1-3.0.11-NeoForge.jar",
+      "sha256": "324db5710964a46d3c0431a58df9e9e325cfdf0692e2b8ef83ba270d9a597888",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
     }
   ],
   "files": [],

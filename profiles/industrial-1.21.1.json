@@ -2052,7 +2052,15 @@
       ]
     }
   ],
-  "files": [],
+  "files": [
+    {
+      "path": "kubejs/config/web_server.json",
+      "url": "https://raw.githubusercontent.com/TomachiGachiAnti/ModSynchronizer/main/assets/industrial-1.21.1-client/kubejs/config/web_server.json",
+      "sha256": "bafa949b91f6db0d3cf3c4ed986f61bbc9d682bfb949926971396c07b47a8cd2",
+      "required": true,
+      "category": "config"
+    }
+  ],
   "directories": [],
   "servers": []
 }

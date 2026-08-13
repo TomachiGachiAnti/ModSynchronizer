@@ -235,10 +235,16 @@ ensure_neoforge_server() {
 }
 
 ensure_jvm_args() {
-    log "サーバー JVM 引数を設定します。"
+    if [[ -f "$SERVER_JVM_ARGS_FILE" ]]; then
+        log "既存のサーバー JVM 引数を維持します。"
+        chown "$MINECRAFT_USER:$MINECRAFT_GROUP" "$SERVER_JVM_ARGS_FILE"
+        return
+    fi
+
+    log "サーバー JVM 引数を初期化します。"
     cat >"$SERVER_JVM_ARGS_FILE" <<EOF
--Xms4G
--Xmx8G
+-Xms8G
+-Xmx26G
 EOF
     chown "$MINECRAFT_USER:$MINECRAFT_GROUP" "$SERVER_JVM_ARGS_FILE"
 }

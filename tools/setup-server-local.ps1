@@ -331,11 +331,16 @@ function Ensure-UserJvmArgs {
     param([string]$ServerRoot)
 
     $jvmArgsPath = Join-Path $ServerRoot "user_jvm_args.txt"
+    if (Test-Path -LiteralPath $jvmArgsPath -PathType Leaf) {
+        Write-Log "既存のサーバー JVM 引数を維持します。"
+        return
+    }
+
     [System.IO.File]::WriteAllLines(
         $jvmArgsPath,
         [string[]]@(
-            "-Xms4G"
-            "-Xmx8G"
+            "-Xms8G"
+            "-Xmx26G"
         ),
         [System.Text.UTF8Encoding]::new($false))
 }

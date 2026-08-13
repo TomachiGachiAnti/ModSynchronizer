@@ -934,6 +934,19 @@
       "filename": "logistics-0.0.42.jar",
       "url": "https://pub-68c215f0592745cfb576efb8f8d7d67c.r2.dev/logistics-0.0.42.jar",
       "sha256": "76d24ecf06ddf5a94760eac33f845965404403d48b6ac220bb19e137d17ddf3f",
+      "required": false,
+      "deprecated": true,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1",
+        "compat-layer"
+      ]
+    },
+    {
+      "id": "industrial-31ak",
+      "filename": "logistics-0.0.43.jar",
+      "url": "https://pub-68c215f0592745cfb576efb8f8d7d67c.r2.dev/logistics-0.0.43.jar",
+      "sha256": "d2ad5e738e79d4576bf7b69717a2ed4f09a7300b465a996eea05756351c5f748",
       "required": true,
       "deprecated": false,
       "tags": [
@@ -2044,6 +2057,54 @@
       "filename": "MekanismElements-1.21.1-3.0.11-NeoForge.jar",
       "url": "https://mediafilez.forgecdn.net/files/8531/162/MekanismElements-1.21.1-3.0.11-NeoForge.jar",
       "sha256": "324db5710964a46d3c0431a58df9e9e325cfdf0692e2b8ef83ba270d9a597888",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-109",
+      "filename": "neoforge-urban_decor-1.21.1-1.2.1.jar",
+      "url": "https://cdn.modrinth.com/data/1bLZdx1u/versions/q8hWZBAq/neoforge-urban_decor-1.21.1-1.2.1.jar?mr_download_reason=standalone&mr_game_version=1.21.1",
+      "sha256": "eef7f040681a6dcd2a5f325cc541f663e3221831682b278a458578ab2486714e",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-110",
+      "filename": "neoforge-runiclib-1.21.1-5.0.7.jar",
+      "url": "https://mediafilez.forgecdn.net/files/8188/562/neoforge-runiclib-1.21.1-5.0.7.jar",
+      "sha256": "a6ce49f1025b257437ab4ed88551faa78fe22b863dfa18897c712a1ebba2af86",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-111",
+      "filename": "delicious-kitchen-appliances-1.4.0-mc1.21.1-neoforge.jar",
+      "url": "https://cdn.modrinth.com/data/1ckWgNBo/versions/jGSnYthb/delicious-kitchen-appliances-1.4.0-mc1.21.1-neoforge.jar?mr_download_reason=standalone&mr_game_version=1.21.1",
+      "sha256": "a00b423354f8a892653e5cb4f4ee685769fa3bb22672c7ddc383b3aa0969bb30",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-112",
+      "filename": "ordertocook-1.3.6-neoforge1.21.1.jar",
+      "url": "https://pub-68c215f0592745cfb576efb8f8d7d67c.r2.dev/ordertocook-1.3.6-neoforge1.21.1.jar",
+      "sha256": "212035b74cc31c62b36f8a201ab096e03071dc765fadb005f330d652e6962b02",
       "required": true,
       "deprecated": false,
       "tags": [

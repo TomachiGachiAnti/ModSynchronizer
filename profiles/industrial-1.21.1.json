@@ -2111,6 +2111,18 @@
         "candidate",
         "neoforge-1.21.1"
       ]
+    },
+    {
+      "id": "industrial-113",
+      "filename": "cointoshop-neoforge-1.21.1-1.1.1.jar",
+      "url": "https://cdn.modrinth.com/data/WFoF1B9s/versions/V8X9gUkh/cointoshop-neoforge-1.21.1-1.1.1.jar?mr_download_reason=standalone&mr_game_version=1.21.1&mr_loader=neoforge",
+      "sha256": "44c29291b280ad728e31c5a26feb3e6823dc66e3f3778f3732551f320e0d05ec",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
     }
   ],
   "files": [

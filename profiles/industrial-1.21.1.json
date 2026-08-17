@@ -960,6 +960,19 @@
       "filename": "logistics-0.0.44.jar",
       "url": "https://pub-68c215f0592745cfb576efb8f8d7d67c.r2.dev/logistics-0.0.44.jar",
       "sha256": "dd16e4af079e50cba3bac9c662bfb6a39b1384dea8c8bcb011c233364b6591a9",
+      "required": false,
+      "deprecated": true,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1",
+        "compat-layer"
+      ]
+    },
+    {
+      "id": "industrial-31am",
+      "filename": "logistics-0.0.45.jar",
+      "url": "https://pub-68c215f0592745cfb576efb8f8d7d67c.r2.dev/logistics-0.0.45.jar",
+      "sha256": "d8fa0654fb52b759c110d4eeee4cdad60c396aaf780a630d981cc47efd8e9022",
       "required": true,
       "deprecated": false,
       "tags": [
@@ -2130,6 +2143,18 @@
       "filename": "cointoshop-neoforge-1.21.1-1.1.1.jar",
       "url": "https://cdn.modrinth.com/data/WFoF1B9s/versions/V8X9gUkh/cointoshop-neoforge-1.21.1-1.1.1.jar?mr_download_reason=standalone&mr_game_version=1.21.1&mr_loader=neoforge",
       "sha256": "44c29291b280ad728e31c5a26feb3e6823dc66e3f3778f3732551f320e0d05ec",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-114",
+      "filename": "shokutaku-1.0.0.jar",
+      "url": "https://pub-68c215f0592745cfb576efb8f8d7d67c.r2.dev/shokutaku-1.0.0.jar",
+      "sha256": "fca5bcce57112344ff740b40aa9581689fc85ec00caa940b19f9810b8c3bb39a",
       "required": true,
       "deprecated": false,
       "tags": [

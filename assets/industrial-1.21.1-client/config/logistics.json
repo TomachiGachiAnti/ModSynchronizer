@@ -1,0 +1,137 @@
+{
+  "quarry": {
+    "area": 16,
+    "energyPerBlock": 60,
+    "energyMultiplier": 1.0,
+    "armSpeed": 0.1,
+    "armSpeedScaling": 2000.0,
+    "armEnergy": 20,
+    "rainPenalty": 0.7,
+    "scanRate": 256,
+    "loadChunks": false
+  },
+  "pipe": {
+    "acceleration": 0.005,
+    "drag": 0.005,
+    "minSpeed": 0.02,
+    "maxSpeed": 0.16,
+    "injectSpeed": 0.2
+  },
+  "engine": {
+    "redstoneOutput": 10,
+    "redstoneGenerationInterval": 16,
+    "redstoneBufferCapacity": 1000,
+    "stirlingMinOutput": 3.0,
+    "stirlingMaxOutput": 10.0,
+    "stirlingBufferCapacity": 10000,
+    "reactionTankCapacity": 4000,
+    "steamMaxOutput": 40,
+    "steamWaterTankCapacity": 4000,
+    "steamFiringRate": 16,
+    "steamMaxPressure": 1000.0,
+    "steamOperatingPressure": 400.0,
+    "steamTargetPressure": 800.0,
+    "steamSteamRate": 12.0,
+    "steamPressurePerRf": 0.25,
+    "steamWaterConversion": 6.0,
+    "steamCondensationRate": 0.5,
+    "steamMaxBoilerHeat": 20000.0,
+    "steamBoilingHeat": 8000.0,
+    "steamRefuelHeat": 14000.0,
+    "steamTargetHeat": 16000.0,
+    "steamHeatPerBurnTick": 1.0,
+    "steamPassiveHeatLoss": 0.1,
+    "steamLatentHeat": 0.5,
+    "creativeBufferCapacity": 10000,
+    "magmaticOutput": 10,
+    "magmaticBufferCapacity": 40000,
+    "magmaticTankCapacity": 4000,
+    "magmaticBucketBurnTicks": 20000,
+    "fuelMinOutput": 10,
+    "fuelMaxOutput": 40,
+    "fuelBufferCapacity": 10000,
+    "fuelMaxTemperature": 250.0,
+    "fuelWasteHeatPerRf": 0.25,
+    "fuelTankCapacity": 4000,
+    "coolantTankCapacity": 4000,
+    "batteryCapacity": 100000,
+    "batteryMaxIo": 1000,
+    "batteryOutputPerSide": 200,
+    "cableCopperTransfer": 30,
+    "cableGoldTransfer": 60,
+    "cableEnderTransfer": 120
+  },
+  "automation": {
+    "macerator": {
+      "energyCapacity": 10000,
+      "maxEnergyInput": 128,
+      "energyPerTick": 100
+    },
+    "kiln": {
+      "rfPerCookTick": 10,
+      "energyCapacity": 10000,
+      "maxEnergyInput": 128,
+      "energyPerTick": 20
+    },
+    "sawmill": {
+      "energyCapacity": 10000,
+      "maxEnergyInput": 128,
+      "energyPerTick": 20
+    },
+    "crucible": {
+      "tankCapacityMb": 10000,
+      "energyCapacity": 40000,
+      "maxEnergyInput": 128,
+      "energyPerTick": 40
+    },
+    "alloySmelter": {
+      "energyCapacity": 10000,
+      "maxEnergyInput": 128,
+      "energyPerTick": 20
+    },
+    "refinery": {
+      "inputTankMb": 4000,
+      "outputTankMb": 10000,
+      "energyCapacity": 20000,
+      "maxEnergyInput": 128,
+      "energyPerTick": 20
+    },
+    "fabricator": {
+      "energyCapacity": 100000,
+      "maxEnergyInput": 128,
+      "energyPerTick": 80
+    }
+  },
+  "fluidPipe": {
+    "baseTransferRate": 10,
+    "baseCapacity": 250,
+    "woodenRequiresEngine": true,
+    "activeExtraction": true
+  },
+  "fluidLogistics": {
+    "packetQuantumMb": 250,
+    "endpointRfPerPacket": 10
+  },
+  "fluidPump": {
+    "tankCapacityMb": 16000,
+    "energyCapacity": 1000,
+    "maxEnergyInput": 150,
+    "energyPerSource": 100,
+    "pushRateMb": 400,
+    "pumpIntervalTicks": 16,
+    "searchRadius": 64,
+    "armSpeed": 0.01,
+    "infiniteSourceThreshold": 9
+  },
+  "transposer": {
+    "energyCapacity": 20000,
+    "maxEnergyInput": 128,
+    "energyPerTick": 20,
+    "tankCapacityMb": 16000
+  },
+  "crashReporting": {
+    "enabled": false,
+    "notifyOperators": true,
+    "dsnOverride": ""
+  }
+}

@@ -242,11 +242,11 @@ E:\project\ModSynchronizer\
 注意:
 
 - まだ正式採用リストではなく候補状態
-- `files` は未整備
-- 現時点では `config` の配布必須差分は未設定
+- `files` に KubeJS の設定と Logistics の `config/logistics.json` を登録済み
+- Logistics の `config/logistics.json` をクライアントへ必須配布する設定済み
 - URL の到達性と SHA-256 整合は概ね確認済み
 - `config` は差分同期前提で運用する
-- 1.21.1 工業メイン構成では、現時点で配布必須の `config` 差分は未設定
+- 1.21.1 工業メイン構成では、必要な `config` 差分を個別ファイルとして管理する
 - 現在の配布対象 MOD エントリは 65 件
 
 ## 主要コード

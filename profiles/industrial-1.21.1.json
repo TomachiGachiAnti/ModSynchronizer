@@ -271,6 +271,18 @@
       "filename": "FarmersDelight-1.21.1-1.3.1.jar",
       "url": "https://cdn.modrinth.com/data/R2OftAxM/versions/9gp7w8NC/FarmersDelight-1.21.1-1.3.1.jar",
       "sha256": "f02ffbf597af17d481b930daeed4b5906d6a6fddb464d392f28f42560965f4f4",
+      "required": false,
+      "deprecated": true,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-20a",
+      "filename": "FarmersDelight-1.21.1-1.3.3.jar",
+      "url": "https://cdn.modrinth.com/data/R2OftAxM/versions/wpkbWnVh/FarmersDelight-1.21.1-1.3.3.jar?mr_download_reason=standalone&mr_game_version=1.21.1&mr_loader=neoforge",
+      "sha256": "5dfe78ec57cfc793952611c77cb92d0d66765da5bd1ac326ba85faa4c236b78d",
       "required": true,
       "deprecated": false,
       "tags": [
@@ -986,6 +998,19 @@
       "filename": "logistics-0.0.46.jar",
       "url": "https://pub-68c215f0592745cfb576efb8f8d7d67c.r2.dev/logistics-0.0.46.jar",
       "sha256": "9dd447557e4fbb940e1edb71ebd810331a970b5fcb09945269597251751e369b",
+      "required": false,
+      "deprecated": true,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1",
+        "compat-layer"
+      ]
+    },
+    {
+      "id": "industrial-31ao",
+      "filename": "logistics-0.0.47-neoforge.jar",
+      "url": "https://pub-68c215f0592745cfb576efb8f8d7d67c.r2.dev/logistics-0.0.47-neoforge.jar",
+      "sha256": "3b380efb20945ab56359281cd7f955fd4ffbb2ee7f1ea5072ad2b719f4dd42a0",
       "required": true,
       "deprecated": false,
       "tags": [
@@ -2174,6 +2199,30 @@
         "candidate",
         "neoforge-1.21.1"
       ]
+    },
+    {
+      "id": "industrial-115",
+      "filename": "CreateDragonsPlus-1.11.7b.jar",
+      "url": "https://cdn.modrinth.com/data/dzb1a5WV/versions/zQDQbNih/CreateDragonsPlus-1.11.7b.jar?mr_download_reason=standalone&mr_game_version=1.21.1&mr_loader=neoforge",
+      "sha256": "bdad8fae41888d161b7ef59ded32d5efcf3f80dd9f19fddaad38c24b139e6ee7",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-116",
+      "filename": "create-central-kitchen-2.6.0.jar",
+      "url": "https://mediafilez.forgecdn.net/files/8616/574/create-central-kitchen-2.6.0.jar",
+      "sha256": "36df9749ca8a994c3b52284554307b47b990a18e43de347527726167614994cb",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
     }
   ],
   "files": [
@@ -2181,6 +2230,13 @@
       "path": "kubejs/config/web_server.json",
       "url": "https://raw.githubusercontent.com/TomachiGachiAnti/ModSynchronizer/main/assets/industrial-1.21.1-client/kubejs/config/web_server.json",
       "sha256": "bafa949b91f6db0d3cf3c4ed986f61bbc9d682bfb949926971396c07b47a8cd2",
+      "required": true,
+      "category": "config"
+    },
+    {
+      "path": "config/logistics.json",
+      "url": "https://raw.githubusercontent.com/TomachiGachiAnti/ModSynchronizer/main/assets/industrial-1.21.1-client/config/logistics.json",
+      "sha256": "3ef663c71802a0dbc40472bbea60311ce370ed4eab9a271dec7dd02ec8a8a32b",
       "required": true,
       "category": "config"
     }

@@ -1011,6 +1011,19 @@
       "filename": "logistics-0.0.47-neoforge.jar",
       "url": "https://pub-68c215f0592745cfb576efb8f8d7d67c.r2.dev/logistics-0.0.47-neoforge.jar",
       "sha256": "3b380efb20945ab56359281cd7f955fd4ffbb2ee7f1ea5072ad2b719f4dd42a0",
+      "required": false,
+      "deprecated": true,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1",
+        "compat-layer"
+      ]
+    },
+    {
+      "id": "industrial-31ap",
+      "filename": "logistics-neoforge-0.0.48.jar",
+      "url": "https://pub-68c215f0592745cfb576efb8f8d7d67c.r2.dev/logistics-neoforge-0.0.48.jar",
+      "sha256": "8943e0d45b4ce1ca2910ae434ba4d16b00e0f1e7ec771357c2ae7434d0d9ba39",
       "required": true,
       "deprecated": false,
       "tags": [
@@ -2037,6 +2050,30 @@
       "filename": "japanese_food_mod-2.0.1.jar",
       "url": "https://pub-68c215f0592745cfb576efb8f8d7d67c.r2.dev/japanese_food_mod-2.0.1.jar",
       "sha256": "d95d3b882b5d0a1334018e6131f099032a14dc43dbe92c56ded68708c4aa083d",
+      "required": false,
+      "deprecated": true,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-101b",
+      "filename": "japanese_food_mod-2.0.2.jar",
+      "url": "https://pub-68c215f0592745cfb576efb8f8d7d67c.r2.dev/japanese_food_mod-2.0.2.jar",
+      "sha256": "c1062bb2e5e997c5559c364614d95bb769cb8f09619c6a5a3fd68dee9b122c5f",
+      "required": false,
+      "deprecated": true,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-101c",
+      "filename": "japanese_food_mod-2.0.3.jar",
+      "url": "https://pub-68c215f0592745cfb576efb8f8d7d67c.r2.dev/japanese_food_mod-2.0.3.jar",
+      "sha256": "b3be948b4449968487f903783f280df552e772d42e858e7283b5481780e96e48",
       "required": true,
       "deprecated": false,
       "tags": [

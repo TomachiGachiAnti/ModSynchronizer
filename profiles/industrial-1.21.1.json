@@ -137,6 +137,18 @@
       "filename": "carryon-neoforge-1.21.1-2.2.4.4.jar",
       "url": "https://cdn.modrinth.com/data/joEfVgkn/versions/cgZi7nC7/carryon-neoforge-1.21.1-2.2.4.4.jar",
       "sha256": "ad69537be8be8b433227792e43f8df7b4d3cef7e359255d471a44e776ad8dd57",
+      "required": false,
+      "deprecated": true,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-09a",
+      "filename": "carryon-neoforge-1.21.1-2.2.6.13.jar",
+      "url": "https://cdn.modrinth.com/data/joEfVgkn/versions/PV8oLZ1q/carryon-neoforge-1.21.1-2.2.6.13.jar?mr_download_reason=standalone&mr_game_version=1.21.1",
+      "sha256": "d4f9576b6593db9486a89d35c1d84c31ee89141d99dbae2aa470350ab53c4e09",
       "required": true,
       "deprecated": false,
       "tags": [
@@ -2074,6 +2086,18 @@
       "filename": "japanese_food_mod-2.0.3.jar",
       "url": "https://pub-68c215f0592745cfb576efb8f8d7d67c.r2.dev/japanese_food_mod-2.0.3.jar",
       "sha256": "b3be948b4449968487f903783f280df552e772d42e858e7283b5481780e96e48",
+      "required": false,
+      "deprecated": true,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-101d",
+      "filename": "japanese_food_mod-2.0.4.jar",
+      "url": "https://pub-68c215f0592745cfb576efb8f8d7d67c.r2.dev/japanese_food_mod-2.0.4.jar",
+      "sha256": "800def0b96ac1b552c028269e236e9ef3bd8eda17b307c947a01e81d0ca0a871",
       "required": true,
       "deprecated": false,
       "tags": [
@@ -2254,6 +2278,18 @@
       "filename": "create-central-kitchen-2.6.0.jar",
       "url": "https://mediafilez.forgecdn.net/files/8616/574/create-central-kitchen-2.6.0.jar",
       "sha256": "36df9749ca8a994c3b52284554307b47b990a18e43de347527726167614994cb",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-117",
+      "filename": "food_on_a_plate-0.1.0.jar",
+      "url": "https://pub-68c215f0592745cfb576efb8f8d7d67c.r2.dev/food_on_a_plate-0.1.0.jar",
+      "sha256": "4d27d5744f76f598ba5cbcfd3376d202ae59b0c3c1505a2df2f467a859160012",
       "required": true,
       "deprecated": false,
       "tags": [

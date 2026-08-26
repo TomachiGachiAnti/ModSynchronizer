@@ -1036,6 +1036,19 @@
       "filename": "logistics-neoforge-0.0.48.jar",
       "url": "https://pub-68c215f0592745cfb576efb8f8d7d67c.r2.dev/logistics-neoforge-0.0.48.jar",
       "sha256": "8943e0d45b4ce1ca2910ae434ba4d16b00e0f1e7ec771357c2ae7434d0d9ba39",
+      "required": false,
+      "deprecated": true,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1",
+        "compat-layer"
+      ]
+    },
+    {
+      "id": "industrial-31aq",
+      "filename": "logistics-neoforge-0.0.49.jar",
+      "url": "https://pub-68c215f0592745cfb576efb8f8d7d67c.r2.dev/logistics-neoforge-0.0.49.jar",
+      "sha256": "7dbc2e63641f5ec7bca37928d48219f7071fd4281e4905a1d0f1e2727c3e3323",
       "required": true,
       "deprecated": false,
       "tags": [
@@ -2098,6 +2111,18 @@
       "filename": "japanese_food_mod-2.0.4.jar",
       "url": "https://pub-68c215f0592745cfb576efb8f8d7d67c.r2.dev/japanese_food_mod-2.0.4.jar",
       "sha256": "800def0b96ac1b552c028269e236e9ef3bd8eda17b307c947a01e81d0ca0a871",
+      "required": false,
+      "deprecated": true,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-101e",
+      "filename": "japanese_food_mod-2.0.5.jar",
+      "url": "https://pub-68c215f0592745cfb576efb8f8d7d67c.r2.dev/japanese_food_mod-2.0.5.jar",
+      "sha256": "a1c1f7ab4ff27e4b5e0b9eecf96d11c7855c53fc06873a6c14e9e8a1adb73de8",
       "required": true,
       "deprecated": false,
       "tags": [
@@ -2310,6 +2335,13 @@
       "path": "config/logistics.json",
       "url": "https://raw.githubusercontent.com/TomachiGachiAnti/ModSynchronizer/main/assets/industrial-1.21.1-client/config/logistics.json",
       "sha256": "3ef663c71802a0dbc40472bbea60311ce370ed4eab9a271dec7dd02ec8a8a32b",
+      "required": true,
+      "category": "config"
+    },
+    {
+      "path": "config/cointoshop.json",
+      "url": "https://raw.githubusercontent.com/TomachiGachiAnti/ModSynchronizer/main/assets/industrial-1.21.1-server/config/cointoshop.json",
+      "sha256": "f9b17f83341326040c9dc12452c3c0bd4f06dd27a74c133a6edc010b775d4b53",
       "required": true,
       "category": "config"
     }

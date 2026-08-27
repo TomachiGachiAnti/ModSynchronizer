@@ -230,7 +230,7 @@ sync_mods() {
             continue
         fi
 
-        if ! printf '%s\n' "${current_managed_mods[@]}" | grep -Fxq "$old_file"; then
+        if ! printf '%s\n' "${current_managed_mods[@]}" | grep -Fx "$old_file" > /dev/null; then
             if [[ -f "$MODS_DIR/$old_file" ]]; then
                 echo "削除: $old_file"
                 rm -f "$MODS_DIR/$old_file"
@@ -276,7 +276,7 @@ sync_configs() {
             continue
         fi
 
-        if ! printf '%s\n' "${current_managed_configs[@]}" | grep -Fxq "$old_file"; then
+        if ! printf '%s\n' "${current_managed_configs[@]}" | grep -Fx "$old_file" > /dev/null; then
             if [[ -f "$CONFIG_DIR/$old_file" ]]; then
                 echo "config削除: $old_file"
                 rm -f "$CONFIG_DIR/$old_file"

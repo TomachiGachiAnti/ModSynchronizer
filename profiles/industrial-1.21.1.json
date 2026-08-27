@@ -2315,6 +2315,18 @@
       "filename": "food_on_a_plate-0.1.0.jar",
       "url": "https://pub-68c215f0592745cfb576efb8f8d7d67c.r2.dev/food_on_a_plate-0.1.0.jar",
       "sha256": "4d27d5744f76f598ba5cbcfd3376d202ae59b0c3c1505a2df2f467a859160012",
+      "required": false,
+      "deprecated": true,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-117a",
+      "filename": "food_on_a_plate-0.2.0.jar",
+      "url": "https://pub-68c215f0592745cfb576efb8f8d7d67c.r2.dev/food_on_a_plate-0.2.0.jar",
+      "sha256": "820c554d14e401064dc197c2b4cbe38c640abeaa424b722bc048000a395c1200",
       "required": true,
       "deprecated": false,
       "tags": [

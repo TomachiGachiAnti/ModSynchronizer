@@ -2123,6 +2123,18 @@
       "filename": "japanese_food_mod-2.0.5.jar",
       "url": "https://pub-68c215f0592745cfb576efb8f8d7d67c.r2.dev/japanese_food_mod-2.0.5.jar",
       "sha256": "a1c1f7ab4ff27e4b5e0b9eecf96d11c7855c53fc06873a6c14e9e8a1adb73de8",
+      "required": false,
+      "deprecated": true,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-101f",
+      "filename": "japanese_food_mod-2.0.6.jar",
+      "url": "https://pub-68c215f0592745cfb576efb8f8d7d67c.r2.dev/japanese_food_mod-2.0.6.jar",
+      "sha256": "49a39bcc7f9811fd43017b9838161422ba38cf37b7bce4a107f55d3c37de8fb4",
       "required": true,
       "deprecated": false,
       "tags": [

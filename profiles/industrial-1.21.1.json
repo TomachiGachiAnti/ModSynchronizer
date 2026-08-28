@@ -2135,6 +2135,18 @@
       "filename": "japanese_food_mod-2.0.6.jar",
       "url": "https://pub-68c215f0592745cfb576efb8f8d7d67c.r2.dev/japanese_food_mod-2.0.6.jar",
       "sha256": "49a39bcc7f9811fd43017b9838161422ba38cf37b7bce4a107f55d3c37de8fb4",
+      "required": false,
+      "deprecated": true,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-101g",
+      "filename": "japanese_food_mod-2.0.7.jar",
+      "url": "https://pub-68c215f0592745cfb576efb8f8d7d67c.r2.dev/japanese_food_mod-2.0.7.jar",
+      "sha256": "ec97ab4cf5ecd5512d86e85960d856cb2e0196ff4ddd6224feadfbc257f0e58a",
       "required": true,
       "deprecated": false,
       "tags": [
@@ -2339,6 +2351,18 @@
       "filename": "food_on_a_plate-0.2.0.jar",
       "url": "https://pub-68c215f0592745cfb576efb8f8d7d67c.r2.dev/food_on_a_plate-0.2.0.jar",
       "sha256": "820c554d14e401064dc197c2b4cbe38c640abeaa424b722bc048000a395c1200",
+      "required": true,
+      "deprecated": false,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-118",
+      "filename": "createtransmission-1.2.2+neoforge-create6-1.21.1.jar",
+      "url": "https://mediafilez.forgecdn.net/files/8646/664/createtransmission-1.2.2%2Bneoforge-create6-1.21.1.jar",
+      "sha256": "0869f9cbf7c291ed680df8bb345cfffb63ed2c7b494eddb8314778cda848e8fe",
       "required": true,
       "deprecated": false,
       "tags": [

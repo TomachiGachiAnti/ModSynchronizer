@@ -2147,6 +2147,18 @@
       "filename": "japanese_food_mod-2.0.7.jar",
       "url": "https://pub-68c215f0592745cfb576efb8f8d7d67c.r2.dev/japanese_food_mod-2.0.7.jar",
       "sha256": "ec97ab4cf5ecd5512d86e85960d856cb2e0196ff4ddd6224feadfbc257f0e58a",
+      "required": false,
+      "deprecated": true,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-101h",
+      "filename": "japanese_food_mod-2.0.8.jar",
+      "url": "https://pub-68c215f0592745cfb576efb8f8d7d67c.r2.dev/japanese_food_mod-2.0.8.jar",
+      "sha256": "852df490fb974b20d36753903cb57120a6c7cac32c40343e93a18f6521e92b59",
       "required": true,
       "deprecated": false,
       "tags": [
@@ -2363,6 +2375,18 @@
       "filename": "food_on_a_plate-0.2.1.jar",
       "url": "https://pub-68c215f0592745cfb576efb8f8d7d67c.r2.dev/food_on_a_plate-0.2.1.jar",
       "sha256": "7a65bb6bee6475c50f43ca75a23e74911555a5dfd38ef9758fd6e25bb46caa94",
+      "required": false,
+      "deprecated": true,
+      "tags": [
+        "candidate",
+        "neoforge-1.21.1"
+      ]
+    },
+    {
+      "id": "industrial-117c",
+      "filename": "food_on_a_plate-0.2.2.jar",
+      "url": "https://pub-68c215f0592745cfb576efb8f8d7d67c.r2.dev/food_on_a_plate-0.2.2.jar",
+      "sha256": "ec99a297ac6ef2682b4244afa32a21752fb381f7011d7c82071b240f0adaef75",
       "required": true,
       "deprecated": false,
       "tags": [
